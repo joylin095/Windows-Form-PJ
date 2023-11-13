@@ -43,6 +43,7 @@ namespace Homework2
         public void AddShape()
         {
             _shapesList.Add(_shape);
+            _shape = null;
         }
 
         // 獲取shape 資訊
@@ -64,7 +65,7 @@ namespace Homework2
             {
                 shape.Draw(graphics);
             }
-            if (IsDrawing)
+            if (IsDrawing && _shape != null)
             {
                 _shape.Draw(graphics);
             }

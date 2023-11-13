@@ -19,5 +19,8 @@ namespace Homework2
 
         // 畫圓
         void DrawCircle(int x1, int y1, int width, int height);
+
+        //畫外框
+        void DrawSelectionBorder(int x1, int y1, int width, int height);
     }
 }

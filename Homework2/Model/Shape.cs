@@ -23,6 +23,12 @@ namespace Homework2
             set;
         }
 
+        public bool Selected
+        {
+            get;
+            set;
+        }
+
         // 通知Binding資料改變
         public void NotifyPropertyChanged(string propertyName = "")
         {
@@ -40,6 +46,15 @@ namespace Homework2
 
         // 畫圖
         public abstract void Draw(IGraphics graphics);
+
+        // 判斷點是否在範圍內
+        public abstract bool IsRangeInPoint(Point point);
+
+        //判斷選取範圍是否在範圍內
+        public abstract bool IsRangeInArea(Point firstPoint, Point secondPoint2);
+
+        // 移動圖形
+        public abstract void Move(Point point);
 
         // 形狀資訊
         public string[] GetInformation()
