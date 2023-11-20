@@ -8,9 +8,8 @@ using System.ComponentModel;
 
 namespace Homework2
 {
-    public abstract class Shape : INotifyPropertyChanged
+    public abstract class Shape
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public string Name
         {
             get;
@@ -27,15 +26,6 @@ namespace Homework2
         {
             get;
             set;
-        }
-
-        // 通知Binding資料改變
-        public void NotifyPropertyChanged(string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
 
         // 形狀位置
@@ -55,12 +45,5 @@ namespace Homework2
 
         // 移動圖形
         public abstract void Move(Point point);
-
-        // 形狀資訊
-        public string[] GetInformation()
-        {
-            string[] data = { Name, GetLocation() };
-            return data;
-        }
     }
 }

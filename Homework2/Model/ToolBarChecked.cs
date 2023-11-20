@@ -11,6 +11,7 @@ namespace Homework2
     {
         public event PropertyChangedEventHandler PropertyChanged;
         bool _value;
+        const string MOUSE = "選取";
         public string Key
         {
             get;
@@ -48,9 +49,9 @@ namespace Homework2
         }
 
         // 判斷要不要變drawing state
-        public bool IsDrawingState(string mouse)
+        public bool IsDrawingState()
         {
-            if (Key != mouse && Value)
+            if (Key != MOUSE && Value)
             {
                 return true;
             }
@@ -58,7 +59,7 @@ namespace Homework2
         }
 
         // 更新通知
-        void NotifyPropertyChanged(string propertyName = "")
+        public void NotifyPropertyChanged(string propertyName = "")
         {
             if (PropertyChanged != null)
             {

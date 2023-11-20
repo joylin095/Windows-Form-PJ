@@ -146,14 +146,14 @@ namespace Homework2
         // panel畫面繪製
         private void Panel1Paint(object sender, PaintEventArgs e)
         {
-            _model.Draw(e.Graphics);
+            _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
         // button畫面繪製
         private void Button1Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.ScaleTransform((float)_button1.Width / _panel1.Width, (float)_button1.Height / _panel1.Height);
-            _model.Draw(e.Graphics);
+            _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
         // 當ToolStripButton按下去時

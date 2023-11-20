@@ -69,12 +69,6 @@ namespace Homework2
             _shapes.AddShape();
         }
 
-        // 獲取shape資訊
-        public string[] GetInformation()
-        {
-            return _shapes.GetInformation();
-        }
-
         // 刪除shape
         public void DeleteData(int deleteRowIndex)
         {
@@ -82,9 +76,9 @@ namespace Homework2
         }
 
         // 畫圖
-        public void Draw(Graphics graphics)
+        public void Draw(IGraphics graphics)
         {
-            _shapes.DrawAll(new WindowsFormsGraphicsAdaptor(graphics, _pen));
+            _shapes.DrawAll(graphics);
             _shapes.IsDrawing = IsDrawing;
         }
 

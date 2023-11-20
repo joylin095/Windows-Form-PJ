@@ -9,7 +9,7 @@ namespace Homework2
 {
     public class PresentationModel
     {
-        Model _model;
+        public Model _model;
         const string MOUSE = "選取";
         List<string> _allShapeNameList = new List<string>();
         BindingList<ToolBarChecked> _toolBarCheckedList = new BindingList<ToolBarChecked>();
@@ -44,7 +44,7 @@ namespace Homework2
         {
             foreach (ToolBarChecked toolBarChecked in _toolBarCheckedList)
             {
-                if (toolBarChecked.IsDrawingState(MOUSE))
+                if (toolBarChecked.IsDrawingState())
                 {
                     _model.State = new DrawingState(false);
                     _model.SelectShapeName = toolBarChecked.Key;

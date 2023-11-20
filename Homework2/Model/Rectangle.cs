@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Homework2
 {
-    class Rectangle : Shape
+    public class Rectangle : Shape
     {
         const string RECTANGLE = "矩形";
         const int SIZE_X = 450;
@@ -35,14 +35,14 @@ namespace Homework2
             get;
             set;
         }
-        public Rectangle()
+        public Rectangle(IRandom random)
         {
             Name = RECTANGLE;
-            Random random = new Random();
-            X1 = random.Next(0, SIZE_X);
-            Width = random.Next(0, SIZE_WIDTH);
-            Y1 = random.Next(0, SIZE_Y);
-            Height = random.Next(0, SIZE_HEIGHT);
+            Selected = false;
+            X1 = random.GetNext(0, SIZE_X);
+            Width = random.GetNext(0, SIZE_WIDTH);
+            Y1 = random.GetNext(0, SIZE_Y);
+            Height = random.GetNext(0, SIZE_HEIGHT);
             UpdateLocation(new Point(X1, Y1), new Point(X1 + Width, Y1 + Height));
         }
 
@@ -93,6 +93,23 @@ namespace Homework2
             X1 += point.X;
             Y1 += point.Y;
             Location = GetLocation();
+        }
+
+        // 覆寫object.Equals()
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Rectangle otherRectangle = (Rectangle)obj;
+            return Name == otherRectangle.Name;
+        }
+
+        //  覆寫 GetHashCode()
+        public override int GetHashCode()
+        {
+            return new { Name }.GetHashCode();
         }
     }
 }

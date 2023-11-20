@@ -46,12 +46,6 @@ namespace Homework2
             _shape = null;
         }
 
-        // 獲取shape 資訊
-        public string[] GetInformation()
-        {
-            return _shape.GetInformation();
-        }
-
         // 刪除shape
         public void DeleteData(int deleteRowIndex)
         {

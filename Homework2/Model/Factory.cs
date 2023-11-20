@@ -18,11 +18,11 @@ namespace Homework2
             switch (shapeName)
             {
                 case RECTANGLE:
-                    return new Rectangle();
+                    return new Rectangle(new RandomGenerator());
                 case LINE:
-                    return new Line();
+                    return new Line(new RandomGenerator());
                 case CIRCLE:
-                    return new Circle();
+                    return new Circle(new RandomGenerator());
                 default:
                     return null;
             }

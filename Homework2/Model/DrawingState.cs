@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Homework2
 {
-    class DrawingState : IState
+    public class DrawingState : IState
     {
         bool _mousePressed = false;
 

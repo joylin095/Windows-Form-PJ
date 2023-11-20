@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Homework2
 {
-    class WindowsFormsGraphicsAdaptor : IGraphics
+    public class WindowsFormsGraphicsAdaptor : IGraphics
     {
         Graphics _graphics;
         Pen _pen;
@@ -15,12 +15,6 @@ namespace Homework2
         {
             _graphics = graphics;
             _pen = pen;
-        }
-
-        // 清空畫面
-        public void ClearAll()
-        {
-
         }
 
         // 畫線

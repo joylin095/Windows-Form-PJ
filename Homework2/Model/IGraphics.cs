@@ -8,9 +8,6 @@ namespace Homework2
 {
     public interface IGraphics
     {
-        // 清空畫面
-        void ClearAll();
-
         // 畫線
         void DrawLine(int x1, int y1, int x2, int y2);
 

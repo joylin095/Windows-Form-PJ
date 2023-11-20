@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Homework2
 {
-    class Line : Shape
+    public class Line : Shape
     {
         const string LINE = "線";
         const int SIZE_X1 = 600;
@@ -36,14 +36,14 @@ namespace Homework2
             get;
             set;
         }
-        public Line()
+        public Line(IRandom random)
         {
             Name = LINE;
-            Random random = new Random();
-            X1 = random.Next(0, SIZE_X1);
-            Y1 = random.Next(0, SIZE_Y1);
-            X2 = random.Next(0, SIZE_X2);
-            Y2 = random.Next(0, SIZE_Y2);
+            Selected = false;
+            X1 = random.GetNext(0, SIZE_X1);
+            Y1 = random.GetNext(0, SIZE_Y1);
+            X2 = random.GetNext(0, SIZE_X2);
+            Y2 = random.GetNext(0, SIZE_Y2);
             UpdateLocation(new Point(X1, Y1), new Point(X2, Y2));
         }
 
@@ -106,6 +106,23 @@ namespace Homework2
             Y1 += point.Y;
             Y2 += point.Y;
             Location = GetLocation();
+        }
+
+        // 覆寫object.Equals()
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Line otherRectangle = (Line)obj;
+            return Name == otherRectangle.Name;
+        }
+
+        //  覆寫 GetHashCode()
+        public override int GetHashCode()
+        {
+            return new { Name }.GetHashCode();
         }
     }
 }
