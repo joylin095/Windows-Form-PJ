@@ -86,11 +86,15 @@ namespace Homework2.Tests
             Point point = new Point(50, 100);
             model = new Model();
             MockState mockState = new MockState();
+            model.State = mockState;
             presentationModel = new PresentationModel(model);
-            presentationModel._model.State = mockState;
-
+            model.State = mockState;
             presentationModel.Panel1MouseDown(point);
-            Assert.IsTrue(presentationModel._model.State._testmousePressed);
+            
+            privateObject = new PrivateObject(presentationModel);
+            Model privatModel = (Model)privateObject.GetFieldOrProperty("_model");
+            bool privateMockMousePressed = privatModel.State.TestmousePressed;
+            Assert.IsTrue(privateMockMousePressed);
         }
 
         // 在畫佈移動滑鼠時
@@ -101,10 +105,13 @@ namespace Homework2.Tests
             model = new Model();
             MockState mockState = new MockState();
             presentationModel = new PresentationModel(model);
-            presentationModel._model.State = mockState;
+            model.State = mockState;
+            presentationModel.Panel1MouseMove(point);     
 
-            presentationModel.Panel1MouseMove(point);
-            Assert.AreEqual(point, presentationModel._model.State._testPoint);
+            privateObject = new PrivateObject(presentationModel);
+            Model privateModel = (Model)privateObject.GetFieldOrProperty("_model");
+            Point privateMockStatePoint = privateModel.State.TestPoint;
+            Assert.AreEqual(point, privateMockStatePoint);
         }
 
         // 在畫佈放開左鍵時
@@ -115,12 +122,15 @@ namespace Homework2.Tests
             model = new Model();
             MockState mockState = new MockState();
             presentationModel = new PresentationModel(model);
-            presentationModel._model.State = mockState;
+            model.State = mockState;
 
             presentationModel.RecordAllShapeName(shapeNameList);
             presentationModel.Panel1MouseUp(point);
 
-            Assert.IsFalse(presentationModel._model.State._testmousePressed);
+            privateObject = new PrivateObject(presentationModel);
+            Model privateModel = (Model)privateObject.GetFieldOrProperty("_model");
+            bool privateMockMousePressed = privateModel.State.TestmousePressed;
+            Assert.IsFalse(privateMockMousePressed);
             Assert.IsFalse(presentationModel.ToolBarCheckedList[0].Value);
         }
     }

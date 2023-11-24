@@ -14,21 +14,21 @@ namespace Homework2.Tests
         // 在畫布滑鼠按下 
         public override void PanelMouseDown(Model model, Point point)
         {
-            _testmousePressed = true;
-            _testPoint = point;
+            TestmousePressed = true;
+            TestPoint = point;
         }
 
         // 在畫布滑鼠移動
         public override void PanelMouseMove(Model model, Point point)
         {
-            _testPoint = point;
+            TestPoint = point;
         }
 
         // 在畫布滑鼠放開
         public override void PanelMouseUp(Model model, Point point)
         {
-            _testmousePressed = false;
-            _testPoint = point;
+            TestmousePressed = false;
+            TestPoint = point;
         }
     }
     [TestClass()]
@@ -81,46 +81,102 @@ namespace Homework2.Tests
             Assert.AreEqual(0, model.BindingShapeList.Count);
         }
 
+        // 畫圖測試
         [TestMethod()]
         public void DrawTest()
         {
-            Assert.Fail();
+            model = new Model();
+            privateObject = new PrivateObject(model);
+            Shapes shapes = (Shapes)privateObject.GetFieldOrProperty("_shapes");
+
+            model.IsDrawing = true;
+            model.Draw(new MockGraphics());
+            Assert.IsTrue(shapes.IsDrawing);
+
+            model.IsDrawing = false;
+            model.Draw(new MockGraphics());
+            Assert.IsFalse(shapes.IsDrawing);
         }
 
+        //第一個案下去的點測試
         [TestMethod()]
         public void SetShapeFirstPointTest()
         {
-            Assert.Fail();
+            model = new Model();
+            Point point = new Point(50, 100);
+            model.SetShapeFirstPoint(point);
+            Assert.AreEqual(point, model.FirstPoint);
         }
 
+        // 更新座標測試
         [TestMethod()]
         public void UpdateLocationTest()
         {
-            Assert.Fail();
+            model = new Model();
+            model.SelectShapeName = "線";
+            model.CreateShapes();
+            Point point = new Point(50, 100);
+            Point point1 = new Point(100, 150);
+            model.SetShapeFirstPoint(point);
+            model.UpdateLocation(point1);
         }
 
+        // 在畫布滑鼠按下
         [TestMethod()]
         public void PanelMouseDownTest()
         {
-            Assert.Fail();
+            model = new Model();
+            Point point = new Point(50, 100);
+            model.State = new DrawingState(false);
+            model.PanelMouseDown(point);
         }
 
+        // 在畫布滑鼠移動
         [TestMethod()]
         public void PanelMouseMoveTest()
         {
-            Assert.Fail();
+            model = new Model();
+            Point point = new Point(50, 100);
+            model.State = new DrawingState(false);
+            model.PanelMouseMove(point);
         }
 
+        // 在畫布滑鼠放開
         [TestMethod()]
         public void PanelMouseUpTest()
         {
-            Assert.Fail();
+            model = new Model();
+            Point point = new Point(50, 100);
+            model.State = new DrawingState(false);
+            model.PanelMouseUp(point);
         }
 
+        // 鍵盤按下按鍵測試
         [TestMethod()]
         public void FormKeyDownTest()
         {
-            Assert.Fail();
+            model = new Model();
+            model.SelectShapeName = "線";
+            model.CreateShapes();
+            model.AddShape();
+
+            model.BindingShapeList[0].Selected = true;
+            System.Windows.Forms.Keys keys = System.Windows.Forms.Keys.Space;
+            model.FormKeyDown(keys);
+            Assert.AreEqual(1, model.BindingShapeList.Count);
+
+            model.BindingShapeList[0].Selected = false;
+            model.FormKeyDown(keys);
+            Assert.AreEqual(1, model.BindingShapeList.Count);
+
+            keys = System.Windows.Forms.Keys.Delete;
+            model.BindingShapeList[0].Selected = false;
+            model.FormKeyDown(keys);
+            Assert.AreEqual(1, model.BindingShapeList.Count);
+
+            model.BindingShapeList[0].Selected = true;
+            model.FormKeyDown(keys);
+            Assert.AreEqual(0, model.BindingShapeList.Count);
         }
     }
 }

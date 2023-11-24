@@ -9,7 +9,7 @@ namespace Homework2
 {
     public class PresentationModel
     {
-        public Model _model;
+        Model _model;
         const string MOUSE = "選取";
         List<string> _allShapeNameList = new List<string>();
         BindingList<ToolBarChecked> _toolBarCheckedList = new BindingList<ToolBarChecked>();

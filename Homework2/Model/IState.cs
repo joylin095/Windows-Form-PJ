@@ -9,9 +9,16 @@ namespace Homework2
 {
     public abstract class IState
     {
-        public Point _testPoint;
-        public bool _testmousePressed;
-
+        public bool TestmousePressed
+        {
+            get;
+            set;
+        }
+        public Point TestPoint
+        {
+            get;
+            set;
+        }
         // 在畫布滑鼠按下
         public abstract void PanelMouseDown(Model model, Point point);
 

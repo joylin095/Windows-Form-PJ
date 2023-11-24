@@ -10,28 +10,30 @@ namespace Homework2
     public class NormalState : IState
     {
         bool _mousePressed = false;
-
+        Model _model;
         public NormalState(bool mousePressed)
         {
             this._mousePressed = mousePressed;
         }
 
         // 初始shape的selected
-        private void InitialShapeSelected(Model model)
+        public void InitialShapeSelected(Model model)
         {
-            foreach (Shape shape in model.BindingShapeList)
+            _model = model;
+            foreach (Shape shape in _model.BindingShapeList)
             {
                 shape.Selected = false;
             }
         }
 
         // 是否有在選取範圍
-        private bool HasSelectedInArea(Model model, Point point)
+        public bool HasSelectedInArea(Model model, Point point)
         {
+            _model = model;
             bool hasSelected = false;
-            foreach (Shape shape in model.BindingShapeList)
+            foreach (Shape shape in _model.BindingShapeList)
             {
-                if (shape.IsRangeInArea(model.FirstPoint, point))
+                if (shape.IsRangeInArea(_model.FirstPoint, point))
                 {
                     shape.Selected = hasSelected = true;
                 }
@@ -42,15 +44,16 @@ namespace Homework2
         // 在畫布滑鼠按下
         public override void PanelMouseDown(Model model, Point point)
         {
-            InitialShapeSelected(model);
-            model.FirstPoint = point;
+            _model = model;
+            InitialShapeSelected(_model);
+            _model.FirstPoint = point;
             _mousePressed = true;
-            foreach (Shape shape in model.BindingShapeList)
+            foreach (Shape shape in _model.BindingShapeList)
             {
                 if (shape.IsRangeInPoint(point))
                 {
                     shape.Selected = true;
-                    model.State = new SelectState(true);
+                    _model.State = new SelectState(true);
                     return;
                 }
             }
@@ -65,14 +68,15 @@ namespace Homework2
         // 在畫布滑鼠放開
         public override void PanelMouseUp(Model model, Point point)
         {
+            _model = model;
             if (_mousePressed)
             {
-                InitialShapeSelected(model);
+                InitialShapeSelected(_model);
                 _mousePressed = false;
                 
-                if (HasSelectedInArea(model, point))
+                if (HasSelectedInArea(_model, point))
                 {
-                    model.State = new SelectState(false);
+                    _model.State = new SelectState(false);
                 }
             }
         }
