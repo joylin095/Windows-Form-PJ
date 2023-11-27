@@ -40,7 +40,14 @@ namespace Homework2
         {
             if (Key == shapeName)
             {
-                Value = !Value;
+                if (Key == MOUSE)
+                {
+                    Value = true;
+                }
+                else
+                {
+                    Value = !Value;
+                }       
             }
             else
             {

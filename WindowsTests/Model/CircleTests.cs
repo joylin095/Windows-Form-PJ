@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Homework2.Models;
 
 namespace Homework2.Tests
 {
@@ -13,7 +14,7 @@ namespace Homework2.Tests
     public class CircleTests
     {
         Circle circle;
-
+        PrivateObject privateObject;
         // 測試建構式，座標(200,200),(400,400)
         [TestMethod()]
         public void CircleTest()
@@ -90,44 +91,43 @@ namespace Homework2.Tests
             int r = 5;
             circle = new Circle(new MockRandomGenerator());
             MockGraphics mockGraphics = new MockGraphics();
+            privateObject = new PrivateObject(mockGraphics);
             circle.Draw(mockGraphics);
-            Assert.AreEqual(x, mockGraphics._x1);
-            Assert.AreEqual(y, mockGraphics._y1);
-            Assert.AreEqual(width, mockGraphics._width);
-            Assert.AreEqual(height, mockGraphics._height);
-            Assert.AreEqual(0, mockGraphics._diameter);
+            Assert.AreEqual(x, privateObject.GetFieldOrProperty("_x1"));
+            Assert.AreEqual(y, privateObject.GetFieldOrProperty("_y1"));
+            Assert.AreEqual(width, privateObject.GetFieldOrProperty("_width"));
+            Assert.AreEqual(height, privateObject.GetFieldOrProperty("_height"));
 
             circle.Selected = true;
             circle.Draw(mockGraphics);
-            Assert.AreEqual(10, mockGraphics._diameter);
-            Assert.AreEqual(x, mockGraphics._x1);
-            Assert.AreEqual(y, mockGraphics._y1);
-            Assert.AreEqual(width, mockGraphics._width);
-            Assert.AreEqual(height, mockGraphics._height);
+            Assert.AreEqual(x, privateObject.GetFieldOrProperty("_x1"));
+            Assert.AreEqual(y, privateObject.GetFieldOrProperty("_y1"));
+            Assert.AreEqual(width, privateObject.GetFieldOrProperty("_width"));
+            Assert.AreEqual(height, privateObject.GetFieldOrProperty("_height"));
             //左上
-            Assert.AreEqual(x - r, mockGraphics._upLeftX);
-            Assert.AreEqual(y - r, mockGraphics._upLeftY);
+            Assert.AreEqual(x - r, privateObject.GetFieldOrProperty("_upLeftX"));
+            Assert.AreEqual(y - r, privateObject.GetFieldOrProperty("_upLeftY"));
             //上中
-            Assert.AreEqual(x + (width / 2) - r, mockGraphics._upX);
-            Assert.AreEqual(y - r, mockGraphics._upY);
+            Assert.AreEqual(x + (width / 2) - r, privateObject.GetFieldOrProperty("_upX"));
+            Assert.AreEqual(y - r, privateObject.GetFieldOrProperty("_upY"));
             //右上
-            Assert.AreEqual(x + width - r, mockGraphics._upRightX);
-            Assert.AreEqual(y - r, mockGraphics._upRightY);
+            Assert.AreEqual(x + width - r, privateObject.GetFieldOrProperty("_upRightX"));
+            Assert.AreEqual(y - r, privateObject.GetFieldOrProperty("_upRightY"));
             //右中
-            Assert.AreEqual(x + width - r, mockGraphics._rightX);
-            Assert.AreEqual(y + (height / 2) - r, mockGraphics._rightY);
+            Assert.AreEqual(x + width - r, privateObject.GetFieldOrProperty("_rightX"));
+            Assert.AreEqual(y + (height / 2) - r, privateObject.GetFieldOrProperty("_rightY"));
             //右下
-            Assert.AreEqual(x + width - r, mockGraphics._downRightX);
-            Assert.AreEqual(y + height - r, mockGraphics._downRightY);
+            Assert.AreEqual(x + width - r, privateObject.GetFieldOrProperty("_downRightX"));
+            Assert.AreEqual(y + height - r, privateObject.GetFieldOrProperty("_downRightY"));
             //中下
-            Assert.AreEqual(x + (width / 2) - r, mockGraphics._downX);
-            Assert.AreEqual(y + height - r, mockGraphics._downY);
+            Assert.AreEqual(x + (width / 2) - r, privateObject.GetFieldOrProperty("_downX"));
+            Assert.AreEqual(y + height - r, privateObject.GetFieldOrProperty("_downY"));
             // 左下
-            Assert.AreEqual(x - r, mockGraphics._downLeftX);
-            Assert.AreEqual(y + height - r, mockGraphics._downLeftY);
+            Assert.AreEqual(x - r, privateObject.GetFieldOrProperty("_downLeftX"));
+            Assert.AreEqual(y + height - r, privateObject.GetFieldOrProperty("_downLeftY"));
             //左中
-            Assert.AreEqual(x - r, mockGraphics._leftX);
-            Assert.AreEqual(y + (height / 2) - r, mockGraphics._leftY);
+            Assert.AreEqual(x - r, privateObject.GetFieldOrProperty("_leftX"));
+            Assert.AreEqual(y + (height / 2) - r, privateObject.GetFieldOrProperty("_leftY"));
         }
 
         // 測試選取點
@@ -136,8 +136,18 @@ namespace Homework2.Tests
         {
             circle = new Circle(new MockRandomGenerator());
             Point inside = new Point(300, 300);
-            Point outside = new Point(199, 199);
             Assert.IsTrue(circle.IsRangeInPoint(inside));
+
+            Point outside = new Point(199, 300);
+            Assert.IsFalse(circle.IsRangeInPoint(outside));
+
+            outside = new Point(300, 199);
+            Assert.IsFalse(circle.IsRangeInPoint(outside));
+
+            outside = new Point(401, 300);
+            Assert.IsFalse(circle.IsRangeInPoint(outside));
+
+            outside = new Point(300, 401);
             Assert.IsFalse(circle.IsRangeInPoint(outside));
         }
 
@@ -171,6 +181,26 @@ namespace Homework2.Tests
             circle.Move(new Point(50, 10));
             Assert.AreEqual(250, circle.X1);
             Assert.AreEqual(210, circle.Y1);
+        }
+
+        // 放大縮小測試
+        [TestMethod()]
+        public void ZoomInOutTest()
+        {
+            Point incrementX1Y1 = new Point(1, 0);
+            Point incrementWidthHeight = new Point(0, 1);
+            Point expectedTempX1Y1 = new Point(201, 200);
+            Point expectedTempWidthHeight = new Point(200, 201);
+            circle = new Circle(new MockRandomGenerator());
+            circle.GetX1Y1Point();
+            circle.GetWidthHeightPoint();
+            privateObject = new PrivateObject(circle);
+            circle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+
+            circle.Selected = true;
+            circle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("TempX1Y1"));
+            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("TempWidthHeight"));
         }
 
         // xy point 測試

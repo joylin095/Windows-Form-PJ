@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Homework2.Directions;
 
 namespace Homework2
 {
@@ -56,7 +57,6 @@ namespace Homework2
                 return _shapesList; 
             }
         }
-
 
         // 呼叫factory來創建shape
         public void CreateShape(string shapeName)

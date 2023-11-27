@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Homework2.Tests
 {
@@ -177,6 +178,32 @@ namespace Homework2.Tests
             model.BindingShapeList[0].Selected = true;
             model.FormKeyDown(keys);
             Assert.AreEqual(0, model.BindingShapeList.Count);
+        }
+
+        // 在畫布移動滑鼠時的cursor
+        [TestMethod()]
+        public void CursorChangedTest()
+        {
+            Point point = new Point(200, 200);
+            model = new Model();
+            model.SelectShapeName = "矩形";
+            model.CreateShapes();
+            model.AddShape();
+            model.IsDrawing = true;
+            model.CursorChanged(point);
+            Assert.AreEqual(Cursors.Cross, model.Cursor);
+
+            model.IsDrawing = false;
+            privateObject = new PrivateObject(model);
+            Shapes shapes = (Shapes)privateObject.GetFieldOrProperty("_shapes");
+            shapes.Direction = -1;
+
+            model.CursorChanged(point);
+            Assert.AreEqual(Cursors.Default, model.Cursor);
+
+            shapes.Direction = 1;
+            model.CursorChanged(point);
+            Assert.AreEqual(Cursors.Cross, model.Cursor);
         }
     }
 }

@@ -188,12 +188,12 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Circle.cs on line 51.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Models\Circle.cs on line 54.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Circle.cs</File>
-              <Line>51</Line>
+              <Line>54</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -203,12 +203,12 @@
             </Smell>
             <Smell>
               <Id>2</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Line.cs on line 53.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Models\Line.cs on line 55.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Line.cs</File>
-              <Line>53</Line>
+              <Line>55</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -218,12 +218,12 @@
             </Smell>
             <Smell>
               <Id>3</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Model.cs on line 126.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Models\Model.cs on line 140.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Model.cs</File>
-              <Line>126</Line>
+              <Line>140</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -233,12 +233,12 @@
             </Smell>
             <Smell>
               <Id>4</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Rectangle.cs on line 52.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Models\Rectangle.cs on line 54.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Rectangle.cs</File>
-              <Line>52</Line>
+              <Line>54</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -248,12 +248,12 @@
             </Smell>
             <Smell>
               <Id>5</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\CircleTests.cs on line 34.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\CircleTests.cs on line 35.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>WindowsTests</Project>
               <File>CircleTests.cs</File>
-              <Line>34</Line>
+              <Line>35</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -278,12 +278,12 @@
             </Smell>
             <Smell>
               <Id>7</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\RectangleTests.cs on line 35.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\RectangleTests.cs on line 36.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>WindowsTests</Project>
               <File>RectangleTests.cs</File>
-              <Line>35</Line>
+              <Line>36</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -294,81 +294,145 @@
             <Smell>
               <Id>8</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>166 目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Line.cs</File>
+              <Line>166</Line>
+              <StartLine>165</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>166</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>29 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point) 以及 Homework2.Model.IsClickBorderCircle(System.Drawing.Point)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\SelectState.cs</File>
+              <Line>29</Line>
+              <StartLine>29</StartLine>
+              <StartCol>21</StartCol>
+              <EndLine>29</EndLine>
+              <EndCol>96</EndCol>
+              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point) 以及 Homework2.Model.IsClickBorderCircle(System.Drawing.Point)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>167 目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Shape.GetX1Y1Point() 以及 Homework2.Shape.GetWidthHeightPoint() 以及 Homework2.Shape.Selected</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Shapes.cs</File>
+              <Line>167</Line>
+              <StartLine>167</StartLine>
+              <StartCol>28</StartCol>
+              <EndLine>167</EndLine>
+              <EndCol>115</EndCol>
+              <Comment>目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Shape.GetX1Y1Point() 以及 Homework2.Shape.GetWidthHeightPoint() 以及 Homework2.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>186 目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Shape.GetX1Y1Point() 以及 Homework2.Shape.GetWidthHeightPoint() 以及 Homework2.Shape.Selected</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Shapes.cs</File>
+              <Line>186</Line>
+              <StartLine>186</StartLine>
+              <StartCol>28</StartCol>
+              <EndLine>186</EndLine>
+              <EndCol>115</EndCol>
+              <Comment>目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：Homework2.Shape.GetX1Y1Point() 以及 Homework2.Shape.GetWidthHeightPoint() 以及 Homework2.Shape.Selected</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>189 目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Directions.IDirection，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Directions.IDirection.Cursor 以及 Homework2.Directions.IDirection.IsClickBorderCircle(System.Drawing.Point, System.Drawing.Point, System.Drawing.Point)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Shapes.cs</File>
+              <Line>189</Line>
+              <StartLine>188</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>189</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework2.Shapes，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Directions.IDirection，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Directions.IDirection.Cursor 以及 Homework2.Directions.IDirection.IsClickBorderCircle(System.Drawing.Point, System.Drawing.Point, System.Drawing.Point)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>178 目前物件 Homework2.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shapes，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shapes.GetCursorAtBorderCircle(System.Drawing.Point) 以及 Homework2.Shapes.Direction</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Model.cs</File>
+              <Line>178</Line>
+              <StartLine>177</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>178</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework2.Model，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shapes，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shapes.GetCursorAtBorderCircle(System.Drawing.Point) 以及 Homework2.Shapes.Direction</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>138 目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Rectangle.cs</File>
+              <Line>138</Line>
+              <StartLine>137</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>138</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>138 目前物件 Homework2.Models.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\Circle.cs</File>
+              <Line>138</Line>
+              <StartLine>137</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>138</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 Homework2.Models.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>50 目前物件 Homework2.PresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.ToolBarChecked，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.ToolBarChecked.Key 以及 Homework2.ToolBarChecked.IsDrawingState()</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\PresentationModel.cs</File>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Models\PresentationModel.cs</File>
               <Line>50</Line>
               <StartLine>49</StartLine>
               <StartCol>0</StartCol>
               <EndLine>50</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 Homework2.PresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.ToolBarChecked，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.ToolBarChecked.Key 以及 Homework2.ToolBarChecked.IsDrawingState()</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>9</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>134 目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Line.cs</File>
-              <Line>134</Line>
-              <StartLine>133</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>134</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>10</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>25 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
-              <Line>25</Line>
-              <StartLine>25</StartLine>
-              <StartCol>16</StartCol>
-              <EndLine>25</EndLine>
-              <EndCol>91</EndCol>
-              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>11</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>121 目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Rectangle.cs</File>
-              <Line>121</Line>
-              <StartLine>120</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>121</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>12</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>120 目前物件 Homework2.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Circle.cs</File>
-              <Line>120</Line>
-              <StartLine>119</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>120</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 Homework2.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -378,6 +442,51 @@
           </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
+              <AnalysisFile>
+                <RelativePath>Directions\Down.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\DownLeft.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\DownRight.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\IDirection.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\Left.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\Right.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\Up.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\UpLeft.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\UpRight.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>DoubleBufferedPanel.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
@@ -394,97 +503,97 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Circle.cs</RelativePath>
+                <RelativePath>Models\Circle.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\DrawingState.cs</RelativePath>
+                <RelativePath>Models\DrawingState.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Factory.cs</RelativePath>
+                <RelativePath>Models\Factory.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\IGraphics.cs</RelativePath>
+                <RelativePath>Models\IGraphics.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\IRandom.cs</RelativePath>
+                <RelativePath>Models\IRandom.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\IState.cs</RelativePath>
+                <RelativePath>Models\IState.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Line.cs</RelativePath>
+                <RelativePath>Models\Line.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\MockGraphics.cs</RelativePath>
-                <ProjectName>Windows</ProjectName>
-                <AnalysisFileType>Test</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>Model\MockRandomGenerator.cs</RelativePath>
-                <ProjectName>Windows</ProjectName>
-                <AnalysisFileType>Test</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>Model\Model.cs</RelativePath>
+                <RelativePath>Models\MockGraphics.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\NormalState.cs</RelativePath>
+                <RelativePath>Models\MockRandomGenerator.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\PresentationModel.cs</RelativePath>
+                <RelativePath>Models\Model.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\RandomGenerator.cs</RelativePath>
+                <RelativePath>Models\NormalState.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Rectangle.cs</RelativePath>
+                <RelativePath>Models\PresentationModel.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\SelectState.cs</RelativePath>
+                <RelativePath>Models\RandomGenerator.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Shape.cs</RelativePath>
+                <RelativePath>Models\Rectangle.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\Shapes.cs</RelativePath>
+                <RelativePath>Models\SelectState.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\ToolBarChecked.cs</RelativePath>
+                <RelativePath>Models\Shape.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Model\WindowsFormsGraphicsAdaptor.cs</RelativePath>
+                <RelativePath>Models\Shapes.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Models\ToolBarChecked.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Models\WindowsFormsGraphicsAdaptor.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -512,6 +621,46 @@
                 <RelativePath>ToolStripBindButton.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\DownLeftTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\DownRightTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\DownTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\LeftTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\RightTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\UpLeftTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\UpRightTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Directions\UpTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>DoubleBufferedPanelTests.cs</RelativePath>
@@ -585,8 +734,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1384</ProductionLoc>
-          <TestLoc>1101</TestLoc>
+          <ProductionLoc>2050</ProductionLoc>
+          <TestLoc>1781</TestLoc>
         </CodeReview>
       </Data>
     </div>

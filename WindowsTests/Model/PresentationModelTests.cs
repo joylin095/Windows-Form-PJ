@@ -60,11 +60,16 @@ namespace Homework2.Tests
             Assert.AreEqual(null, model.SelectShapeName);
             Assert.IsFalse(model.IsDrawing);
 
+            model.State = new SelectState(false);
+            presentationModel.SetState();
+
             presentationModel.ToolBarCheckedList[0].Value = true;
             presentationModel.SetState();
             Assert.IsTrue(model.State is DrawingState);
             Assert.AreEqual("線", model.SelectShapeName);
             Assert.IsTrue(model.IsDrawing);
+
+
         }
 
         // 測試ToolStripButton更新checked

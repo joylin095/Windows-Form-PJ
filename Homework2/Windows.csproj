@@ -46,27 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Circle.cs" />
+    <Compile Include="Directions\Down.cs" />
+    <Compile Include="Directions\DownLeft.cs" />
+    <Compile Include="Directions\DownRight.cs" />
+    <Compile Include="Directions\Left.cs" />
+    <Compile Include="Directions\Right.cs" />
+    <Compile Include="Directions\Up.cs" />
+    <Compile Include="Directions\UpLeft.cs" />
+    <Compile Include="Directions\UpRight.cs" />
+    <Compile Include="Models\Circle.cs" />
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\DrawingState.cs" />
-    <Compile Include="Model\IDirection.cs" />
-    <Compile Include="Model\IGraphics.cs" />
-    <Compile Include="Model\IRandom.cs" />
-    <Compile Include="Model\IState.cs" />
-    <Compile Include="Model\Line.cs" />
-    <Compile Include="Model\MockGraphics.cs" />
-    <Compile Include="Model\MockRandomGenerator.cs" />
-    <Compile Include="Model\NormalState.cs" />
-    <Compile Include="Model\PresentationModel.cs" />
-    <Compile Include="Model\RandomGenerator.cs" />
-    <Compile Include="Model\Rectangle.cs" />
-    <Compile Include="Model\SelectState.cs" />
-    <Compile Include="Model\Shape.cs" />
-    <Compile Include="Model\Factory.cs" />
-    <Compile Include="Model\Model.cs" />
+    <Compile Include="Models\DrawingState.cs" />
+    <Compile Include="Directions\IDirection.cs" />
+    <Compile Include="Models\IGraphics.cs" />
+    <Compile Include="Models\IRandom.cs" />
+    <Compile Include="Models\IState.cs" />
+    <Compile Include="Models\Line.cs" />
+    <Compile Include="Models\MockGraphics.cs" />
+    <Compile Include="Models\MockRandomGenerator.cs" />
+    <Compile Include="Models\NormalState.cs" />
+    <Compile Include="Models\PresentationModel.cs" />
+    <Compile Include="Models\RandomGenerator.cs" />
+    <Compile Include="Models\Rectangle.cs" />
+    <Compile Include="Models\SelectState.cs" />
+    <Compile Include="Models\Shape.cs" />
+    <Compile Include="Models\Factory.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,12 +82,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Shapes.cs" />
-    <Compile Include="Model\ToolBarChecked.cs" />
+    <Compile Include="Models\Shapes.cs" />
+    <Compile Include="Models\ToolBarChecked.cs" />
     <Compile Include="ToolStripBindButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\WindowsFormsGraphicsAdaptor.cs" />
+    <Compile Include="Models\WindowsFormsGraphicsAdaptor.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

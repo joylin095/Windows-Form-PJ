@@ -14,6 +14,7 @@ namespace Homework2
         public NormalState(bool mousePressed)
         {
             this._mousePressed = mousePressed;
+            
         }
 
         // 初始shape的selected

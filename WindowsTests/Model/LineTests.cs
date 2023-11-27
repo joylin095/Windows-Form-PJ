@@ -13,7 +13,7 @@ namespace Homework2.Tests
     public class LineTests
     {
         Line line;
-
+        PrivateObject privateObject;
         // 測試建構式
         [TestMethod()]
         public void LineTest()
@@ -83,44 +83,43 @@ namespace Homework2.Tests
             line.X2 = 400;
             line.Y2 = 400;
             MockGraphics mockGraphics = new MockGraphics();
+            privateObject = new PrivateObject(mockGraphics);
             line.Draw(mockGraphics);
-            Assert.AreEqual(x1, mockGraphics._x1);
-            Assert.AreEqual(y1, mockGraphics._y1);
-            Assert.AreEqual(x2, mockGraphics._x2);
-            Assert.AreEqual(y2, mockGraphics._y2);
-            Assert.AreEqual(0, mockGraphics._diameter);
+            Assert.AreEqual(x1, privateObject.GetFieldOrProperty("_x1"));
+            Assert.AreEqual(y1, privateObject.GetFieldOrProperty("_y1"));
+            Assert.AreEqual(x2, privateObject.GetFieldOrProperty("_x2"));
+            Assert.AreEqual(y2, privateObject.GetFieldOrProperty("_y2"));
 
             line.Selected = true;
             line.Draw(mockGraphics);
-            Assert.AreEqual(10, mockGraphics._diameter);
-            Assert.AreEqual(x1, mockGraphics._x1);
-            Assert.AreEqual(y1, mockGraphics._y1);
-            Assert.AreEqual(x2, mockGraphics._x2);
-            Assert.AreEqual(y2, mockGraphics._y2);
+            Assert.AreEqual(x1, privateObject.GetFieldOrProperty("_x1"));
+            Assert.AreEqual(y1, privateObject.GetFieldOrProperty("_y1"));
+            Assert.AreEqual(x2, privateObject.GetFieldOrProperty("_x2"));
+            Assert.AreEqual(y2, privateObject.GetFieldOrProperty("_y2"));
             //左上
-            Assert.AreEqual(x1 - r, mockGraphics._upLeftX);
-            Assert.AreEqual(y1 - r, mockGraphics._upLeftY);
+            Assert.AreEqual(x1 - r, privateObject.GetFieldOrProperty("_upLeftX"));
+            Assert.AreEqual(y1 - r, privateObject.GetFieldOrProperty("_upLeftY"));
             //上中
-            Assert.AreEqual(x1 + (width / 2) - r, mockGraphics._upX);
-            Assert.AreEqual(y1 - r, mockGraphics._upY);
+            Assert.AreEqual(x1 + (width / 2) - r, privateObject.GetFieldOrProperty("_upX"));
+            Assert.AreEqual(y1 - r, privateObject.GetFieldOrProperty("_upY"));
             //右上
-            Assert.AreEqual(x1 + width - r, mockGraphics._upRightX);
-            Assert.AreEqual(y1 - r, mockGraphics._upRightY);
+            Assert.AreEqual(x1 + width - r, privateObject.GetFieldOrProperty("_upRightX"));
+            Assert.AreEqual(y1 - r, privateObject.GetFieldOrProperty("_upRightY"));
             //右中
-            Assert.AreEqual(x1 + width - r, mockGraphics._rightX);
-            Assert.AreEqual(y1 + (height / 2) - r, mockGraphics._rightY);
+            Assert.AreEqual(x1 + width - r, privateObject.GetFieldOrProperty("_rightX"));
+            Assert.AreEqual(y1 + (height / 2) - r, privateObject.GetFieldOrProperty("_rightY"));
             //右下
-            Assert.AreEqual(x1 + width - r, mockGraphics._downRightX);
-            Assert.AreEqual(y1 + height - r, mockGraphics._downRightY);
+            Assert.AreEqual(x1 + width - r, privateObject.GetFieldOrProperty("_downRightX"));
+            Assert.AreEqual(y1 + height - r, privateObject.GetFieldOrProperty("_downRightY"));
             //中下
-            Assert.AreEqual(x1 + (width / 2) - r, mockGraphics._downX);
-            Assert.AreEqual(y1 + height - r, mockGraphics._downY);
+            Assert.AreEqual(x1 + (width / 2) - r, privateObject.GetFieldOrProperty("_downX"));
+            Assert.AreEqual(y1 + height - r, privateObject.GetFieldOrProperty("_downY"));
             // 左下
-            Assert.AreEqual(x1 - r, mockGraphics._downLeftX);
-            Assert.AreEqual(y1 + height - r, mockGraphics._downLeftY);
+            Assert.AreEqual(x1 - r, privateObject.GetFieldOrProperty("_downLeftX"));
+            Assert.AreEqual(y1 + height - r, privateObject.GetFieldOrProperty("_downLeftY"));
             //左中
-            Assert.AreEqual(x1 - r, mockGraphics._leftX);
-            Assert.AreEqual(y1 + (height / 2) - r, mockGraphics._leftY);
+            Assert.AreEqual(x1 - r, privateObject.GetFieldOrProperty("_leftX"));
+            Assert.AreEqual(y1 + (height / 2) - r, privateObject.GetFieldOrProperty("_leftY"));
         }
 
         // 判斷點是否在範圍內
@@ -174,13 +173,49 @@ namespace Homework2.Tests
             Assert.AreEqual(410, line.Y2);
         }
 
+        // 放大縮小
+        [TestMethod()]
+        public void ZoomInOutTest()
+        {
+            Point incrementX1Y1 = new Point(1, 0);
+            Point incrementWidthHeight = new Point(0, 1);
+            Point expectedTempX1Y1 = new Point(201, 200);
+            Point expectedTempWidthHeight = new Point(200, 201);
+            line = new Line(new MockRandomGenerator());
+            line.Selected = true;
+            line.X2 = 400;
+            line.Y2 = 400;
+            line.GetX1Y1Point();
+            line.GetWidthHeightPoint();
+            privateObject = new PrivateObject(line);
+
+            line.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("TempX1Y1"));
+            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("TempWidthHeight"));
+
+            line.Y1 = 500;
+            line.GetX1Y1Point();
+            line.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+
+            line.Selected = false;
+        }
+
         // xy point 測試
         [TestMethod()]
         public void GetXYPointTest()
         {
             line = new Line(new MockRandomGenerator());
-
+            line.X2 = 400;
+            line.Y2 = 400;
+            privateObject = new PrivateObject(line);
             Assert.AreEqual(new Point(200, 200), line.GetX1Y1Point());
+
+            line.GetX1Y1Point();
+            Assert.IsFalse((bool)privateObject.GetFieldOrProperty("_isDownLeftUpRight"));
+
+            line.Y1 = 500;
+            line.GetX1Y1Point();
+            Assert.IsTrue((bool)privateObject.GetFieldOrProperty("_isDownLeftUpRight"));
         }
 
         // 寬高point 測試

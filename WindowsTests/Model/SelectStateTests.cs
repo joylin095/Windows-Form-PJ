@@ -48,6 +48,10 @@ namespace Homework2.Tests
             model.BindingShapeList[0].UpdateLocation(firstPoint, secondPoint);
 
             model.BindingShapeList[0].Selected = true;
+
+            selectState.PanelMouseDown(model, new Point(50, 50));
+
+
             selectState.PanelMouseDown(model, startPoint);
             Model privateModel = (Model)privateObject.GetFieldOrProperty("_model");
             Assert.IsTrue((bool)privateObject.GetFieldOrProperty("_mousePressed"));

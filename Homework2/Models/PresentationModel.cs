@@ -52,9 +52,12 @@ namespace Homework2
                     return;
                 }
             }
-            _model.State = new NormalState(false);
-            _model.SelectShapeName = null;
-            _model.IsDrawing = false;
+            if (!(_model.State is SelectState))
+            {
+                _model.State = new NormalState(false);
+                _model.SelectShapeName = null;
+                _model.IsDrawing = false;
+            } 
         }
 
         // 按ToolStripButton時更改Button狀態
@@ -85,7 +88,7 @@ namespace Homework2
             _model.PanelMouseUp(point);
             foreach (var toolBarChecked in _toolBarCheckedList)
             {
-                toolBarChecked.Value = false;
+                toolBarChecked.SetCheckedValue(MOUSE);
             }
         }
     }

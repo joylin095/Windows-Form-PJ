@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Homework2
+namespace Homework2.Directions
 {
     public interface IDirection
     {
@@ -16,7 +16,7 @@ namespace Homework2
         }
 
         // 是否按到外框的圓
-        bool IsClickBorderCircle(Point xy, Point widthHeight, Point clickPoint);
+        bool IsClickBorderCircle(Point x1y1, Point widthHeight, Point clickPoint);
 
         // 設定增量
         void SetIncrementPoint(Point point);

@@ -8,30 +8,31 @@ namespace Homework2
 {
     public class MockGraphics : IGraphics
     {
-        public int _x1;
-        public int _y1;
-        public int _x2;
-        public int _y2;
-        public int _width;
-        public int _height;
-        public int _upLeftX;
-        public int _upLeftY;
-        public int _upX;
-        public int _upY;
-        public int _upRightX;
-        public int _upRightY;
-        public int _leftX;
-        public int _leftY;
-        public int _rightX;
-        public int _rightY;
-        public int _downLeftX;
-        public int _downLeftY;
-        public int _downX;
-        public int _downY;
-        public int _downRightX;
-        public int _downRightY;
-        public int _diameter;
-
+        int _x1;
+        int _y1;
+        int _x2;
+        int _y2;
+        int _width;
+        int _height;
+        int _upLeftX;
+        int _upLeftY;
+        int _upX;
+        int _upY;
+        int _upRightX;
+        int _upRightY;
+        int _leftX;
+        int _leftY;
+        int _rightX;
+        int _rightY;
+        int _downLeftX;
+        int _downLeftY;
+        int _downX;
+        int _downY;
+        int _downRightX;
+        int _downRightY;
+        const int RADIUS = 5;
+        const int TWO = 2;
+        const int MULTIPLE = 2;
         // 畫線
         public void DrawLine(int x1, int y1, int x2, int y2)
         {
@@ -62,10 +63,6 @@ namespace Homework2
         // 畫外框
         public void DrawSelectionBorder(int x1, int y1, int width, int height)
         {
-            const int RADIUS = 5;
-            const int TWO = 2;
-            const int MULTIPLE = 2;
-            this._diameter = MULTIPLE * RADIUS;
             this._x1 = x1;
             this._y1 = y1;
             this._width = width;
@@ -79,6 +76,12 @@ namespace Homework2
             //右上
             this._upRightX = x1 + width - RADIUS;
             this._upRightY = y1 - RADIUS;
+            DrawSelectionBorderOther(x1, y1, width, height);
+        }
+
+        // 接續DrawSelectionBorder
+        public void DrawSelectionBorderOther(int x1, int y1, int width, int height)
+        {
             //右中
             this._rightX = x1 + width - RADIUS;
             this._rightY = y1 + (height / TWO) - RADIUS;

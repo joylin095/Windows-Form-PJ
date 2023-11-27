@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Drawing;
+using Homework2.Models;
+using System.Windows.Forms;
 
 namespace Homework2.Tests
 {
@@ -169,6 +171,76 @@ namespace Homework2.Tests
             shapes.ShapeList[0].Selected = true;
             newPoint = new Point(101, 100);
             Assert.IsFalse(shapes.IsNotSelectedButInPoint(newPoint));
+        }
+
+        //移動選取的shape
+        [TestMethod()]
+        public void ShapeMoveTest()
+        {
+            shapes = new Shapes();
+            shapes.ShapeMove(new Point(50, 50));
+            shapes.Direction = 1;
+            shapes.CreateShape("線");
+            shapes.AddShape();
+            shapes.ShapeMove(new Point(50, 50));
+        }
+
+        // 是否按到外框的圓
+        [TestMethod()]
+        public void IsClickBorderCircleTest()
+        {
+            shapes = new Shapes();
+            _shapesPrivate = new PrivateObject(shapes);
+            Shape shape = new Rectangle(new MockRandomGenerator());
+            shape.Selected = true;
+            _shapesPrivate.SetField("_shape", shape);
+            shapes.AddShape();
+            Assert.IsTrue(shapes.IsClickBorderCircle(new Point(200, 200)));
+            Assert.IsFalse(shapes.IsClickBorderCircle(new Point(100, 100)));
+        }
+
+        // 是否移動到外框的圓
+        [TestMethod()]
+        public void GetCursorAtBorderCircleTest()
+        {
+            Point point = new Point(200, 200);
+            shapes = new Shapes();
+            _shapesPrivate = new PrivateObject(shapes);
+            Shape shape = new Rectangle(new MockRandomGenerator());
+            shape.Selected = true;
+            _shapesPrivate.SetField("_shape", shape);
+            shapes.AddShape();
+
+            point = new Point(200, 200);
+            Assert.AreEqual(Cursors.SizeNWSE, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(300, 200);
+            Assert.AreEqual(Cursors.SizeNS, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(400, 200);
+            Assert.AreEqual(Cursors.SizeNESW, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(400, 300);
+            Assert.AreEqual(Cursors.SizeWE, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(400, 400);
+            Assert.AreEqual(Cursors.SizeNWSE, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(300, 400);
+            Assert.AreEqual(Cursors.SizeNS, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(200, 400);
+            Assert.AreEqual(Cursors.SizeNESW, shapes.GetCursorAtBorderCircle(point));
+            
+            point = new Point(200, 300);
+            Assert.AreEqual(Cursors.SizeWE, shapes.GetCursorAtBorderCircle(point));
+
+            point = new Point(100, 100);
+            Assert.AreEqual(Cursors.Default, shapes.GetCursorAtBorderCircle(point));
+
+            shape.Selected = false;
+            point = new Point(200, 200);
+            Assert.AreEqual(Cursors.Default, shapes.GetCursorAtBorderCircle(point));
         }
     }
 }
