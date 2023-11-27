@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using Homework2.Models;
 
 namespace Homework2.Tests
 {

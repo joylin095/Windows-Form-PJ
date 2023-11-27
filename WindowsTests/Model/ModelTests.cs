@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Homework2.States;
 
 namespace Homework2.Tests
 {
@@ -140,6 +141,21 @@ namespace Homework2.Tests
             Point point = new Point(50, 100);
             model.State = new DrawingState(false);
             model.PanelMouseMove(point);
+
+            model.PanelChanged += HandlePanelChanged;
+            model.PanelMouseMove(point);
+        }
+
+        // HandlePanelChanged
+        private void HandlePanelChanged(object sender)
+        {
+            
+        }
+
+        //HandleCursorToDefault
+        private void HandleCursorToDefault(object sender)
+        {
+            
         }
 
         // 在畫布滑鼠放開
@@ -149,6 +165,8 @@ namespace Homework2.Tests
             model = new Model();
             Point point = new Point(50, 100);
             model.State = new DrawingState(false);
+
+            model.CursorToDefault += HandleCursorToDefault;
             model.PanelMouseUp(point);
         }
 
@@ -176,8 +194,17 @@ namespace Homework2.Tests
             Assert.AreEqual(1, model.BindingShapeList.Count);
 
             model.BindingShapeList[0].Selected = true;
+            model.PanelChanged += HandlePanelChanged;
             model.FormKeyDown(keys);
             Assert.AreEqual(0, model.BindingShapeList.Count);
+
+            model.SelectShapeName = "線";
+            model.CreateShapes();
+            model.AddShape();
+            keys = System.Windows.Forms.Keys.Delete;
+            model.BindingShapeList[0].Selected = true;
+            model.PanelChanged -= HandlePanelChanged;
+            model.FormKeyDown(keys);
         }
 
         // 在畫布移動滑鼠時的cursor

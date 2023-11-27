@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Homework2.States;
 
 namespace Homework2
 {
@@ -13,7 +14,6 @@ namespace Homework2
     {
         Shapes _shapes;
         Pen _pen;
-
         public delegate void PanelChangedEventHandler(object sender);
         public event PanelChangedEventHandler PanelChanged;
 

@@ -38,7 +38,7 @@ namespace Homework2
             const string LINE = "線";
             const string CHECKED = "Checked";
             const string VALUE = "Value";
-            const string FILE_PATH = "c:\\Users\\USER\\Desktop\\Homework2\\images\\1.png";
+            const string FILE_PATH = "../../../images/1.png";
             ToolStripBindButton lineButton = new ToolStripBindButton();
             lineButton.Text = LINE;
             lineButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -54,7 +54,7 @@ namespace Homework2
             const string RECTANGLE = "矩形";
             const string CHECKED = "Checked";
             const string VALUE = "Value";
-            const string FILE_PATH = "c:\\Users\\USER\\Desktop\\Homework2\\images\\2.png";
+            const string FILE_PATH = "../../../images/2.png";
             ToolStripBindButton rectangleButton = new ToolStripBindButton();
             rectangleButton.Text = RECTANGLE;
             rectangleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -71,7 +71,7 @@ namespace Homework2
             const string CHECKED = "Checked";
             const string VALUE = "Value";
             const int TWO = 2;
-            const string FILE_PATH = "c:\\Users\\USER\\Desktop\\Homework2\\images\\3.png";
+            const string FILE_PATH = "../../../images/3.png";
             ToolStripBindButton circleButton = new ToolStripBindButton();
             circleButton.Text = CIRCLE;
             circleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -88,7 +88,7 @@ namespace Homework2
             const string CHECKED = "Checked";
             const string VALUE = "Value";
             const int THREE = 3;
-            const string FILE_PATH = "c:\\Users\\USER\\Desktop\\Homework2\\images\\4.jpg";
+            const string FILE_PATH = "../../../images/4.jpg";
             ToolStripBindButton mouseButton = new ToolStripBindButton();
             mouseButton.Text = MOUSE;
             mouseButton.DisplayStyle = ToolStripItemDisplayStyle.Image;

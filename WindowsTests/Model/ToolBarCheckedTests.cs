@@ -51,11 +51,5 @@ namespace Homework2.Tests
             toolBarChecked = new ToolBarChecked("選取", true);
             Assert.IsFalse(toolBarChecked.IsDrawingState());
         }
-
-        [TestMethod()]
-        public void NotifyPropertyChangedTest()
-        {
-            Assert.Fail();
-        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Homework2
+namespace Homework2.States
 {
     public abstract class IState
     {

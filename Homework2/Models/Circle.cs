@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Homework2.Models
+namespace Homework2
 {
     public class Circle : Shape
     {

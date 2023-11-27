@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,19 +73,19 @@
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\DrawingState.cs" />
+    <Compile Include="States\DrawingState.cs" />
     <Compile Include="Directions\IDirection.cs" />
     <Compile Include="Models\IGraphics.cs" />
     <Compile Include="Models\IRandom.cs" />
-    <Compile Include="Models\IState.cs" />
+    <Compile Include="States\IState.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\MockGraphics.cs" />
     <Compile Include="Models\MockRandomGenerator.cs" />
-    <Compile Include="Models\NormalState.cs" />
+    <Compile Include="States\NormalState.cs" />
     <Compile Include="Models\PresentationModel.cs" />
     <Compile Include="Models\RandomGenerator.cs" />
     <Compile Include="Models\Rectangle.cs" />
-    <Compile Include="Models\SelectState.cs" />
+    <Compile Include="States\SelectState.cs" />
     <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\Factory.cs" />
     <Compile Include="Models\Model.cs" />
@@ -99,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Shape.datasource" />
     <None Include="Properties\Settings.settings">
@@ -114,6 +130,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
