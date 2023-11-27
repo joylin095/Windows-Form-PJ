@@ -17,57 +17,17 @@ namespace Homework2
             this._mousePressed = mousePressed;
         }
 
-        // 初始shape的selected
-        public void InitialShapeSelected(Model model)
-        {
-            _model = model;
-            foreach (Shape shape in _model.BindingShapeList)
-            {
-                shape.Selected = false;
-            }
-        }
-
-        // 判斷shape有被選到 而且 鼠標也指到
-        public bool IsSelectedAndInPoint(Model model, Point point)
-        {
-            _model = model;
-            foreach (Shape shape in model.BindingShapeList)
-            {
-                if (shape.Selected && shape.IsRangeInPoint(point))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // 判斷shape沒被選到 但是 鼠標有指到
-        public bool IsNotSelectedButInPoint(Model model, Point point)
-        {
-            _model = model;
-            foreach (Shape shape in model.BindingShapeList)
-            {
-                if (!shape.Selected && shape.IsRangeInPoint(point))
-                {
-                    InitialShapeSelected(model);
-                    shape.Selected = true;
-                    return true;
-                }
-            }
-            return false;
-        }
-
         // 在畫布滑鼠按下
         public override void PanelMouseDown(Model model, Point point)
         {
             _model = model;
             _mousePressed = true;
             _model.FirstPoint = point;
-            if (IsSelectedAndInPoint(_model, point))
+            if (_model.IsClickBorderCircle(point))
             {
                 return;
             }
-            if (IsNotSelectedButInPoint(_model, point))
+            else if (_model.IsSelectedAndInPoint(point) || _model.IsNotSelectedButInPoint(point))
             {
                 return;
             }
@@ -80,14 +40,7 @@ namespace Homework2
             _model = model;
             if (_mousePressed)
             {
-                foreach (Shape shape in _model.BindingShapeList)
-                {
-                    if (shape.Selected)
-                    {
-                        shape.Move(new Point(point.X - _model.FirstPoint.X, point.Y - _model.FirstPoint.Y));
-                    }
-                }
-                _model.FirstPoint = point;
+                _model.ShapeMove(point);
             }
         }
 

@@ -173,6 +173,7 @@ namespace Homework2
         private void Panel1MouseMove(object sender, MouseEventArgs e)
         {
             _presentationModel.Panel1MouseMove(e.Location);
+            this.Cursor = _model.Cursor;
         }
 
         // 當在畫佈放開滑鼠時

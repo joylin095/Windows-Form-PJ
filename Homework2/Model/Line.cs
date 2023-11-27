@@ -15,7 +15,9 @@ namespace Homework2
         const int SIZE_Y1 = 500;
         const int SIZE_X2 = 600;
         const int SIZE_Y2 = 500;
-
+        Point TempX1Y1;
+        Point TempWidthHeight;
+        bool _isDownLeftUpRight;
         public int X1
         {
             get;
@@ -101,11 +103,56 @@ namespace Homework2
         // 移動圖形
         public override void Move(Point point)
         {
-            X1 += point.X;
-            X2 += point.X;
-            Y1 += point.Y;
-            Y2 += point.Y;
-            Location = GetLocation();
+            if (Selected)
+            {
+                X1 += point.X;
+                X2 += point.X;
+                Y1 += point.Y;
+                Y2 += point.Y;
+                Location = GetLocation();
+            }  
+        }
+
+        // 放大縮小
+        public override void ZoomInOut(Point incrementX1Y1, Point incrementWidthHeight)
+        {
+            if (Selected)
+            {
+                TempX1Y1.X += incrementX1Y1.X;
+                TempX1Y1.Y += incrementX1Y1.Y;
+                TempWidthHeight.X += incrementWidthHeight.X;
+                TempWidthHeight.Y += incrementWidthHeight.Y;
+                if (_isDownLeftUpRight)
+                {
+                    UpdateLocation(new Point(TempX1Y1.X, TempX1Y1.Y + TempWidthHeight.Y), new Point(TempX1Y1.X + TempWidthHeight.X, TempX1Y1.Y));
+                }
+                else
+                {
+                    UpdateLocation(TempX1Y1, new Point(TempX1Y1.X + TempWidthHeight.X, TempX1Y1.Y + TempWidthHeight.Y));
+                }
+            }
+        }
+
+        //xy point
+        public override Point GetX1Y1Point()
+        {
+            if (Y1 > Y2)
+            {
+                _isDownLeftUpRight = true;
+            }
+            else
+            {
+                _isDownLeftUpRight = false;
+            }
+            TempX1Y1 = new Point(Math.Min(X1, X2), Math.Min(Y1, Y2));
+            return new Point(Math.Min(X1, X2), Math.Min(Y1, Y2));
+        }
+
+        // 寬高point
+        public override Point GetWidthHeightPoint()
+        {
+            TempWidthHeight = new Point(Math.Max(X1, X2) - Math.Min(X1, X2), Math.Max(Y1, Y2) - Math.Min(Y1, Y2));
+            return new Point(Math.Max(X1,X2) - Math.Min(X1,X2), Math.Max(Y1, Y2) - Math.Min(Y1, Y2));
         }
 
         // 覆寫object.Equals()

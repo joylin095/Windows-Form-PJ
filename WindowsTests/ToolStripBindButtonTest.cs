@@ -12,6 +12,7 @@ namespace Homework2.Tests
     [TestClass]
     public class ToolStripBindButtonTest
     {
+        // 測試
         [TestMethod()]
         public void BindButtonTest()
         {

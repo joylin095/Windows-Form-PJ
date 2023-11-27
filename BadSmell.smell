@@ -218,12 +218,12 @@
             </Smell>
             <Smell>
               <Id>3</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Model.cs on line 107.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Model.cs on line 126.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Model.cs</File>
-              <Line>107</Line>
+              <Line>126</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -233,22 +233,6 @@
             </Smell>
             <Smell>
               <Id>4</Id>
-              <SmellType>ICS(類別宣告-1)</SmellType>
-              <HashCode>ClassDeclaration1.PresentationModel._model</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>PresentationModel.cs</File>
-              <Line>12</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>ICS(類別宣告-1) 除非為類別常數(static class constants)，成員變數請勿宣告為 public</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>5</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\Homework2\Model\Rectangle.cs on line 52.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -263,7 +247,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>6</Id>
+              <Id>5</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\CircleTests.cs on line 34.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -278,7 +262,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>7</Id>
+              <Id>6</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\LineTests.cs on line 36.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -293,7 +277,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>8</Id>
+              <Id>7</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\RectangleTests.cs on line 35.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -308,7 +292,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>9</Id>
+              <Id>8</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
               <HashCode>50 目前物件 Homework2.PresentationModel，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.ToolBarChecked，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.ToolBarChecked.Key 以及 Homework2.ToolBarChecked.IsDrawingState()</HashCode>
               <Severity>Warning</Severity>
@@ -324,113 +308,65 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>10</Id>
+              <Id>9</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>119 目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <HashCode>134 目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Line.cs</File>
-              <Line>119</Line>
-              <StartLine>118</StartLine>
+              <Line>134</Line>
+              <StartLine>133</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>119</EndLine>
+              <EndLine>134</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 Homework2.Line，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
+              <Id>10</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>25 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point)</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
+              <Line>25</Line>
+              <StartLine>25</StartLine>
+              <StartCol>16</StartCol>
+              <EndLine>25</EndLine>
+              <EndCol>91</EndCol>
+              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.IsSelectedAndInPoint(System.Drawing.Point) 以及 Homework2.Model.IsNotSelectedButInPoint(System.Drawing.Point)</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
               <Id>11</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>35 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Selected 以及 Homework2.Shape.IsRangeInPoint(System.Drawing.Point)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
-              <Line>35</Line>
-              <StartLine>35</StartLine>
-              <StartCol>20</StartCol>
-              <EndLine>35</EndLine>
-              <EndCol>65</EndCol>
-              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Selected 以及 Homework2.Shape.IsRangeInPoint(System.Drawing.Point)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>12</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>49 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Selected 以及 Homework2.Shape.IsRangeInPoint(System.Drawing.Point)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
-              <Line>49</Line>
-              <StartLine>49</StartLine>
-              <StartCol>20</StartCol>
-              <EndLine>49</EndLine>
-              <EndCol>66</EndCol>
-              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Selected 以及 Homework2.Shape.IsRangeInPoint(System.Drawing.Point)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>13</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>87 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.FirstPoint 以及 Homework2.Model.FirstPoint</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
-              <Line>87</Line>
-              <StartLine>86</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>87</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Model，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Model.FirstPoint 以及 Homework2.Model.FirstPoint</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>14</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>87 目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Move(System.Drawing.Point) 以及 Homework2.Shape.Selected</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\SelectState.cs</File>
-              <Line>87</Line>
-              <StartLine>86</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>87</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 Homework2.SelectState，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Move(System.Drawing.Point) 以及 Homework2.Shape.Selected</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>15</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>106 目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <HashCode>121 目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Rectangle.cs</File>
-              <Line>106</Line>
-              <StartLine>105</StartLine>
+              <Line>121</Line>
+              <StartLine>120</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>106</EndLine>
+              <EndLine>121</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 Homework2.Rectangle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>16</Id>
+              <Id>12</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>105 目前物件 Homework2.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
+              <HashCode>120 目前物件 Homework2.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>C:\Users\USER\Desktop\Homework2\Homework2\Model\Circle.cs</File>
-              <Line>105</Line>
-              <StartLine>104</StartLine>
+              <Line>120</Line>
+              <StartLine>119</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>105</EndLine>
+              <EndLine>120</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 Homework2.Circle，使用物件的方法或屬性次數：0次，Envy到對象物件 Homework2.Shape，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：Homework2.Shape.Name 以及 Homework2.Shape.Name</Comment>
               <Auto>false</Auto>
@@ -642,10 +578,15 @@
                 <ProjectName>WindowsTests</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ToolStripBindButtonTest.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1350</ProductionLoc>
-          <TestLoc>1061</TestLoc>
+          <ProductionLoc>1384</ProductionLoc>
+          <TestLoc>1101</TestLoc>
         </CodeReview>
       </Data>
     </div>

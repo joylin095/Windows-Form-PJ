@@ -166,8 +166,55 @@ namespace Homework2.Tests
         {
             rectangle = new Rectangle(new MockRandomGenerator());
             rectangle.Move(new Point(50, 10));
+
+            rectangle.Selected = true;
+            rectangle.Move(new Point(50, 10));
             Assert.AreEqual(250, rectangle.X1);
             Assert.AreEqual(210, rectangle.Y1);
+        }
+
+        [TestMethod()]
+        public void ZoomInOutTest()
+        {
+            Point incrementX1Y1 = new Point(0, 0);
+            Point incrementWidthHeight = new Point(-5, 0);
+            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle.Selected = true;
+            rectangle.Width = 1;
+            rectangle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+
+            Assert.AreEqual(196, rectangle.X1);
+            Assert.AreEqual(200, rectangle.Y1);
+            Assert.AreEqual(4, rectangle.Width);
+            Assert.AreEqual(200, rectangle.Height);
+            Assert.AreEqual(-4, rectangle.testwidth);
+
+            rectangle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
+
+            Assert.AreEqual(-9, rectangle.testwidth);
+            Assert.AreEqual(195, rectangle.X1);
+            Assert.AreEqual(200, rectangle.Y1);
+            Assert.AreEqual(4, rectangle.Width);
+            Assert.AreEqual(200, rectangle.Height);
+            
+        }
+
+        // xy point 測試
+        [TestMethod()]
+        public void GetXYPointTest()
+        {
+            rectangle = new Rectangle(new MockRandomGenerator());
+
+            Assert.AreEqual(new Point(200, 200), rectangle.GetX1Y1Point());
+        }
+
+        // 寬高point 測試
+        [TestMethod()]
+        public void GetWidthHeightPointTest()
+        {
+            rectangle = new Rectangle(new MockRandomGenerator());
+
+            Assert.AreEqual(new Point(200, 200), rectangle.GetWidthHeightPoint());
         }
 
         // 測試object.Equals()

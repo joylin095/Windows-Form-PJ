@@ -93,7 +93,7 @@ namespace Homework2.Tests
             
             privateObject = new PrivateObject(presentationModel);
             Model privatModel = (Model)privateObject.GetFieldOrProperty("_model");
-            bool privateMockMousePressed = privatModel.State.TestmousePressed;
+            bool privateMockMousePressed = privatModel.State.TestMousePressed;
             Assert.IsTrue(privateMockMousePressed);
         }
 
@@ -129,7 +129,7 @@ namespace Homework2.Tests
 
             privateObject = new PrivateObject(presentationModel);
             Model privateModel = (Model)privateObject.GetFieldOrProperty("_model");
-            bool privateMockMousePressed = privateModel.State.TestmousePressed;
+            bool privateMockMousePressed = privateModel.State.TestMousePressed;
             Assert.IsFalse(privateMockMousePressed);
             Assert.IsFalse(presentationModel.ToolBarCheckedList[0].Value);
         }

@@ -165,10 +165,33 @@ namespace Homework2.Tests
             line.X2 = 400;
             line.Y2 = 400;
             line.Move(new Point(50, 10));
+
+            line.Selected = true;
+            line.Move(new Point(50, 10));
             Assert.AreEqual(250, line.X1);
             Assert.AreEqual(210, line.Y1);
             Assert.AreEqual(450, line.X2);
             Assert.AreEqual(410, line.Y2);
+        }
+
+        // xy point 測試
+        [TestMethod()]
+        public void GetXYPointTest()
+        {
+            line = new Line(new MockRandomGenerator());
+
+            Assert.AreEqual(new Point(200, 200), line.GetX1Y1Point());
+        }
+
+        // 寬高point 測試
+        [TestMethod()]
+        public void GetWidthHeightPointTest()
+        {
+            line = new Line(new MockRandomGenerator());
+            line.X2 = 400;
+            line.Y2 = 400;
+
+            Assert.AreEqual(new Point(200, 200), line.GetWidthHeightPoint());
         }
 
         // 測試object.Equals()

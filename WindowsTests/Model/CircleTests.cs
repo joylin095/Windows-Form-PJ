@@ -166,8 +166,29 @@ namespace Homework2.Tests
         {
             circle = new Circle(new MockRandomGenerator());
             circle.Move(new Point(50, 10));
+
+            circle.Selected = true;
+            circle.Move(new Point(50, 10));
             Assert.AreEqual(250, circle.X1);
             Assert.AreEqual(210, circle.Y1);
+        }
+
+        // xy point 測試
+        [TestMethod()]
+        public void GetXYPointTest()
+        {
+            circle = new Circle(new MockRandomGenerator());
+
+            Assert.AreEqual(new Point(200, 200), circle.GetX1Y1Point());
+        }
+
+        // 寬高point 測試
+        [TestMethod()]
+        public void GetWidthHeightPointTest()
+        {
+            circle = new Circle(new MockRandomGenerator());
+
+            Assert.AreEqual(new Point(200, 200), circle.GetWidthHeightPoint());
         }
 
         // 測試object.Equals()

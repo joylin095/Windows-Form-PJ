@@ -9,7 +9,7 @@ namespace Homework2
 {
     public abstract class IState
     {
-        public bool TestmousePressed
+        public bool TestMousePressed
         {
             get;
             set;

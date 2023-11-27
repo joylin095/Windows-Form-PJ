@@ -38,7 +38,7 @@ namespace Homework2
         // 畫外框
         public void DrawSelectionBorder(int x1, int y1, int width, int height)
         {
-            const int RADIUS = 5;
+            const int RADIUS = 7;
             const int TWO = 2;
             const int MULTIPLE = 2;
             Pen pen = new Pen(Color.Gray);

@@ -28,6 +28,27 @@ namespace Homework2
             set;
         }
 
+        // 判斷有被選到 而且 鼠標也指到
+        public bool IsSelectedAndInPoint(Point point)
+        {
+            if (Selected && IsRangeInPoint(point))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // 判斷沒被選到 但是 鼠標有指到
+        public bool IsNotSelectedButInPoint(Point point)
+        {
+            if (!Selected && IsRangeInPoint(point))
+            {
+                Selected = true;
+                return true;
+            }
+            return false;
+        }
+
         // 形狀位置
         public abstract string GetLocation();
 
@@ -45,5 +66,14 @@ namespace Homework2
 
         // 移動圖形
         public abstract void Move(Point point);
+
+        // 放大縮小
+        public abstract void ZoomInOut(Point incrementX1Y1, Point incrementWidthHeight);
+
+        //xy point
+        public abstract Point GetX1Y1Point();
+
+        // 寬高point
+        public abstract Point GetWidthHeightPoint();
     }
 }

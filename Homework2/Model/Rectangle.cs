@@ -14,6 +14,8 @@ namespace Homework2
         const int SIZE_Y = 350;
         const int SIZE_WIDTH = 200;
         const int SIZE_HEIGHT = 200;
+        Point TempX1Y1;
+        Point TempWidthHeight;
 
         public int X1
         {
@@ -90,9 +92,39 @@ namespace Homework2
         // 移動圖形
         public override void Move(Point point)
         {
-            X1 += point.X;
-            Y1 += point.Y;
-            Location = GetLocation();
+            if (Selected)
+            {
+                X1 += point.X;
+                Y1 += point.Y;
+                Location = GetLocation();
+            }
+        }
+
+        // 放大縮小
+        public override void ZoomInOut(Point incrementX1Y1, Point incrementWidthHeight)
+        {
+            if (Selected)
+            {
+                TempX1Y1.X += incrementX1Y1.X;
+                TempX1Y1.Y += incrementX1Y1.Y;
+                TempWidthHeight.X += incrementWidthHeight.X;
+                TempWidthHeight.Y += incrementWidthHeight.Y;
+                UpdateLocation(TempX1Y1, new Point(TempX1Y1.X + TempWidthHeight.X, TempX1Y1.Y + TempWidthHeight.Y));
+            }
+        }
+
+        //xy point
+        public override Point GetX1Y1Point()
+        {
+            TempX1Y1 = new Point(X1, Y1);
+            return new Point(X1, Y1);
+        }
+
+        // 寬高point
+        public override Point GetWidthHeightPoint()
+        {
+            TempWidthHeight = new Point(Width, Height);
+            return new Point(Width, Height);
         }
 
         // 覆寫object.Equals()

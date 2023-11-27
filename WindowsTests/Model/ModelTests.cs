@@ -14,7 +14,7 @@ namespace Homework2.Tests
         // 在畫布滑鼠按下 
         public override void PanelMouseDown(Model model, Point point)
         {
-            TestmousePressed = true;
+            TestMousePressed = true;
             TestPoint = point;
         }
 
@@ -27,7 +27,7 @@ namespace Homework2.Tests
         // 在畫布滑鼠放開
         public override void PanelMouseUp(Model model, Point point)
         {
-            TestmousePressed = false;
+            TestMousePressed = false;
             TestPoint = point;
         }
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Homework2
 {
@@ -56,6 +57,12 @@ namespace Homework2
             get;
             set;
         }
+
+        public Cursor Cursor
+        {
+            get;
+            set;
+        }
         
         // 創建shape
         public void CreateShapes()
@@ -94,6 +101,31 @@ namespace Homework2
             _shapes.UpdateLocation(FirstPoint, newPoint);
         }
 
+        // 判斷shape有被選到 而且 鼠標也指到
+        public bool IsSelectedAndInPoint(Point point)
+        {
+            return _shapes.IsSelectedAndInPoint(point);
+        }
+
+        // 判斷shape沒被選到 但是 鼠標有指到
+        public bool IsNotSelectedButInPoint(Point point)
+        {
+            return _shapes.IsNotSelectedButInPoint(point);
+        }
+
+        // 移動選取的shape
+        public void ShapeMove(Point point)
+        {
+            _shapes.ShapeMove(new Point(point.X - FirstPoint.X, point.Y - FirstPoint.Y));
+            FirstPoint = point;
+        }
+
+        // 是否按到外框的圓
+        public bool IsClickBorderCircle(Point point)
+        {
+            return _shapes.IsClickBorderCircle(point);
+        }
+
         // 在畫布滑鼠按下
         public void PanelMouseDown(Point point)
         {
@@ -104,6 +136,7 @@ namespace Homework2
         public void PanelMouseMove(Point point)
         {
             State.PanelMouseMove(this, point);
+            CursorChanged(point);
             PanelChanged?.Invoke(this);
         }
 
@@ -111,6 +144,7 @@ namespace Homework2
         public void PanelMouseUp(Point point)
         {
             State.PanelMouseUp(this, point);
+            _shapes.Direction = -1;
             CursorToDefault?.Invoke(this);
         }
 
@@ -126,6 +160,26 @@ namespace Homework2
                         DeleteData(_shapes.ShapeList.IndexOf(shape));
                         PanelChanged?.Invoke(this);
                     }
+                }
+            }
+        }
+
+        // 在畫布移動滑鼠時的cursor
+        public void CursorChanged(Point point)
+        {
+            if (IsDrawing)
+            {
+                Cursor = Cursors.Cross;
+            }
+            else
+            {
+                if (_shapes.Direction == -1)
+                {
+                    Cursor = _shapes.GetCursorAtBorderCircle(point);
+                }
+                else
+                {
+                    Cursor = Cursors.Cross;
                 }
             }
         }

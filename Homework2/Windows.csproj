@@ -50,7 +50,9 @@
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\DrawingState.cs" />
+    <Compile Include="Model\IDirection.cs" />
     <Compile Include="Model\IGraphics.cs" />
     <Compile Include="Model\IRandom.cs" />
     <Compile Include="Model\IState.cs" />
