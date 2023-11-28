@@ -1,7 +1,8 @@
 # Windows-Form-PJ
 
 ### HW5
-新增Unit test
+新增Unit test  
+可以縮放圖形
 
 ### HW4
 可以選取並移動圖形  

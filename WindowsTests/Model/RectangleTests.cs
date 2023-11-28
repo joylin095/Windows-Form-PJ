@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     [TestClass()]
     public class RectangleTests
@@ -33,7 +33,7 @@ namespace Homework2.Tests
         public void GetLocationTest()
         {
             rectangle = new Rectangle(new MockRandomGenerator());
-            string expectedLocation = $"(200, 200),(400, 400)";
+            string expectedLocation = "(200, 200),(400, 400)";
             string location = rectangle.GetLocation();
 
             Assert.AreEqual(expectedLocation, location);
@@ -76,7 +76,7 @@ namespace Homework2.Tests
             rectangle.UpdateLocation(new Point(200, 200), new Point(150, 150));
             Assert.AreEqual(50, rectangle.Height);
 
-            string expectedLocation = $"(150, 150),(200, 200)";
+            string expectedLocation = "(150, 150),(200, 200)";
             Assert.AreEqual(expectedLocation, rectangle.Location);
         }
         
@@ -199,8 +199,8 @@ namespace Homework2.Tests
 
             rectangle.Selected = true;
             rectangle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
-            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("TempX1Y1"));
-            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("TempWidthHeight"));
+            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("_tempX1Y1"));
+            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("_tempWidthHeight"));
         }
 
         // xy point 測試
@@ -219,24 +219,6 @@ namespace Homework2.Tests
             rectangle = new Rectangle(new MockRandomGenerator());
 
             Assert.AreEqual(new Point(200, 200), rectangle.GetWidthHeightPoint());
-        }
-
-        // 測試object.Equals()
-        [TestMethod()]
-        public void EqualsTest()
-        {
-            rectangle = new Rectangle(new MockRandomGenerator());
-            Assert.IsFalse(rectangle.Equals(null));
-            Assert.IsTrue(rectangle.Equals(new Rectangle(new MockRandomGenerator())));
-        }
-
-        // 測試GetHashCode
-        [TestMethod()]
-        public void GetHashCodeTest()
-        {
-            rectangle = new Rectangle(new MockRandomGenerator());
-            Rectangle rectangle2 = new Rectangle(new MockRandomGenerator());
-            Assert.AreEqual(rectangle.GetHashCode(), rectangle2.GetHashCode());
         }
     }
 }

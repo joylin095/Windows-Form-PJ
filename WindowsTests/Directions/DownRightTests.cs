@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2.Directions;
+using WindowsPractice.Directions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Homework2.Directions.Tests
+namespace WindowsPractice.Directions.Tests
 {
     [TestClass()]
     public class DownRightTests
@@ -17,14 +17,12 @@ namespace Homework2.Directions.Tests
         Point xy;
         Point WidthHeight;
         Point clickPoint;
-        PrivateObject privateObject;
 
         // 初始化
         [TestInitialize()]
-        public void init()
+        public void Init()
         {
             downRight = new DownRight();
-            privateObject = new PrivateObject(downRight);
             xy = new Point(100, 100);
             WidthHeight = new Point(50, 50);
             clickPoint = new Point(150, 150);
@@ -59,28 +57,8 @@ namespace Homework2.Directions.Tests
             Point expectedIncrementWidthHeight = new Point(1, -1);
             downRight.SetIncrementPoint(new Point(1, -1));
 
-            Assert.AreEqual(expectedIncrementXY, privateObject.GetFieldOrProperty("_incrementX1Y1"));
-            Assert.AreEqual(expectedIncrementWidthHeight, privateObject.GetFieldOrProperty("_incrementWidthHeight"));
-        }
-
-        // Get XY增量
-        [TestMethod()]
-        public void GetIncrementX1Y1Test()
-        {
-            Point expectedIncrementXY = new Point(0, 0);
-            downRight.SetIncrementPoint(new Point(1, -1));
-
-            Assert.AreEqual(expectedIncrementXY, downRight.GetIncrementX1Y1());
-        }
-
-        // Get Width Height增量
-        [TestMethod()]
-        public void GetIncrementWidthHeightTest()
-        {
-            Point expectedIncrementWidthHeight = new Point(1, -1);
-            downRight.SetIncrementPoint(new Point(1, -1));
-
-            Assert.AreEqual(expectedIncrementWidthHeight, downRight.GetIncrementWidthHeight());
+            Assert.AreEqual(expectedIncrementXY, downRight.IncrementX1Y1);
+            Assert.AreEqual(expectedIncrementWidthHeight, downRight.IncrementWidthHeight);
         }
     }
 }

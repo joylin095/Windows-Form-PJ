@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     [TestClass()]
     public class ShapesTests
@@ -33,20 +33,20 @@ namespace Homework2.Tests
             _shapesPrivate = new PrivateObject(shapes);
 
             shapes.CreateShape("線");
-            Shape expectedShape = new Line(new RandomGenerator());
-            Assert.AreEqual(expectedShape, _shapesPrivate.GetFieldOrProperty("_shape"));
+            Shape shape = (Shape)_shapesPrivate.GetFieldOrProperty("_shape");
+            Assert.IsTrue(shape is Line);
 
             shapes.CreateShape("矩形");
-            expectedShape = new Rectangle(new RandomGenerator());
-            Assert.AreEqual(expectedShape, _shapesPrivate.GetFieldOrProperty("_shape"));
+           shape = (Shape)_shapesPrivate.GetFieldOrProperty("_shape");
+            Assert.IsTrue(shape is Rectangle);
 
             shapes.CreateShape("圓");
-            expectedShape = new Circle(new RandomGenerator());
-            Assert.AreEqual(expectedShape, _shapesPrivate.GetFieldOrProperty("_shape"));
+            shape = (Shape)_shapesPrivate.GetFieldOrProperty("_shape");
+            Assert.IsTrue(shape is Circle);
 
             shapes.CreateShape("??");
-            expectedShape = null;
-            Assert.AreEqual(expectedShape, _shapesPrivate.GetFieldOrProperty("_shape"));
+            shape = (Shape)_shapesPrivate.GetFieldOrProperty("_shape");
+            Assert.IsNull(shape);
         }
 
         // 測試把shape加入shpaelist

@@ -6,11 +6,8 @@ C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\zh-Hant\Microsoft.VisualS
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsTests.dll
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsTests.pdb
-C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Homework2.exe
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Homework2.pdb
-C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Homework2.exe.config
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.csproj.AssemblyReference.cache
@@ -18,3 +15,6 @@ C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.csproj.CoreC
 C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.csproj.CopyComplete
 C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.dll
 C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.pdb
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.exe
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.pdb
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.exe.config

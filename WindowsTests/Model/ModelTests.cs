@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using Homework2.States;
+using WindowsPractice.States;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     public class MockState : IState
     {
@@ -142,7 +142,7 @@ namespace Homework2.Tests
             model.State = new DrawingState(false);
             model.PanelMouseMove(point);
 
-            model.PanelChanged += HandlePanelChanged;
+            model._panelChanged += HandlePanelChanged;
             model.PanelMouseMove(point);
         }
 
@@ -166,7 +166,7 @@ namespace Homework2.Tests
             Point point = new Point(50, 100);
             model.State = new DrawingState(false);
 
-            model.CursorToDefault += HandleCursorToDefault;
+            model._cursorToDefault += HandleCursorToDefault;
             model.PanelMouseUp(point);
         }
 
@@ -194,7 +194,7 @@ namespace Homework2.Tests
             Assert.AreEqual(1, model.BindingShapeList.Count);
 
             model.BindingShapeList[0].Selected = true;
-            model.PanelChanged += HandlePanelChanged;
+            model._panelChanged += HandlePanelChanged;
             model.FormKeyDown(keys);
             Assert.AreEqual(0, model.BindingShapeList.Count);
 
@@ -203,7 +203,7 @@ namespace Homework2.Tests
             model.AddShape();
             keys = System.Windows.Forms.Keys.Delete;
             model.BindingShapeList[0].Selected = true;
-            model.PanelChanged -= HandlePanelChanged;
+            model._panelChanged -= HandlePanelChanged;
             model.FormKeyDown(keys);
         }
 
@@ -217,7 +217,7 @@ namespace Homework2.Tests
             model.CreateShapes();
             model.AddShape();
             model.IsDrawing = true;
-            model.CursorChanged(point);
+            model.ChangeCursor(point);
             Assert.AreEqual(Cursors.Cross, model.Cursor);
 
             model.IsDrawing = false;
@@ -225,11 +225,11 @@ namespace Homework2.Tests
             Shapes shapes = (Shapes)privateObject.GetFieldOrProperty("_shapes");
             shapes.Direction = -1;
 
-            model.CursorChanged(point);
+            model.ChangeCursor(point);
             Assert.AreEqual(Cursors.Default, model.Cursor);
 
             shapes.Direction = 1;
-            model.CursorChanged(point);
+            model.ChangeCursor(point);
             Assert.AreEqual(Cursors.Cross, model.Cursor);
         }
     }

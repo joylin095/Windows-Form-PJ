@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     [TestClass()]
     public class ToolBarCheckedTests

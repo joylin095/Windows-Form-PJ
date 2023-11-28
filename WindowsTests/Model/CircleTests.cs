@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     [TestClass()]
     public class CircleTests
@@ -31,7 +31,7 @@ namespace Homework2.Tests
         public void GetLocationTest()
         {
             circle = new Circle(new MockRandomGenerator());
-            string expectedLocation = $"(200, 200),(400, 400)";
+            string expectedLocation = "(200, 200),(400, 400)";
             string location = circle.GetLocation();
 
             Assert.AreEqual(expectedLocation, location);
@@ -75,7 +75,7 @@ namespace Homework2.Tests
             circle.UpdateLocation(new Point(200, 200), new Point(150, 150));
             Assert.AreEqual(50, circle.Height);
 
-            string expectedLocation = $"(150, 150),(200, 200)";
+            string expectedLocation = "(150, 150),(200, 200)";
             Assert.AreEqual(expectedLocation, circle.Location);
         }
 
@@ -198,8 +198,8 @@ namespace Homework2.Tests
 
             circle.Selected = true;
             circle.ZoomInOut(incrementX1Y1, incrementWidthHeight);
-            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("TempX1Y1"));
-            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("TempWidthHeight"));
+            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("_tempX1Y1"));
+            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("_tempWidthHeight"));
         }
 
         // xy point 測試
@@ -218,24 +218,6 @@ namespace Homework2.Tests
             circle = new Circle(new MockRandomGenerator());
 
             Assert.AreEqual(new Point(200, 200), circle.GetWidthHeightPoint());
-        }
-
-        // 測試object.Equals()
-        [TestMethod()]
-        public void EqualsTest()
-        {
-            circle = new Circle(new MockRandomGenerator());
-            Assert.IsFalse(circle.Equals(null));
-            Assert.IsTrue(circle.Equals(new Circle(new MockRandomGenerator())));
-        }
-
-        // 測試GetHashCode
-        [TestMethod()]
-        public void GetHashCodeTest()
-        {
-            circle = new Circle(new MockRandomGenerator());
-            Circle circle2 = new Circle(new MockRandomGenerator());
-            Assert.AreEqual(circle.GetHashCode(), circle2.GetHashCode());
         }
     }
 }

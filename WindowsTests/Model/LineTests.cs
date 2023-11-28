@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Homework2;
+using WindowsPractice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     [TestClass()]
     public class LineTests
@@ -33,7 +33,7 @@ namespace Homework2.Tests
             line = new Line(new MockRandomGenerator());
             line.X2 = 400;
             line.Y2 = 400;
-            string expectedLocation = $"(200, 200),(400, 400)";
+            string expectedLocation = "(200, 200),(400, 400)";
             string location = line.GetLocation();
 
             Assert.AreEqual(expectedLocation, location);
@@ -53,7 +53,7 @@ namespace Homework2.Tests
             Assert.AreEqual(100, line.Y1);
             Assert.AreEqual(150, line.X2);
             Assert.AreEqual(200, line.Y2);
-            string expectedLocation = $"(50, 100),(150, 200)";
+            string expectedLocation = "(50, 100),(150, 200)";
             Assert.AreEqual(expectedLocation, line.Location);
 
             // 測試 firstPoint.X > newPoint.X
@@ -64,7 +64,7 @@ namespace Homework2.Tests
             Assert.AreEqual(10, line.Y1);
             Assert.AreEqual(40, line.X2);
             Assert.AreEqual(30, line.Y2);
-            expectedLocation = $"(20, 10),(40, 30)";
+            expectedLocation = "(20, 10),(40, 30)";
             Assert.AreEqual(expectedLocation, line.Location);
         }
 
@@ -190,8 +190,8 @@ namespace Homework2.Tests
             privateObject = new PrivateObject(line);
 
             line.ZoomInOut(incrementX1Y1, incrementWidthHeight);
-            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("TempX1Y1"));
-            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("TempWidthHeight"));
+            Assert.AreEqual(expectedTempX1Y1, privateObject.GetFieldOrProperty("_tempX1Y1"));
+            Assert.AreEqual(expectedTempWidthHeight, privateObject.GetFieldOrProperty("_tempWidthHeight"));
 
             line.Y1 = 500;
             line.GetX1Y1Point();
@@ -227,24 +227,6 @@ namespace Homework2.Tests
             line.Y2 = 400;
 
             Assert.AreEqual(new Point(200, 200), line.GetWidthHeightPoint());
-        }
-
-        // 測試object.Equals()
-        [TestMethod()]
-        public void EqualsTest()
-        {
-            line = new Line(new MockRandomGenerator());
-            Assert.IsFalse(line.Equals(null));
-            Assert.IsTrue(line.Equals(new Line(new MockRandomGenerator())));
-        }
-
-        // 測試GetHashCode
-        [TestMethod()]
-        public void GetHashCodeTest()
-        {
-            line = new Line(new MockRandomGenerator());
-            Line line2 = new Line(new MockRandomGenerator());
-            Assert.AreEqual(line.GetHashCode(), line2.GetHashCode());
         }
     }
 }

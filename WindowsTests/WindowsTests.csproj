@@ -85,8 +85,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Homework2\Windows.csproj">
-      <Project>{023FFA69-24DE-4693-BE99-C37790289E53}</Project>
+    <ProjectReference Include="..\WindowsProgramming\Windows.csproj">
+      <Project>{023ffa69-24de-4693-be99-c37790289e53}</Project>
       <Name>Windows</Name>
     </ProjectReference>
   </ItemGroup>

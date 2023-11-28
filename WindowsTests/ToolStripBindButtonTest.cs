@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Homework2.Tests
+namespace WindowsPractice.Tests
 {
     /// <summary>
     /// ToolStripBindButtonTest 的摘要說明
