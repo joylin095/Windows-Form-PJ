@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsPractice.Tests
+namespace WindowsPractice.Directions.Tests
 {
     [TestClass()]
     public class DownLeftTests
