@@ -156,5 +156,21 @@ namespace WindowsPractice
             _tempWidthHeight = new Point(Math.Max(X1, X2) - Math.Min(X1, X2), Math.Max(Y1, Y2) - Math.Min(Y1, Y2));
             return new Point(Math.Max(X1,X2) - Math.Min(X1,X2), Math.Max(Y1, Y2) - Math.Min(Y1, Y2));
         }
+
+        // get寬高(tuple)
+        public override (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple()
+        {
+            return (new Point(X1, Y1), new Point(X2, Y2));
+        }
+
+        // set寬高(tuple)
+        public override void SetX1Y1WidthHeightTuple(Point X1Y1, Point X2Y2)
+        {
+            X1 = X1Y1.X;
+            Y1 = X1Y1.Y;
+            X2 = X2Y2.X;
+            Y2 = X2Y2.Y;
+            Location = GetLocation();
+        }
     }
 }

@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\AddCommand.cs" />
+    <Compile Include="Command\CommandManager.cs" />
+    <Compile Include="Command\DeleteCommand.cs" />
+    <Compile Include="Command\DrawCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Directions\Down.cs" />
     <Compile Include="Directions\DownLeft.cs" />
     <Compile Include="Directions\DownRight.cs" />

@@ -127,5 +127,21 @@ namespace WindowsPractice
             _tempWidthHeight = new Point(Width, Height);
             return new Point(Width, Height);
         }
+
+        // get寬高(tuple)
+        public override (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple()
+        {
+            return (new Point(X1, Y1), new Point(Width, Height));
+        }
+
+        // set寬高(tuple)
+        public override void SetX1Y1WidthHeightTuple(Point X1Y1, Point WidthHeight)
+        {
+            X1 = X1Y1.X;
+            Y1 = X1Y1.Y;
+            Width = WidthHeight.X;
+            Height = WidthHeight.Y;
+            Location = GetLocation();
+        }
     }
 }

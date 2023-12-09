@@ -75,5 +75,12 @@ namespace WindowsPractice
 
         // 寬高point
         public abstract Point GetWidthHeightPoint();
+
+        // get寬高(tuple)
+        public abstract (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple();
+
+        // set寬高(tuple)
+        public abstract void SetX1Y1WidthHeightTuple(Point X1Y1, Point WidthHeight);
+
     }
 }

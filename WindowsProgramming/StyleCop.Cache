@@ -223,6 +223,78 @@
   <project key="-1778641002">
     <configuration>DEBUG;TRACE</configuration>
   </project>
+  <sourcecode name="AddCommand.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:14:39.209</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommandManager.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:18:23.258</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DeleteCommand.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:14:39.222</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DrawCommand.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:15:55.320</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICommand.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:14:39.213</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MoveCommand.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2023/09/14 15:59:04.910</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2023/12/07 23:14:39.218</sourceFile>
+      <parser>2023/09/14 15:59:04.910</parser>
+      <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Command\MoveCommand.cs on line 14.</context>
+        <line>14</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="Down.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
@@ -337,18 +409,96 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:39:37.878</sourceFile>
+      <sourceFile>2023/12/07 23:21:32.145</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
+        <context>Literal constants(字面常數)-16</context>
+        <line>148</line>
+        <index>6141</index>
+        <endIndex>6142</endIndex>
+        <startLine>148</startLine>
+        <startColumn>49</startColumn>
+        <endLine>148</endLine>
+        <endColumn>50</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
+        <context>Literal constants(字面常數)-9</context>
+        <line>148</line>
+        <index>6147</index>
+        <endIndex>6147</endIndex>
+        <startLine>148</startLine>
+        <startColumn>55</startColumn>
+        <endLine>148</endLine>
+        <endColumn>55</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
+        <context>Literal constants(字面常數)-16</context>
+        <line>155</line>
+        <index>6344</index>
+        <endIndex>6345</endIndex>
+        <startLine>155</startLine>
+        <startColumn>47</startColumn>
+        <endLine>155</endLine>
+        <endColumn>48</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
+        <context>Literal constants(字面常數)-9</context>
+        <line>155</line>
+        <index>6350</index>
+        <endIndex>6350</endIndex>
+        <startLine>155</startLine>
+        <startColumn>53</startColumn>
+        <endLine>155</endLine>
+        <endColumn>53</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LiteralConstants" ruleCheckId="LC0001">
+        <context>Literal constants(字面常數)-2</context>
+        <line>157</line>
+        <index>6464</index>
+        <endIndex>6464</endIndex>
+        <startLine>157</startLine>
+        <startColumn>67</startColumn>
+        <endLine>157</endLine>
+        <endColumn>67</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="UnsuitableNaming" ruleCheckId="UN0001">
+        <context>Unsuitable naming(名不符實)-SplitContainer1SplitterMoved(splitter)</context>
+        <line>282</line>
+        <index>10218</index>
+        <endIndex>10376</endIndex>
+        <startLine>282</startLine>
+        <startColumn>9</startColumn>
+        <endLine>286</endLine>
+        <endColumn>9</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="UnsuitableNaming" ruleCheckId="UN0001">
+        <context>Unsuitable naming(名不符實)-SplitContainer2SplitterMoved(splitter)</context>
+        <line>289</line>
+        <index>10421</index>
+        <endIndex>10548</endIndex>
+        <startLine>289</startLine>
+        <startColumn>9</startColumn>
+        <endLine>292</endLine>
+        <endColumn>9</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Form1.Designer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 02:00:37.284</sourceFile>
+      <sourceFile>2023/12/07 23:21:32.142</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -359,12 +509,18 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:29:32.322</sourceFile>
+      <sourceFile>2023/12/07 22:25:20.086</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Circle.cs on line 132.</context>
+        <line>132</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Factory.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -403,12 +559,18 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:32:17.340</sourceFile>
+      <sourceFile>2023/12/07 22:25:20.079</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Line.cs on line 161.</context>
+        <line>161</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="MockGraphics.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -436,12 +598,18 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:40:44.087</sourceFile>
+      <sourceFile>2023/12/07 23:21:04.672</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.cs on line 24.</context>
+        <line>24</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="PresentationModel.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -469,29 +637,41 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:32:14.079</sourceFile>
+      <sourceFile>2023/12/07 22:25:20.071</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Rectangle.cs on line 132.</context>
+        <line>132</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Shape.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 02:00:37.181</sourceFile>
+      <sourceFile>2023/12/07 22:22:14.592</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Shape.cs on line 80.</context>
+        <line>80</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Shapes.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 21:58:21.056</sourceFile>
+      <sourceFile>2023/12/07 23:21:04.679</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -568,7 +748,7 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 02:00:37.177</sourceFile>
+      <sourceFile>2023/12/06 00:03:46.851</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -601,7 +781,7 @@
     <timestamps>
       <styleCop>2023/09/14 15:59:04.910</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2023/11/28 02:00:37.185</sourceFile>
+      <sourceFile>2023/12/07 12:45:26.549</sourceFile>
       <parser>2023/09/14 15:59:04.910</parser>
       <KellyPalRules.KellyPalAnalyzer>2023/09/14 15:59:04.910</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>

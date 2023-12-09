@@ -25,10 +25,12 @@ namespace WindowsPractice.States
             _model.FirstPoint = point;
             if (_model.IsClickBorderCircle(point))
             {
+                _model.MoveBefore();
                 return;
             }
             else if (_model.IsSelectedAndInPoint(point) || _model.IsNotSelectedButInPoint(point))
             {
+                _model.MoveBefore();
                 return;
             }
             _model.State = new NormalState(true);
@@ -50,6 +52,7 @@ namespace WindowsPractice.States
             _model = model;
             if (_mousePressed)
             {
+                _model.MoveCommand();
                 _mousePressed = false;
             }
         }

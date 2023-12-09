@@ -48,7 +48,7 @@ namespace WindowsPractice.States
             {
                 _model.IsDrawing = false;
                 _mousePressed = false;
-                _model.AddShape();
+                _model.DrawCommand();
                 _model.State = new SelectState(false) ;
             }
         }

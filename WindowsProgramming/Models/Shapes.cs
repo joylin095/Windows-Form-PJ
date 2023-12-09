@@ -53,8 +53,20 @@ namespace WindowsPractice
         public BindingList<Shape> ShapeList
         {
             get 
-            { 
+            {
                 return _shapesList; 
+            }
+            set
+            {
+                ShapeList = value;
+            }
+        }
+
+        public Shape Shape
+        {
+            get
+            {
+                return _shape;
             }
         }
 
@@ -65,9 +77,20 @@ namespace WindowsPractice
         }
 
         // 家shape到list
-        public void AddShape()
+        public void AddShape(Shape shape = null, int insertIndex = -1)
         {
-            _shapesList.Add(_shape);
+            if (shape == null)
+            {
+                _shapesList.Add(_shape);
+            }
+            else if (insertIndex != -1)
+            {
+                _shapesList.Insert(insertIndex, shape);
+            }
+            else
+            {
+                _shapesList.Add(shape);
+            }
             _shape = null;
         }
 
@@ -192,6 +215,12 @@ namespace WindowsPractice
                 }
             }
             return Cursors.Default;
+        }
+
+        // 直接設定圖形位置
+        public void SetDirect(Point x1y1, Point widthHeight, int index)
+        {
+            _shapesList[index].SetX1Y1WidthHeightTuple(x1y1, widthHeight);
         }
     }
 }

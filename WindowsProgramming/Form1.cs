@@ -14,8 +14,14 @@ namespace WindowsPractice
     {
         Model _model;
         PresentationModel _presentationModel;
+        ToolStripButton _redoButton;
+        ToolStripButton _undoButton;
         const string DELETE = "刪除";
         const int DELETE_BUTTON_COLUMN_INDEX = 0;
+        Size _initialPanelSize;
+        Size _newPanelSize;
+        float _widthScale = 1;
+        float _heightScale = 1;
         public Form1(Model model)
         {
             InitializeComponent();
@@ -30,6 +36,9 @@ namespace WindowsPractice
             CreateToolStripButtonRectangle();
             CreateToolStripButtonCircle();
             CreateToolStripButtonMouse();
+            CreateToolStripButtonUndo();
+            CreateToolStripButtonRedo();
+            _initialPanelSize = _panel1.Size;
         }
 
         // 創ToolStripButtonLine
@@ -98,6 +107,34 @@ namespace WindowsPractice
             _toolStrip1.Items.Add(mouseButton);
         }
 
+        // 創ToolStripButtonUndo
+        private void CreateToolStripButtonUndo()
+        {
+            const string UNDO = "Undo";
+            const string FILE_PATH = "../../../images/undo.png";
+            _undoButton = new ToolStripButton();
+            _undoButton.Click += UndoClick;
+            _undoButton.Enabled = false;
+            _undoButton.Text = UNDO;
+            _undoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            _undoButton.Image = Bitmap.FromFile(FILE_PATH);
+            _toolStrip1.Items.Add(_undoButton);
+        }
+
+        // 創ToolStripButtonRedo
+        private void CreateToolStripButtonRedo()
+        {
+            const string REDO = "Redo";
+            const string FILE_PATH = "../../../images/redo.png";
+            _redoButton = new ToolStripButton();
+            _redoButton.Click += RedoClick;
+            _redoButton.Enabled = false;
+            _redoButton.Text = REDO;
+            _redoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            _redoButton.Image = Bitmap.FromFile(FILE_PATH);
+            _toolStrip1.Items.Add(_redoButton);
+        }
+
         // 把全部的shape name傳給ViewModel
         private void CallViewModelToRecordAllShapeName()
         {
@@ -109,11 +146,29 @@ namespace WindowsPractice
             _presentationModel.RecordAllShapeName(shapeNameList);
         }
 
+        // button縮放更新
+        private void Button1Refresh()
+        {
+            _button1.Width = _splitContainer1.Panel1.Width;
+            _button1.Height = (_button1.Width / 16) * 9;
+            _button1.Invalidate();
+        }
+
+        // panel縮放更新
+        private void PanelRefresh()
+        {
+            _panel1.Width = _splitContainer2.Panel1.Width;
+            _panel1.Height = (_panel1.Width / 16) * 9;
+            Point test = _panel1.Location;
+            test.Y = (_splitContainer1.Height - _panel1.Height) / 2;
+            _panel1.Location = test;
+            _panel1.Invalidate();
+        }
+
         // 更新畫佈
         private void HandlePanelChanged(object sender)
         {
-            _panel1.Invalidate();
-            _button1.Invalidate();
+            RefreshUi();
         }
 
         // 畫完圖形改變游標
@@ -126,11 +181,8 @@ namespace WindowsPractice
         // 按下新增鍵
         private void AddDataButtonClick(object sender, EventArgs e)
         {
-            _model.SelectShapeName = _selectShapeBox.SelectedItem.ToString();
-            _model.CreateShapes();
-            _model.AddShape();
-            _panel1.Invalidate();
-            _button1.Invalidate();
+            _model.AddCommand(_selectShapeBox.SelectedItem.ToString());
+            RefreshUi();
         }
 
         //判斷是刪除哪行
@@ -138,21 +190,27 @@ namespace WindowsPractice
         {
             if (e.ColumnIndex == DELETE_BUTTON_COLUMN_INDEX && e.RowIndex >= 0)
             {
-                _model.DeleteData(e.RowIndex);
-                _panel1.Invalidate();
+                _model.DeleteCommand(new Dictionary<Shape, int>() 
+                {
+                    { 
+                        _model.BindingShapeList[e.RowIndex], e.RowIndex 
+                    } 
+                });
+                RefreshUi();
             }
         }
 
         // panel畫面繪製
         private void Panel1Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.ScaleTransform(_widthScale, _heightScale);
             _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
         // button畫面繪製
         private void Button1Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.ScaleTransform((float)_button1.Width / _panel1.Width, (float)_button1.Height / _panel1.Height);
+            e.Graphics.ScaleTransform((float)_button1.Width / _initialPanelSize.Width, (float)_button1.Height / _initialPanelSize.Height);
             _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
@@ -163,16 +221,44 @@ namespace WindowsPractice
             _presentationModel.ToolStripButtonClick(toolStripButton.Text);
         }
 
+        // refresh undo,redo click
+        private void RefreshUi()
+        {
+            _undoButton.Enabled = _model.IsUndoEnabled;
+            _redoButton.Enabled = _model.IsRedoEnabled;
+            _panel1.Invalidate();
+            _button1.Invalidate();
+            _recordDataGridView.Invalidate();
+        }
+
+        // undo click
+        private void UndoClick(object sender, EventArgs e)
+        {
+            _model.Undo();
+            RefreshUi();
+        }
+
+        // redo click
+
+        private void RedoClick(object sender, EventArgs e)
+        {
+            _model.Redo();
+            RefreshUi();
+        }
+
         // 當在畫佈按下滑鼠時
         private void Panel1MouseDown(object sender, MouseEventArgs e)
         {
+            label1.Text = e.Location.X.ToString() + e.Location.Y.ToString();
             _presentationModel.Panel1MouseDown(e.Location);
+            //RefreshUi();
         }
 
         // 當在畫佈移動滑鼠時
         private void Panel1MouseMove(object sender, MouseEventArgs e)
         {
             _presentationModel.Panel1MouseMove(e.Location);
+            RefreshUi();
             this.Cursor = _model.Cursor;
         }
 
@@ -180,19 +266,13 @@ namespace WindowsPractice
         private void Panel1MouseUp(object sender, MouseEventArgs e)
         {
             _presentationModel.Panel1MouseUp(e.Location);
+            RefreshUi();
         }
 
         // 當在滑鼠進入畫布時
         private void Panel1MouseEnter(object sender, EventArgs e)
         {
-            if (_model.IsDrawing)
-            {
-                this.Cursor = Cursors.Cross;
-            }
-            else
-            {
-                this.Cursor = Cursors.Default;
-            }
+            this.Cursor = _model.IsDrawing ? Cursors.Cross : Cursors.Default;
         }
 
         // 當在滑鼠離開畫布時
@@ -205,6 +285,19 @@ namespace WindowsPractice
         private void Form1KeyDown(object sender, KeyEventArgs e)
         {
             _model.FormKeyDown(e.KeyCode);
+        }
+
+        // panel resize
+        private void SplitContainer2Panel1Resize(object sender, EventArgs e)
+        {
+            PanelRefresh();
+            Button1Refresh();
+            _newPanelSize = _panel1.Size;
+            if (!_initialPanelSize.IsEmpty)
+            {
+                _widthScale = (float)_newPanelSize.Width / _initialPanelSize.Width;
+                _heightScale = (float)_newPanelSize.Height / _initialPanelSize.Height;
+            }
         }
     }
 }

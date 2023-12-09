@@ -7,6 +7,7 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
 using WindowsPractice.States;
+using WindowsPractice.Command;
 
 namespace WindowsPractice
 {
@@ -19,11 +20,15 @@ namespace WindowsPractice
 
         Shapes _shapes;
         Pen _pen;
+        CommandManager _commandManager;
+        Dictionary<(Point X1Y1, Point WidthHeight), int> _beforeMove;
+        Dictionary<(Point X1Y1, Point WidthHeight), int> _afterMove;
 
         public Model()
         {
             _shapes = new Shapes();
             _pen = new Pen(Color.Green);
+            _commandManager = new CommandManager();
             IsDrawing = false;
         }
 
@@ -64,7 +69,23 @@ namespace WindowsPractice
             get;
             set;
         }
-        
+
+        public bool IsRedoEnabled
+        {
+            get
+            {
+                return _commandManager.IsRedoEnabled;
+            }
+        }
+
+        public bool IsUndoEnabled
+        {
+            get
+            {
+                return _commandManager.IsUndoEnabled;
+            }
+        }
+
         // 創建shape
         public void CreateShapes()
         {
@@ -72,9 +93,9 @@ namespace WindowsPractice
         }
 
         // 加入shape到list
-        public void AddShape()
+        public void AddShape(Shape shape = null, int insertIndex = -1)
         {
-            _shapes.AddShape();
+            _shapes.AddShape(shape, insertIndex);
         }
 
         // 刪除shape
@@ -155,22 +176,92 @@ namespace WindowsPractice
             }
         }
 
+        // 直接設定圖形
+        public void SetDirectly(Point X1Y1, Point WidthHeight, int index)
+        {
+            _shapes.SetDirect(X1Y1, WidthHeight, index);
+        }
+
+        // 畫圖command
+        public void DrawCommand()
+        {
+            _commandManager.Execute(new DrawCommand(this, _shapes.Shape));
+        }
+
+        // add button command
+        public void AddCommand(string selectShapeName)
+        {
+            SelectShapeName = selectShapeName;
+            CreateShapes();
+            _commandManager.Execute(new AddCommand(this, _shapes.Shape));
+        }
+
+        // delete command
+        public void DeleteCommand(Dictionary<Shape, int> deleteShapeList)
+        {
+            if (deleteShapeList.Count != 0)
+            {
+                _commandManager.Execute(new DeleteCommand(this, deleteShapeList));
+            }  
+        }
+
+        // move command
+        public void MoveCommand()
+        {
+            _afterMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            {
+                if (shape.Selected)
+                {
+                    _afterMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                }
+            }
+            _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
+        }
+
+        // move before
+        public void MoveBefore()
+        {
+            _beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            {
+                if (shape.Selected)
+                {
+                    _beforeMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                }
+            }
+        }
+
+        // undo click
+        public void Undo()
+        {
+            _commandManager.Undo();
+        }
+
+        // redo click
+        public void Redo()
+        {
+            _commandManager.Redo();
+        }
+
         // 鍵盤按下按鍵
         public void FormKeyDown(System.Windows.Forms.Keys keys)
         {
+            Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
             if (keys == System.Windows.Forms.Keys.Delete)
             {
                 foreach (Shape shape in _shapes.ShapeList.ToArray())
                 {
                     if (shape.Selected == true)
                     {
-                        DeleteData(_shapes.ShapeList.IndexOf(shape));
+                        deleteShapeList.Add(shape, _shapes.ShapeList.IndexOf(shape));
                         if (_panelChanged != null)
                         {
                             _panelChanged(this);
                         }
                     }
                 }
+                DeleteCommand(deleteShapeList);
             }
         }
 
