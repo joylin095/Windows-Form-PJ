@@ -228,5 +228,50 @@ namespace WindowsPractice.Tests
 
             Assert.AreEqual(new Point(200, 200), line.GetWidthHeightPoint());
         }
+
+        // scale point
+        [TestMethod()]
+        public void SetScaleTest()
+        {
+            float expectedScaleWidth = 2;
+            float expectedScaleHeight = 2;
+            string expectedLocation = "(400, 400),(400, 400)";
+            line = new Line(new MockRandomGenerator());
+
+            line.SetScale(2, 2);
+            privateObject = new PrivateObject(line);
+
+            Assert.AreEqual(expectedScaleWidth, privateObject.GetFieldOrProperty("_scaleWidth"));
+            Assert.AreEqual(expectedScaleHeight, privateObject.GetFieldOrProperty("_scaleHeight"));
+            Assert.AreEqual(expectedLocation, line.GetLocation());
+        }
+
+        // set寬高(tuple)
+        [TestMethod()]
+        public void SetX1Y1WidthHeightTupleTest()
+        {
+            Point x1Y1 = new Point(500, 500);
+            Point x2Y2 = new Point(600, 600);
+            string expectedLocation = "(500, 500),(600, 600)";
+            line = new Line(new MockRandomGenerator());
+
+            line.SetX1Y1WidthHeightTuple(x1Y1, x2Y2);
+
+            Assert.AreEqual(x1Y1.X, line.X1);
+            Assert.AreEqual(x1Y1.Y, line.Y1);
+            Assert.AreEqual(x2Y2.X, line.X2);
+            Assert.AreEqual(x2Y2.Y, line.Y2);
+            Assert.AreEqual(expectedLocation, line.GetLocation());
+        }
+
+        // get寬高(tuple)
+        [TestMethod()]
+        public void GetX1Y1WidthHeightTupleTest()
+        {
+            (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(200, 200));
+            line = new Line(new MockRandomGenerator());
+
+            Assert.AreEqual(expectedTurple, line.GetX1Y1WidthHeightTuple());
+        }
     }
 }

@@ -13,12 +13,14 @@ namespace WindowsPractice
         const string FORMAT = "({0}, {1}),({2}, {3})";
         const string LINE = "線";
         const int SIZE_X1 = 600;
-        const int SIZE_Y1 = 500;
+        const int SIZE_Y1 = 300;
         const int SIZE_X2 = 600;
-        const int SIZE_Y2 = 500;
+        const int SIZE_Y2 = 300;
         Point _tempX1Y1;
         Point _tempWidthHeight;
         bool _isDownLeftUpRight;
+        float _scaleWidth = 1;
+        float _scaleHeight = 1;
 
         public int X1
         {
@@ -54,7 +56,7 @@ namespace WindowsPractice
         // 回傳圖形座標
         public override string GetLocation()
         {
-            return String.Format(FORMAT, X1, Y1, X2, Y2);
+            return String.Format(FORMAT, (int)(X1 * _scaleWidth), (int)(Y1 * _scaleHeight), (int)(X2 * _scaleWidth), (int)(Y2 * _scaleHeight));
         }
 
         // 更新座標
@@ -157,20 +159,28 @@ namespace WindowsPractice
             return new Point(Math.Max(X1,X2) - Math.Min(X1,X2), Math.Max(Y1, Y2) - Math.Min(Y1, Y2));
         }
 
-        // get寬高(tuple)
-        public override (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple()
+        // scale point
+        public override void SetScale(float scaleWidth, float scaleHeight)
         {
-            return (new Point(X1, Y1), new Point(X2, Y2));
+            _scaleWidth = scaleWidth;
+            _scaleHeight = scaleHeight;
+            Location = GetLocation();
         }
 
         // set寬高(tuple)
-        public override void SetX1Y1WidthHeightTuple(Point X1Y1, Point X2Y2)
+        public override void SetX1Y1WidthHeightTuple(Point x1Y1, Point x2Y2)
         {
-            X1 = X1Y1.X;
-            Y1 = X1Y1.Y;
-            X2 = X2Y2.X;
-            Y2 = X2Y2.Y;
+            X1 = x1Y1.X;
+            Y1 = x1Y1.Y;
+            X2 = x2Y2.X;
+            Y2 = x2Y2.Y;
             Location = GetLocation();
+        }
+
+        // get寬高(tuple)
+        public override (Point x1Y1, Point widthHeight) GetX1Y1WidthHeightTuple()
+        {
+            return (new Point(X1, Y1), new Point(X2, Y2));
         }
     }
 }

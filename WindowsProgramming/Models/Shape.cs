@@ -52,7 +52,7 @@ namespace WindowsPractice
         // 形狀位置
         public abstract string GetLocation();
 
-        // 更新座標
+        // 更新座標(給2個座標)
         public abstract void UpdateLocation(Point firstPoint, Point newPoint);
 
         // 畫圖
@@ -77,10 +77,13 @@ namespace WindowsPractice
         public abstract Point GetWidthHeightPoint();
 
         // get寬高(tuple)
-        public abstract (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple();
+        public abstract (Point x1Y1, Point widthHeight) GetX1Y1WidthHeightTuple();
 
         // set寬高(tuple)
-        public abstract void SetX1Y1WidthHeightTuple(Point X1Y1, Point WidthHeight);
+        public abstract void SetX1Y1WidthHeightTuple(Point x1Y1, Point widthHeight);
+
+        // scale point
+        public abstract void SetScale(float width, float height);
 
     }
 }

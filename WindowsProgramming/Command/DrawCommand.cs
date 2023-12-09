@@ -7,7 +7,7 @@ using WindowsPractice;
 
 namespace WindowsPractice.Command
 {
-    class DrawCommand : ICommand
+    public class DrawCommand : ICommand
     {
         Model _model;
         Shape _shape;

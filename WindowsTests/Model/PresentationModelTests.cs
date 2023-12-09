@@ -139,5 +139,27 @@ namespace WindowsPractice.Tests
             Assert.IsFalse(privateMockMousePressed);
             Assert.IsFalse(presentationModel.ToolBarCheckedList[0].Value);
         }
+
+        // set scale
+        [TestMethod()]
+        public void SetScaleTest()
+        {
+            Size expectedInitialPanelSize = new Size(100, 100);
+            Size expectedNewPanelSize = new Size(200, 200);
+            float expectedWidthScale = 2;
+            float expectedHeightScale = 2;
+            model = new Model();
+            presentationModel = new PresentationModel(model);
+
+            presentationModel.InitialPanelSize = expectedInitialPanelSize;
+            presentationModel.NewPanelSize = expectedNewPanelSize;
+
+            Assert.AreEqual(expectedInitialPanelSize, presentationModel.InitialPanelSize);
+            Assert.AreEqual(expectedNewPanelSize, presentationModel.NewPanelSize);
+
+            presentationModel.SetScale();
+            Assert.AreEqual(expectedWidthScale, presentationModel.WidthScale);
+            Assert.AreEqual(expectedHeightScale, presentationModel.HeightScale);
+        }
     }
 }

@@ -34,13 +34,8 @@ namespace WindowsPractice
             this._selectShapeBox = new System.Windows.Forms.ComboBox();
             this._recordDataGridView = new System.Windows.Forms.DataGridView();
             this._delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._groupBox1 = new System.Windows.Forms.GroupBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this._splitContainer3 = new System.Windows.Forms.SplitContainer();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
             this._caption = new System.Windows.Forms.ToolStripMenuItem();
             this._menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -49,14 +44,17 @@ namespace WindowsPractice
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._panel1 = new WindowsPractice.DoubleBufferedPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).BeginInit();
             this._groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._splitContainer3)).BeginInit();
+            this._splitContainer3.Panel1.SuspendLayout();
+            this._splitContainer3.Panel2.SuspendLayout();
+            this._splitContainer3.SuspendLayout();
             this._menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer1)).BeginInit();
             this._splitContainer1.Panel1.SuspendLayout();
@@ -66,6 +64,7 @@ namespace WindowsPractice
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
             this._splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _addDataButton
@@ -102,8 +101,8 @@ namespace WindowsPractice
             this._delete,
             this._shape,
             this._info,
-            this.nameDataGridViewTextBoxColumn,
-            this.locationDataGridViewTextBoxColumn});
+            this._nameDataGridViewTextBoxColumn,
+            this._locationDataGridViewTextBoxColumn});
             this._recordDataGridView.DataSource = this._shapeBindingSource;
             this._recordDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._recordDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -113,7 +112,7 @@ namespace WindowsPractice
             this._recordDataGridView.RowHeadersWidth = 51;
             this._recordDataGridView.RowTemplate.Height = 27;
             this._recordDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._recordDataGridView.Size = new System.Drawing.Size(297, 533);
+            this._recordDataGridView.Size = new System.Drawing.Size(297, 524);
             this._recordDataGridView.TabIndex = 5;
             this._recordDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordDataGridViewCellContentClick);
             // 
@@ -128,6 +127,136 @@ namespace WindowsPractice
             this._delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this._delete.Text = "刪除";
             this._delete.UseColumnTextForButtonValue = true;
+            // 
+            // _groupBox1
+            // 
+            this._groupBox1.Controls.Add(this._splitContainer3);
+            this._groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._groupBox1.Location = new System.Drawing.Point(0, 0);
+            this._groupBox1.Name = "_groupBox1";
+            this._groupBox1.Size = new System.Drawing.Size(303, 666);
+            this._groupBox1.TabIndex = 3;
+            this._groupBox1.TabStop = false;
+            this._groupBox1.Text = "資料顯示";
+            // 
+            // splitContainer1
+            // 
+            this._splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this._splitContainer3.Location = new System.Drawing.Point(3, 21);
+            this._splitContainer3.Name = "splitContainer1";
+            this._splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this._splitContainer3.Panel1.Controls.Add(this._selectShapeBox);
+            this._splitContainer3.Panel1.Controls.Add(this._addDataButton);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this._splitContainer3.Panel2.Controls.Add(this._recordDataGridView);
+            this._splitContainer3.Size = new System.Drawing.Size(297, 642);
+            this._splitContainer3.SplitterDistance = 114;
+            this._splitContainer3.TabIndex = 6;
+            // 
+            // _about
+            // 
+            this._about.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._caption});
+            this._about.Name = "_about";
+            this._about.Size = new System.Drawing.Size(53, 26);
+            this._about.Text = "說明";
+            // 
+            // _caption
+            // 
+            this._caption.Name = "_caption";
+            this._caption.Size = new System.Drawing.Size(122, 26);
+            this._caption.Text = "關於";
+            // 
+            // _menuStrip1
+            // 
+            this._menuStrip1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F);
+            this._menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this._menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._about});
+            this._menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this._menuStrip1.Name = "_menuStrip1";
+            this._menuStrip1.Size = new System.Drawing.Size(1450, 30);
+            this._menuStrip1.TabIndex = 0;
+            this._menuStrip1.Text = "menuStrip1";
+            // 
+            // _button1
+            // 
+            this._button1.BackColor = System.Drawing.Color.White;
+            this._button1.Location = new System.Drawing.Point(1, 1);
+            this._button1.Name = "_button1";
+            this._button1.Size = new System.Drawing.Size(178, 145);
+            this._button1.TabIndex = 1;
+            this._button1.UseVisualStyleBackColor = false;
+            this._button1.Paint += new System.Windows.Forms.PaintEventHandler(this.Button1Paint);
+            // 
+            // _toolStrip1
+            // 
+            this._toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this._toolStrip1.Location = new System.Drawing.Point(0, 30);
+            this._toolStrip1.Name = "_toolStrip1";
+            this._toolStrip1.Size = new System.Drawing.Size(1450, 31);
+            this._toolStrip1.TabIndex = 6;
+            this._toolStrip1.Text = "toolStrip1";
+            // 
+            // _splitContainer1
+            // 
+            this._splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._splitContainer1.Location = new System.Drawing.Point(0, 61);
+            this._splitContainer1.Name = "_splitContainer1";
+            // 
+            // _splitContainer1.Panel1
+            // 
+            this._splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this._splitContainer1.Panel1.Controls.Add(this._button1);
+            // 
+            // _splitContainer1.Panel2
+            // 
+            this._splitContainer1.Panel2.Controls.Add(this._splitContainer2);
+            this._splitContainer1.Size = new System.Drawing.Size(1450, 670);
+            this._splitContainer1.SplitterDistance = 185;
+            this._splitContainer1.TabIndex = 7;
+            // 
+            // _splitContainer2
+            // 
+            this._splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this._splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this._splitContainer2.Name = "_splitContainer2";
+            // 
+            // _splitContainer2.Panel1
+            // 
+            this._splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this._splitContainer2.Panel1.Controls.Add(this._panel1);
+            this._splitContainer2.Panel1.Resize += new System.EventHandler(this.SplitContainer2Panel1Resize);
+            // 
+            // _splitContainer2.Panel2
+            // 
+            this._splitContainer2.Panel2.Controls.Add(this._groupBox1);
+            this._splitContainer2.Size = new System.Drawing.Size(1261, 670);
+            this._splitContainer2.SplitterDistance = 950;
+            this._splitContainer2.TabIndex = 0;
+            // 
+            // _panel1
+            // 
+            this._panel1.BackColor = System.Drawing.Color.White;
+            this._panel1.Location = new System.Drawing.Point(3, 3);
+            this._panel1.Name = "_panel1";
+            this._panel1.Size = new System.Drawing.Size(628, 670);
+            this._panel1.TabIndex = 5;
+            this._panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
+            this._panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseDown);
+            this._panel1.MouseEnter += new System.EventHandler(this.Panel1MouseEnter);
+            this._panel1.MouseLeave += new System.EventHandler(this.Panel1MouseLeave);
+            this._panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseMove);
+            this._panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseUp);
             // 
             // _shape
             // 
@@ -149,165 +278,25 @@ namespace WindowsPractice
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Visible = false;
+            this._nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this._nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this._nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this._nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this._nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this._nameDataGridViewTextBoxColumn.Visible = false;
             // 
             // locationDataGridViewTextBoxColumn
             // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.locationDataGridViewTextBoxColumn.Visible = false;
+            this._locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            this._locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            this._locationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this._locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this._locationDataGridViewTextBoxColumn.ReadOnly = true;
+            this._locationDataGridViewTextBoxColumn.Visible = false;
             // 
             // _shapeBindingSource
             // 
             this._shapeBindingSource.DataSource = typeof(WindowsPractice.Shape);
-            // 
-            // _groupBox1
-            // 
-            this._groupBox1.Controls.Add(this.splitContainer1);
-            this._groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._groupBox1.Location = new System.Drawing.Point(0, 0);
-            this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Size = new System.Drawing.Size(303, 675);
-            this._groupBox1.TabIndex = 3;
-            this._groupBox1.TabStop = false;
-            this._groupBox1.Text = "資料顯示";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 21);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this._selectShapeBox);
-            this.splitContainer1.Panel1.Controls.Add(this._addDataButton);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this._recordDataGridView);
-            this.splitContainer1.Size = new System.Drawing.Size(297, 651);
-            this.splitContainer1.SplitterDistance = 114;
-            this.splitContainer1.TabIndex = 6;
-            // 
-            // _about
-            // 
-            this._about.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._caption});
-            this._about.Name = "_about";
-            this._about.Size = new System.Drawing.Size(53, 23);
-            this._about.Text = "說明";
-            // 
-            // _caption
-            // 
-            this._caption.Name = "_caption";
-            this._caption.Size = new System.Drawing.Size(122, 26);
-            this._caption.Text = "關於";
-            // 
-            // _menuStrip1
-            // 
-            this._menuStrip1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F);
-            this._menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this._menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._about});
-            this._menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this._menuStrip1.Name = "_menuStrip1";
-            this._menuStrip1.Size = new System.Drawing.Size(1450, 27);
-            this._menuStrip1.TabIndex = 0;
-            this._menuStrip1.Text = "menuStrip1";
-            // 
-            // _button1
-            // 
-            this._button1.BackColor = System.Drawing.Color.White;
-            this._button1.Location = new System.Drawing.Point(1, 1);
-            this._button1.Name = "_button1";
-            this._button1.Size = new System.Drawing.Size(178, 145);
-            this._button1.TabIndex = 1;
-            this._button1.UseVisualStyleBackColor = false;
-            this._button1.Paint += new System.Windows.Forms.PaintEventHandler(this.Button1Paint);
-            // 
-            // _toolStrip1
-            // 
-            this._toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this._toolStrip1.Location = new System.Drawing.Point(0, 27);
-            this._toolStrip1.Name = "_toolStrip1";
-            this._toolStrip1.Size = new System.Drawing.Size(1450, 25);
-            this._toolStrip1.TabIndex = 6;
-            this._toolStrip1.Text = "toolStrip1";
-            // 
-            // _splitContainer1
-            // 
-            this._splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._splitContainer1.Location = new System.Drawing.Point(0, 52);
-            this._splitContainer1.Name = "_splitContainer1";
-            // 
-            // _splitContainer1.Panel1
-            // 
-            this._splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this._splitContainer1.Panel1.Controls.Add(this.label1);
-            this._splitContainer1.Panel1.Controls.Add(this._button1);
-            // 
-            // _splitContainer1.Panel2
-            // 
-            this._splitContainer1.Panel2.Controls.Add(this._splitContainer2);
-            this._splitContainer1.Size = new System.Drawing.Size(1450, 679);
-            this._splitContainer1.SplitterDistance = 185;
-            this._splitContainer1.TabIndex = 7;
-            // 
-            // _splitContainer2
-            // 
-            this._splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this._splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this._splitContainer2.Name = "_splitContainer2";
-            // 
-            // _splitContainer2.Panel1
-            // 
-            this._splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this._splitContainer2.Panel1.Controls.Add(this._panel1);
-            this._splitContainer2.Panel1.Resize += new System.EventHandler(this.SplitContainer2Panel1Resize);
-            // 
-            // _splitContainer2.Panel2
-            // 
-            this._splitContainer2.Panel2.Controls.Add(this._groupBox1);
-            this._splitContainer2.Size = new System.Drawing.Size(1261, 679);
-            this._splitContainer2.SplitterDistance = 950;
-            this._splitContainer2.TabIndex = 0;
-            // 
-            // _panel1
-            // 
-            this._panel1.BackColor = System.Drawing.Color.White;
-            this._panel1.Location = new System.Drawing.Point(3, 3);
-            this._panel1.Name = "_panel1";
-            this._panel1.Size = new System.Drawing.Size(628, 670);
-            this._panel1.TabIndex = 5;
-            this._panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
-            this._panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseDown);
-            this._panel1.MouseEnter += new System.EventHandler(this.Panel1MouseEnter);
-            this._panel1.MouseLeave += new System.EventHandler(this.Panel1MouseLeave);
-            this._panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseMove);
-            this._panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 252);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
             // 
             // Form1
             // 
@@ -323,16 +312,14 @@ namespace WindowsPractice
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).EndInit();
             this._groupBox1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this._splitContainer3.Panel1.ResumeLayout(false);
+            this._splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._splitContainer3)).EndInit();
+            this._splitContainer3.ResumeLayout(false);
             this._menuStrip1.ResumeLayout(false);
             this._menuStrip1.PerformLayout();
             this._splitContainer1.Panel1.ResumeLayout(false);
-            this._splitContainer1.Panel1.PerformLayout();
             this._splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer1)).EndInit();
             this._splitContainer1.ResumeLayout(false);
@@ -340,6 +327,7 @@ namespace WindowsPractice
             this._splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).EndInit();
             this._splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,10 +352,7 @@ namespace WindowsPractice
         private System.Windows.Forms.DataGridViewTextBoxColumn _info;
         private System.Windows.Forms.DataGridViewTextBoxColumn _nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer _splitContainer3;
     }
 }
 

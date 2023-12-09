@@ -18,10 +18,9 @@ namespace WindowsPractice
         ToolStripButton _undoButton;
         const string DELETE = "刪除";
         const int DELETE_BUTTON_COLUMN_INDEX = 0;
-        Size _initialPanelSize;
-        Size _newPanelSize;
-        float _widthScale = 1;
-        float _heightScale = 1;
+        const int SCALE16 = 16;
+        const int SCALE9 = 9;
+        const int TWO = 2;
         public Form1(Model model)
         {
             InitializeComponent();
@@ -38,7 +37,7 @@ namespace WindowsPractice
             CreateToolStripButtonMouse();
             CreateToolStripButtonUndo();
             CreateToolStripButtonRedo();
-            _initialPanelSize = _panel1.Size;
+            _presentationModel.InitialPanelSize = _panel1.Size;
         }
 
         // 創ToolStripButtonLine
@@ -150,19 +149,17 @@ namespace WindowsPractice
         private void Button1Refresh()
         {
             _button1.Width = _splitContainer1.Panel1.Width;
-            _button1.Height = (_button1.Width / 16) * 9;
-            _button1.Invalidate();
+            _button1.Height = (_button1.Width / SCALE16) * SCALE9;
         }
 
         // panel縮放更新
         private void PanelRefresh()
         {
             _panel1.Width = _splitContainer2.Panel1.Width;
-            _panel1.Height = (_panel1.Width / 16) * 9;
+            _panel1.Height = (_panel1.Width / SCALE16) * SCALE9;
             Point test = _panel1.Location;
-            test.Y = (_splitContainer1.Height - _panel1.Height) / 2;
+            test.Y = (_splitContainer1.Height - _panel1.Height) / TWO;
             _panel1.Location = test;
-            _panel1.Invalidate();
         }
 
         // 更新畫佈
@@ -175,7 +172,7 @@ namespace WindowsPractice
         private void HandleCursorToDefault(object sender)
         {
             this.Cursor = Cursors.Default;
-            _recordDataGridView.Invalidate();
+            RefreshUi();
         }
 
         // 按下新增鍵
@@ -203,14 +200,14 @@ namespace WindowsPractice
         // panel畫面繪製
         private void Panel1Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.ScaleTransform(_widthScale, _heightScale);
+            e.Graphics.ScaleTransform(_presentationModel.WidthScale, _presentationModel.HeightScale);
             _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
         // button畫面繪製
         private void Button1Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.ScaleTransform((float)_button1.Width / _initialPanelSize.Width, (float)_button1.Height / _initialPanelSize.Height);
+            e.Graphics.ScaleTransform((float)_button1.Width / _presentationModel.InitialPanelSize.Width, (float)_button1.Height / _presentationModel.InitialPanelSize.Height);
             _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
         }
 
@@ -221,13 +218,14 @@ namespace WindowsPractice
             _presentationModel.ToolStripButtonClick(toolStripButton.Text);
         }
 
-        // refresh undo,redo click
+        // all UI refresh
         private void RefreshUi()
         {
             _undoButton.Enabled = _model.IsUndoEnabled;
             _redoButton.Enabled = _model.IsRedoEnabled;
             _panel1.Invalidate();
             _button1.Invalidate();
+            _model.SetScale(_presentationModel.WidthScale, _presentationModel.HeightScale);
             _recordDataGridView.Invalidate();
         }
 
@@ -239,7 +237,6 @@ namespace WindowsPractice
         }
 
         // redo click
-
         private void RedoClick(object sender, EventArgs e)
         {
             _model.Redo();
@@ -249,7 +246,6 @@ namespace WindowsPractice
         // 當在畫佈按下滑鼠時
         private void Panel1MouseDown(object sender, MouseEventArgs e)
         {
-            label1.Text = e.Location.X.ToString() + e.Location.Y.ToString();
             _presentationModel.Panel1MouseDown(e.Location);
             //RefreshUi();
         }
@@ -292,11 +288,11 @@ namespace WindowsPractice
         {
             PanelRefresh();
             Button1Refresh();
-            _newPanelSize = _panel1.Size;
-            if (!_initialPanelSize.IsEmpty)
+            if (_presentationModel != null && !_presentationModel.InitialPanelSize.IsEmpty)
             {
-                _widthScale = (float)_newPanelSize.Width / _initialPanelSize.Width;
-                _heightScale = (float)_newPanelSize.Height / _initialPanelSize.Height;
+                _presentationModel.NewPanelSize = _panel1.Size;
+                _presentationModel.SetScale();
+                RefreshUi();
             }
         }
     }

@@ -12,11 +12,13 @@ namespace WindowsPractice
         const string FORMAT = "({0}, {1}),({2}, {3})";
         const string CIRCLE = "圓";
         const int SIZE_X = 450;
-        const int SIZE_Y = 350;
-        const int SIZE_WIDTH = 200;
-        const int SIZE_HEIGHT = 200;
+        const int SIZE_Y = 250;
+        const int SIZE_WIDTH = 150;
+        const int SIZE_HEIGHT = 150;
         Point _tempX1Y1;
         Point _tempWidthHeight;
+        float _scaleWidth = 1;
+        float _scaleHeight = 1;
 
         public int X1
         {
@@ -52,7 +54,7 @@ namespace WindowsPractice
         // 回傳圖形座標
         public override string GetLocation()
         {
-            return String.Format(FORMAT, X1, Y1, X1 + Width, Y1 + Height);
+            return String.Format(FORMAT, (int)(X1 * _scaleWidth), (int)(Y1 * _scaleHeight), (int)((X1 + Width) * _scaleWidth), (int)((Y1 + Height) * _scaleHeight));
         }
 
         // 更新座標
@@ -128,20 +130,28 @@ namespace WindowsPractice
             return new Point(Width, Height);
         }
 
-        // get寬高(tuple)
-        public override (Point X1Y1, Point WidthHeight) GetX1Y1WidthHeightTuple()
+        // scale point
+        public override void SetScale(float scaleWidth, float scaleHeight)
         {
-            return (new Point(X1, Y1), new Point(Width, Height));
+            _scaleWidth =  scaleWidth;
+            _scaleHeight = scaleHeight;
+            Location = GetLocation();
         }
 
         // set寬高(tuple)
-        public override void SetX1Y1WidthHeightTuple(Point X1Y1, Point WidthHeight)
+        public override void SetX1Y1WidthHeightTuple(Point x1Y1, Point widthHeight)
         {
-            X1 = X1Y1.X;
-            Y1 = X1Y1.Y;
-            Width = WidthHeight.X;
-            Height = WidthHeight.Y;
+            X1 = x1Y1.X;
+            Y1 = x1Y1.Y;
+            Width = widthHeight.X;
+            Height = widthHeight.Y;
             Location = GetLocation();
+        }
+
+        // get寬高(tuple)
+        public override (Point x1Y1, Point widthHeight) GetX1Y1WidthHeightTuple()
+        {
+            return (new Point(X1, Y1), new Point(Width, Height));
         }
     }
 }

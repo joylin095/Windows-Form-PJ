@@ -55,6 +55,8 @@ namespace WindowsPractice.Tests
             model.SelectShapeName = "線";
             model.CreateShapes();
             Assert.AreEqual("線", model.SelectShapeName);
+            Assert.IsFalse(model.IsRedoEnabled);
+            Assert.IsFalse(model.IsUndoEnabled);
         }
 
         // 加shape到list測試
@@ -231,6 +233,95 @@ namespace WindowsPractice.Tests
             shapes.Direction = 1;
             model.ChangeCursor(point);
             Assert.AreEqual(Cursors.Cross, model.Cursor);
+        }
+
+        // scale test
+        [TestMethod()]
+        public void SetScale()
+        {
+            model = new Model();
+            model.SetScale(2, 2);
+        }
+
+        // draw command test
+        [TestMethod()]
+        public void DrawCommandTest()
+        {
+            model = new Model();
+            model.SelectShapeName = "線";
+            model.CreateShapes();
+            model.DrawCommand();
+        }
+
+        // add command test
+        [TestMethod()]
+        public void AddCommandTest()
+        {
+            model = new Model();
+            model.AddCommand("線");
+        }
+
+        // delete command test
+        [TestMethod()]
+        public void DeleteCommandTest()
+        {
+            Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
+            deleteShapeList.Add(new Line(new MockRandomGenerator()), 0);
+            model = new Model();
+            model.AddCommand("線");
+
+            model.DeleteCommand(deleteShapeList);
+        }
+
+        // move command
+        [TestMethod()]
+        public void MoveCommandTest()
+        {
+            Dictionary<(Point X1Y1, Point WidthHeight), int> beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            beforeMove.Add((new Point(50, 50), new Point(100, 100)), 0);
+            model = new Model();
+            model.AddCommand("線");
+            model.BindingShapeList[0].Selected = true;
+            privateObject = new PrivateObject(model);
+            privateObject.SetFieldOrProperty("_beforeMove", beforeMove);
+
+            model.MoveCommand();
+
+            model.BindingShapeList[0].Selected = false;
+            model.MoveCommand();
+        }
+
+        // move before test
+        [TestMethod()]
+        public void MoveBeforeTest()
+        {
+            model = new Model();
+            model.AddCommand("線");
+            model.BindingShapeList[0].Selected = true;
+
+            model.MoveBefore();
+
+            model.BindingShapeList[0].Selected = false;
+            model.MoveBefore();
+        }
+
+        // undo test
+        [TestMethod()]
+        public void UndoTest()
+        {
+            model = new Model();
+            model.AddCommand("線");
+            model.Undo();
+        }
+
+        // redo test
+        [TestMethod()]
+        public void RedoTest()
+        {
+            model = new Model();
+            model.AddCommand("線");
+            model.Undo();
+            model.Redo();
         }
     }
 }

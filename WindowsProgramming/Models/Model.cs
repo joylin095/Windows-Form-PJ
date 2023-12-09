@@ -182,68 +182,6 @@ namespace WindowsPractice
             _shapes.SetDirect(X1Y1, WidthHeight, index);
         }
 
-        // 畫圖command
-        public void DrawCommand()
-        {
-            _commandManager.Execute(new DrawCommand(this, _shapes.Shape));
-        }
-
-        // add button command
-        public void AddCommand(string selectShapeName)
-        {
-            SelectShapeName = selectShapeName;
-            CreateShapes();
-            _commandManager.Execute(new AddCommand(this, _shapes.Shape));
-        }
-
-        // delete command
-        public void DeleteCommand(Dictionary<Shape, int> deleteShapeList)
-        {
-            if (deleteShapeList.Count != 0)
-            {
-                _commandManager.Execute(new DeleteCommand(this, deleteShapeList));
-            }  
-        }
-
-        // move command
-        public void MoveCommand()
-        {
-            _afterMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
-            foreach (Shape shape in _shapes.ShapeList.ToArray())
-            {
-                if (shape.Selected)
-                {
-                    _afterMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
-                }
-            }
-            _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
-        }
-
-        // move before
-        public void MoveBefore()
-        {
-            _beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
-            foreach (Shape shape in _shapes.ShapeList.ToArray())
-            {
-                if (shape.Selected)
-                {
-                    _beforeMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
-                }
-            }
-        }
-
-        // undo click
-        public void Undo()
-        {
-            _commandManager.Undo();
-        }
-
-        // redo click
-        public void Redo()
-        {
-            _commandManager.Redo();
-        }
-
         // 鍵盤按下按鍵
         public void FormKeyDown(System.Windows.Forms.Keys keys)
         {
@@ -283,6 +221,74 @@ namespace WindowsPractice
                     Cursor = Cursors.Cross;
                 }
             }
+        }
+
+        // scale point
+        public void SetScale(float width, float height)
+        {
+            _shapes.SetScale(width, height);
+        }
+
+        // 畫圖command
+        public void DrawCommand()
+        {
+            _commandManager.Execute(new DrawCommand(this, _shapes.Shape));
+        }
+
+        // add button command
+        public void AddCommand(string selectShapeName)
+        {
+            SelectShapeName = selectShapeName;
+            CreateShapes();
+            _commandManager.Execute(new AddCommand(this, _shapes.Shape));
+        }
+
+        // delete command
+        public void DeleteCommand(Dictionary<Shape, int> deleteShapeList)
+        {
+            if (deleteShapeList.Count != 0)
+            {
+                _commandManager.Execute(new DeleteCommand(this, deleteShapeList));
+            }
+        }
+
+        // move command
+        public void MoveCommand()
+        {
+            _afterMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            {
+                if (shape.Selected)
+                {
+                    _afterMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                }
+            }
+            _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
+        }
+
+        // move before
+        public void MoveBefore()
+        {
+            _beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            {
+                if (shape.Selected)
+                {
+                    _beforeMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                }
+            }
+        }
+
+        // undo click
+        public void Undo()
+        {
+            _commandManager.Undo();
+        }
+
+        // redo click
+        public void Redo()
+        {
+            _commandManager.Redo();
         }
     }
 }

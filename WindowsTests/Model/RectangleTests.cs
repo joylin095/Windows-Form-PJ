@@ -220,5 +220,50 @@ namespace WindowsPractice.Tests
 
             Assert.AreEqual(new Point(200, 200), rectangle.GetWidthHeightPoint());
         }
+
+        // scale point
+        [TestMethod()]
+        public void SetScaleTest()
+        {
+            float expectedScaleWidth = 2;
+            float expectedScaleHeight = 2;
+            string expectedLocation = "(400, 400),(800, 800)";
+            rectangle = new Rectangle(new MockRandomGenerator());
+
+            rectangle.SetScale(2, 2);
+            privateObject = new PrivateObject(rectangle);
+
+            Assert.AreEqual(expectedScaleWidth, privateObject.GetFieldOrProperty("_scaleWidth"));
+            Assert.AreEqual(expectedScaleHeight, privateObject.GetFieldOrProperty("_scaleHeight"));
+            Assert.AreEqual(expectedLocation, rectangle.GetLocation());
+        }
+
+        // set寬高(tuple)
+        [TestMethod()]
+        public void SetX1Y1WidthHeightTupleTest()
+        {
+            Point x1Y1 = new Point(500, 500);
+            Point widthHeight = new Point(100, 100);
+            string expectedLocation = "(500, 500),(600, 600)";
+            rectangle = new Rectangle(new MockRandomGenerator());
+
+            rectangle.SetX1Y1WidthHeightTuple(x1Y1, widthHeight);
+
+            Assert.AreEqual(x1Y1.X, rectangle.X1);
+            Assert.AreEqual(x1Y1.Y, rectangle.Y1);
+            Assert.AreEqual(widthHeight.X, rectangle.Width);
+            Assert.AreEqual(widthHeight.Y, rectangle.Height);
+            Assert.AreEqual(expectedLocation, rectangle.GetLocation());
+        }
+
+        // get寬高(tuple)
+        [TestMethod()]
+        public void GetX1Y1WidthHeightTupleTest()
+        {
+            (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(200, 200));
+            rectangle = new Rectangle(new MockRandomGenerator());
+
+            Assert.AreEqual(expectedTurple, rectangle.GetX1Y1WidthHeightTuple());
+        }
     }
 }

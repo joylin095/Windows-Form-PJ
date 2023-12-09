@@ -56,10 +56,6 @@ namespace WindowsPractice
             {
                 return _shapesList; 
             }
-            set
-            {
-                ShapeList = value;
-            }
         }
 
         public Shape Shape
@@ -221,6 +217,15 @@ namespace WindowsPractice
         public void SetDirect(Point x1y1, Point widthHeight, int index)
         {
             _shapesList[index].SetX1Y1WidthHeightTuple(x1y1, widthHeight);
+        }
+
+        // scale point
+        public void SetScale(float width, float height)
+        {
+            foreach (Shape shape in _shapesList)
+            {
+                shape.SetScale(width, height);
+            }
         }
     }
 }

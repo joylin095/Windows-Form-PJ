@@ -8,7 +8,7 @@ using WindowsPractice;
 
 namespace WindowsPractice.Command
 {
-    class MoveCommand : ICommand
+    public class MoveCommand : ICommand
     {
         Model _model;
         Dictionary<(Point X1Y1, Point WidthHeight), int> _beforeMove;

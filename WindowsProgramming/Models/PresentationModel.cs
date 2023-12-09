@@ -20,6 +20,8 @@ namespace WindowsPractice
         {
             _model = model;
             _model.State = new NormalState(false);
+            WidthScale = 1;
+            HeightScale = 1;
         }
 
         public BindingList<ToolBarChecked> ToolBarCheckedList
@@ -28,6 +30,30 @@ namespace WindowsPractice
             {
                 return _toolBarCheckedList;
             }
+        }
+
+        public Size InitialPanelSize
+        {
+            get;
+            set;
+        }
+
+        public Size NewPanelSize
+        {
+            get;
+            set;
+        }
+
+        public float WidthScale
+        {
+            get;
+            set;
+        }
+
+        public float HeightScale
+        {
+            get;
+            set;
         }
 
         // 儲存全部shape的名稱
@@ -73,25 +99,32 @@ namespace WindowsPractice
         }
 
         // 在畫佈按下左鍵時
-        public void Panel1MouseDown(System.Drawing.Point point)
+        public void Panel1MouseDown(Point point)
         {
-            _model.PanelMouseDown(point);
+            _model.PanelMouseDown(new Point((int)(point.X * (1 / WidthScale)), (int)(point.Y * (1 / HeightScale))));
         }
 
         // 在畫佈移動滑鼠時
-        public void Panel1MouseMove(System.Drawing.Point point)
+        public void Panel1MouseMove(Point point)
         {
-            _model.PanelMouseMove(point);
+            _model.PanelMouseMove(new Point((int)(point.X * (1 / WidthScale)), (int)(point.Y * (1 / HeightScale))));
         }
 
         // 在畫佈放開左鍵時
-        public void Panel1MouseUp(System.Drawing.Point point)
+        public void Panel1MouseUp(Point point)
         {
-            _model.PanelMouseUp(point);
+            _model.PanelMouseUp(new Point((int)(point.X * (1 / WidthScale)), (int)(point.Y * (1 / HeightScale))));
             foreach (var toolBarChecked in _toolBarCheckedList)
             {
                 toolBarChecked.SetCheckedValue(MOUSE);
             }
+        }
+
+        // set scale
+        public void SetScale()
+        {
+            WidthScale = (float)NewPanelSize.Width / InitialPanelSize.Width;
+            HeightScale = (float)NewPanelSize.Height / InitialPanelSize.Height;
         }
     }
 }

@@ -53,11 +53,20 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void AddShapeTest()
         {
+            Shape testShape = new Line(new MockRandomGenerator());
             shapes = new Shapes();
             _shapesPrivate = new PrivateObject(shapes);
             shapes.CreateShape("線");
+
             shapes.AddShape();
             Assert.AreEqual(1, shapes.ShapeList.Count);
+
+            shapes.AddShape(testShape, 0);
+            Assert.AreEqual(2, shapes.ShapeList.Count);
+
+            shapes.AddShape(testShape);
+            Assert.AreEqual(3, shapes.ShapeList.Count);
+
             Assert.IsNull(_shapesPrivate.GetFieldOrProperty("_shape"));
         }
 
@@ -240,6 +249,33 @@ namespace WindowsPractice.Tests
             shape.Selected = false;
             point = new Point(200, 200);
             Assert.AreEqual(Cursors.Default, shapes.GetCursorAtBorderCircle(point));
+        }
+
+        // 直接設定圖形位置
+        [TestMethod()]
+        public void SetDirectTest()
+        {
+            Point x1Y1 = new Point(10, 10);
+            Point widthHeight = new Point(50, 50);
+            int index = 0;
+            shapes = new Shapes();
+            shapes.CreateShape("線");
+            shapes.AddShape();
+
+            shapes.SetDirect(x1Y1, widthHeight, index);
+        }
+
+        // scale point
+        [TestMethod()]
+        public void SetScaleTest()
+        {
+            float width = 2;
+            float height = 2;
+            shapes = new Shapes();
+            shapes.CreateShape("線");
+            shapes.AddShape();
+
+            shapes.SetScale(width, height);
         }
     }
 }

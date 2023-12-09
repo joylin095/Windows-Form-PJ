@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsPractice.Command
 {
-    interface ICommand
+    public interface ICommand
     {
         // do
         void Execute();

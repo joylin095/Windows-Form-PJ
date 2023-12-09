@@ -203,13 +203,12 @@
             </Smell>
             <Smell>
               <Id>2</Id>
-              <SmellType>Literal constants(字面常數)-16</SmellType>
-              <HashCode>LiteralConstants.Button1Refresh.16</HashCode>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Circle.cs on line 152.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>148</Line>
+              <File>Circle.cs</File>
+              <Line>152</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -219,13 +218,12 @@
             </Smell>
             <Smell>
               <Id>3</Id>
-              <SmellType>Literal constants(字面常數)-16</SmellType>
-              <HashCode>LiteralConstants.PanelRefresh.16</HashCode>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Line.cs on line 181.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>155</Line>
+              <File>Line.cs</File>
+              <Line>181</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -235,116 +233,6 @@
             </Smell>
             <Smell>
               <Id>4</Id>
-              <SmellType>Literal constants(字面常數)-9</SmellType>
-              <HashCode>LiteralConstants.Button1Refresh.9</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>148</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>5</Id>
-              <SmellType>Literal constants(字面常數)-9</SmellType>
-              <HashCode>LiteralConstants.PanelRefresh.9</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>155</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>6</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.PanelRefresh.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>157</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>7</Id>
-              <SmellType>Unsuitable naming(名不符實)-SplitContainer1SplitterMoved(splitter)</SmellType>
-              <HashCode>UnsuitableNaming.Form1.SplitContainer1SplitterMoved.SplitContainer1SplitterMoved</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>282</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>8</Id>
-              <SmellType>Unsuitable naming(名不符實)-SplitContainer2SplitterMoved(splitter)</SmellType>
-              <HashCode>UnsuitableNaming.Form1.SplitContainer2SplitterMoved.SplitContainer2SplitterMoved</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>289</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>9</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Circle.cs on line 132.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Circle.cs</File>
-              <Line>132</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>10</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Line.cs on line 161.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Line.cs</File>
-              <Line>161</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>11</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.cs on line 24.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -359,13 +247,13 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>12</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Rectangle.cs on line 132.</SmellType>
+              <Id>5</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Rectangle.cs on line 152.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Rectangle.cs</File>
-              <Line>132</Line>
+              <Line>152</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -374,7 +262,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>13</Id>
+              <Id>6</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Shape.cs on line 80.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -715,8 +603,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2290</ProductionLoc>
-          <TestLoc>2307</TestLoc>
+          <ProductionLoc>2360</ProductionLoc>
+          <TestLoc>2316</TestLoc>
         </CodeReview>
       </Data>
     </div>

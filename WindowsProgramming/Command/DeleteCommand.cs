@@ -7,7 +7,7 @@ using WindowsPractice;
 
 namespace WindowsPractice.Command
 {
-    class DeleteCommand : ICommand
+    public class DeleteCommand : ICommand
     {
         Model _model;
         Dictionary<Shape, int> _deleteShapeList = new Dictionary<Shape, int>();
