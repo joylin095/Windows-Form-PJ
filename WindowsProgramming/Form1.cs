@@ -150,6 +150,7 @@ namespace WindowsPractice
         {
             _button1.Width = _splitContainer1.Panel1.Width;
             _button1.Height = (_button1.Width / SCALE16) * SCALE9;
+            
         }
 
         // panel縮放更新
@@ -165,7 +166,8 @@ namespace WindowsPractice
         // 更新畫佈
         private void HandlePanelChanged(object sender)
         {
-            RefreshUi();
+            _panel1.Invalidate();
+            _button1.Invalidate();
         }
 
         // 畫完圖形改變游標
@@ -247,14 +249,12 @@ namespace WindowsPractice
         private void Panel1MouseDown(object sender, MouseEventArgs e)
         {
             _presentationModel.Panel1MouseDown(e.Location);
-            //RefreshUi();
         }
 
         // 當在畫佈移動滑鼠時
         private void Panel1MouseMove(object sender, MouseEventArgs e)
         {
             _presentationModel.Panel1MouseMove(e.Location);
-            RefreshUi();
             this.Cursor = _model.Cursor;
         }
 

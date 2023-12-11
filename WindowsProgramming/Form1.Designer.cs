@@ -33,7 +33,6 @@ namespace WindowsPractice
             this._addDataButton = new System.Windows.Forms.Button();
             this._selectShapeBox = new System.Windows.Forms.ComboBox();
             this._recordDataGridView = new System.Windows.Forms.DataGridView();
-            this._delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this._groupBox1 = new System.Windows.Forms.GroupBox();
             this._splitContainer3 = new System.Windows.Forms.SplitContainer();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +42,7 @@ namespace WindowsPractice
             this._toolStrip1 = new System.Windows.Forms.ToolStrip();
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this._delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this._panel1 = new WindowsPractice.DoubleBufferedPanel();
             this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,18 +116,6 @@ namespace WindowsPractice
             this._recordDataGridView.TabIndex = 5;
             this._recordDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordDataGridViewCellContentClick);
             // 
-            // _delete
-            // 
-            this._delete.FillWeight = 12.80961F;
-            this._delete.HeaderText = "刪除";
-            this._delete.MinimumWidth = 6;
-            this._delete.Name = "_delete";
-            this._delete.ReadOnly = true;
-            this._delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this._delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this._delete.Text = "刪除";
-            this._delete.UseColumnTextForButtonValue = true;
-            // 
             // _groupBox1
             // 
             this._groupBox1.Controls.Add(this._splitContainer3);
@@ -139,20 +127,20 @@ namespace WindowsPractice
             this._groupBox1.TabStop = false;
             this._groupBox1.Text = "資料顯示";
             // 
-            // splitContainer1
+            // _splitContainer3
             // 
             this._splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this._splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this._splitContainer3.Location = new System.Drawing.Point(3, 21);
-            this._splitContainer3.Name = "splitContainer1";
+            this._splitContainer3.Name = "_splitContainer3";
             this._splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // _splitContainer3.Panel1
             // 
             this._splitContainer3.Panel1.Controls.Add(this._selectShapeBox);
             this._splitContainer3.Panel1.Controls.Add(this._addDataButton);
             // 
-            // splitContainer1.Panel2
+            // _splitContainer3.Panel2
             // 
             this._splitContainer3.Panel2.Controls.Add(this._recordDataGridView);
             this._splitContainer3.Size = new System.Drawing.Size(297, 642);
@@ -187,10 +175,11 @@ namespace WindowsPractice
             // 
             // _button1
             // 
+            this._button1.AutoSize = true;
             this._button1.BackColor = System.Drawing.Color.White;
-            this._button1.Location = new System.Drawing.Point(1, 1);
+            this._button1.Location = new System.Drawing.Point(-2, 0);
             this._button1.Name = "_button1";
-            this._button1.Size = new System.Drawing.Size(178, 145);
+            this._button1.Size = new System.Drawing.Size(159, 126);
             this._button1.TabIndex = 1;
             this._button1.UseVisualStyleBackColor = false;
             this._button1.Paint += new System.Windows.Forms.PaintEventHandler(this.Button1Paint);
@@ -208,6 +197,7 @@ namespace WindowsPractice
             // 
             this._splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this._splitContainer1.Location = new System.Drawing.Point(0, 61);
             this._splitContainer1.Name = "_splitContainer1";
             // 
@@ -244,12 +234,25 @@ namespace WindowsPractice
             this._splitContainer2.SplitterDistance = 950;
             this._splitContainer2.TabIndex = 0;
             // 
+            // _delete
+            // 
+            this._delete.FillWeight = 20F;
+            this._delete.HeaderText = "刪除";
+            this._delete.MinimumWidth = 6;
+            this._delete.Name = "_delete";
+            this._delete.ReadOnly = true;
+            this._delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this._delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this._delete.Text = "刪除";
+            this._delete.UseColumnTextForButtonValue = true;
+            // 
             // _panel1
             // 
             this._panel1.BackColor = System.Drawing.Color.White;
-            this._panel1.Location = new System.Drawing.Point(3, 3);
+            this._panel1.Location = new System.Drawing.Point(1, 1);
             this._panel1.Name = "_panel1";
-            this._panel1.Size = new System.Drawing.Size(628, 670);
+            this._panel1.Padding = new System.Windows.Forms.Padding(10);
+            this._panel1.Size = new System.Drawing.Size(740, 670);
             this._panel1.TabIndex = 5;
             this._panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
             this._panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseDown);
@@ -261,7 +264,7 @@ namespace WindowsPractice
             // _shape
             // 
             this._shape.DataPropertyName = "Name";
-            this._shape.FillWeight = 34.33611F;
+            this._shape.FillWeight = 25F;
             this._shape.HeaderText = "形狀";
             this._shape.MinimumWidth = 6;
             this._shape.Name = "_shape";
@@ -270,7 +273,7 @@ namespace WindowsPractice
             // _info
             // 
             this._info.DataPropertyName = "Location";
-            this._info.FillWeight = 57.85429F;
+            this._info.FillWeight = 55F;
             this._info.HeaderText = "資訊";
             this._info.MinimumWidth = 6;
             this._info.Name = "_info";
@@ -320,6 +323,7 @@ namespace WindowsPractice
             this._menuStrip1.ResumeLayout(false);
             this._menuStrip1.PerformLayout();
             this._splitContainer1.Panel1.ResumeLayout(false);
+            this._splitContainer1.Panel1.PerformLayout();
             this._splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer1)).EndInit();
             this._splitContainer1.ResumeLayout(false);
@@ -347,12 +351,12 @@ namespace WindowsPractice
         private DoubleBufferedPanel _panel1;
         private System.Windows.Forms.SplitContainer _splitContainer1;
         private System.Windows.Forms.SplitContainer _splitContainer2;
+        private System.Windows.Forms.SplitContainer _splitContainer3;
         private System.Windows.Forms.DataGridViewButtonColumn _delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn _shape;
         private System.Windows.Forms.DataGridViewTextBoxColumn _info;
         private System.Windows.Forms.DataGridViewTextBoxColumn _nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.SplitContainer _splitContainer3;
     }
 }
 

@@ -54,6 +54,7 @@ namespace WindowsPractice.States
                 if (shape.IsRangeInPoint(point))
                 {
                     shape.Selected = true;
+                    _model.MoveBefore();
                     _model.State = new SelectState(true);
                     return;
                 }

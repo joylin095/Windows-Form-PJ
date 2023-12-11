@@ -188,6 +188,81 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Command\MoveCommandTests.cs on line 16.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>WindowsTests</Project>
+              <File>MoveCommandTests.cs</File>
+              <Line>16</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\CircleTests.cs on line 262.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>WindowsTests</Project>
+              <File>CircleTests.cs</File>
+              <Line>262</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\LineTests.cs on line 271.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>WindowsTests</Project>
+              <File>LineTests.cs</File>
+              <Line>271</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\ModelTests.cs on line 280.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>WindowsTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>280</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\RectangleTests.cs on line 263.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>WindowsTests</Project>
+              <File>RectangleTests.cs</File>
+              <Line>263</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Command\MoveCommand.cs on line 14.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -202,7 +277,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>2</Id>
+              <Id>7</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Circle.cs on line 152.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -217,7 +292,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>3</Id>
+              <Id>8</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Line.cs on line 181.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -232,7 +307,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>4</Id>
+              <Id>9</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.cs on line 24.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -247,7 +322,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>5</Id>
+              <Id>10</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Rectangle.cs on line 152.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -262,7 +337,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>6</Id>
+              <Id>11</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Shape.cs on line 80.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -278,9 +353,36 @@
             </Smell>
           </Reviews>
           <HashCodeIgnoreList />
-          <HashCodeRequestIgnoreList />
+          <HashCodeRequestIgnoreList>
+            <string xsi:nil="true" />
+          </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
+              <AnalysisFile>
+                <RelativePath>Command\AddCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\CommandManagerTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DeleteCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DrawCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\MoveCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Directions\DownLeftTests.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
@@ -603,8 +705,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2360</ProductionLoc>
-          <TestLoc>2316</TestLoc>
+          <ProductionLoc>2361</ProductionLoc>
+          <TestLoc>1655</TestLoc>
         </CodeReview>
       </Data>
     </div>
