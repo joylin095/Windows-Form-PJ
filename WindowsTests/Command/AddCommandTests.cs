@@ -20,7 +20,7 @@ namespace WindowsPractice.Command.Tests
         public void Initialize()
         {
             model = new Model();
-            shape = new Line(new MockRandomGenerator());
+            shape = new Line();
             addCommand = new AddCommand(model, shape);
         }
 

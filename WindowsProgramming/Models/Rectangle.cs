@@ -40,15 +40,11 @@ namespace WindowsPractice
             get;
             set;
         }
-        public Rectangle(IRandom random)
+        public Rectangle(Point x1Y1 = default, Point x2Y2 = default)
         {
             Name = RECTANGLE;
             Selected = false;
-            X1 = random.GetNext(0, SIZE_X);
-            Width = random.GetNext(0, SIZE_WIDTH);
-            Y1 = random.GetNext(0, SIZE_Y);
-            Height = random.GetNext(0, SIZE_HEIGHT);
-            UpdateLocation(new Point(X1, Y1), new Point(X1 + Width, Y1 + Height));
+            UpdateLocation(new Point(x1Y1.X, x1Y1.Y), new Point(x2Y2.X, x2Y2.Y));
         }
 
         // 回傳圖形座標

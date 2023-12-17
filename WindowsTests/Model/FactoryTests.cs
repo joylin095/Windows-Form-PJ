@@ -21,17 +21,17 @@ namespace WindowsPractice.Tests
             factory = new Factory();
             // 測試創矩形
             Shape shape = factory.CreateShape("矩形");
-            expectedShape = new Rectangle(new RandomGenerator());
+            expectedShape = new Rectangle();
             Assert.IsTrue(shape is Rectangle);
 
             // 測試創線
             shape = factory.CreateShape("線");
-            expectedShape = new Line(new RandomGenerator());
+            expectedShape = new Line();
             Assert.IsTrue(shape is Line);
 
             // 測試創圓形
             shape = factory.CreateShape("圓");
-            expectedShape = new Circle(new RandomGenerator());
+            expectedShape = new Circle();
             Assert.IsTrue(shape is Circle);
 
             // 測試null

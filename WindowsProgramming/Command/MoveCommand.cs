@@ -11,9 +11,9 @@ namespace WindowsPractice.Command
     public class MoveCommand : ICommand
     {
         Model _model;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> _beforeMove;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> _afterMove;
-        public MoveCommand(Model model, Dictionary<(Point X1Y1, Point WidthHeight), int> beforeMove, Dictionary<(Point X1Y1, Point WidthHeight), int> afterMove)
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> _beforeMove;
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> _afterMove;
+        public MoveCommand(Model model, Dictionary<int, (Point X1Y1, Point WidthHeight)> beforeMove, Dictionary<int, (Point X1Y1, Point WidthHeight)> afterMove)
         {
             _model = model;
             _beforeMove = beforeMove;
@@ -23,18 +23,18 @@ namespace WindowsPractice.Command
         // do
         public void Execute()
         {
-            foreach (KeyValuePair<(Point X1Y1, Point WidthHeight), int> afterMoveShape in _afterMove)
+            foreach (KeyValuePair<int, (Point X1Y1, Point WidthHeight)> afterMoveShape in _afterMove)
             {
-                _model.SetDirectly(afterMoveShape.Key.X1Y1, afterMoveShape.Key.WidthHeight, afterMoveShape.Value);
+                _model.SetDirectly(afterMoveShape.Value.X1Y1, afterMoveShape.Value.WidthHeight, afterMoveShape.Key);
             }
         }
 
         // undo
         public void CancelExecute()
         {
-            foreach (KeyValuePair<(Point X1Y1, Point WidthHeight), int> brforeMoveShape in _beforeMove)
+            foreach (KeyValuePair<int, (Point X1Y1, Point WidthHeight)> brforeMoveShape in _beforeMove)
             {
-                _model.SetDirectly(brforeMoveShape.Key.X1Y1, brforeMoveShape.Key.WidthHeight, brforeMoveShape.Value);
+                _model.SetDirectly(brforeMoveShape.Value.X1Y1, brforeMoveShape.Value.WidthHeight, brforeMoveShape.Key);
             }
         }
     }

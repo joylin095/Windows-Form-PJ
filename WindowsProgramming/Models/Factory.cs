@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +14,16 @@ namespace WindowsPractice
         const string CIRCLE = "圓";
 
         // 創建shape
-        public Shape CreateShape(string shapeName)
+        public Shape CreateShape(string shapeName, Point x1Y1 = default, Point x2Y2 = default)
         {
             switch (shapeName)
             {
                 case RECTANGLE:
-                    return new Rectangle(new RandomGenerator());
+                    return new Rectangle(x1Y1, x2Y2);
                 case LINE:
-                    return new Line(new RandomGenerator());
+                    return new Line(x1Y1, x2Y2);
                 case CIRCLE:
-                    return new Circle(new RandomGenerator());
+                    return new Circle(x1Y1, x2Y2);
                 default:
                     return null;
             }

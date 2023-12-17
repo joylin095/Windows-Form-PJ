@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,10 @@ namespace WindowsPractice
         ToolStripButton _undoButton;
         const string DELETE = "刪除";
         const int DELETE_BUTTON_COLUMN_INDEX = 0;
-        const int SCALE16 = 16;
-        const int SCALE9 = 9;
+        const float SCALE16 = 16.0f;
+        const float SCALE9 = 9.0f;
         const int TWO = 2;
+        string _solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
         public Form1(Model model)
         {
             InitializeComponent();
@@ -46,11 +48,19 @@ namespace WindowsPractice
             const string LINE = "線";
             const string CHECKED = "Checked";
             const string VALUE = "Value";
-            const string FILE_PATH = "../../../images/1.png";
             ToolStripBindButton lineButton = new ToolStripBindButton();
             lineButton.Text = LINE;
             lineButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            lineButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+
+                string FILE_PATH = Path.Combine(_solutionPath,"images", "1.png");
+                lineButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             lineButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[0], VALUE);
             lineButton.Click += ToolStripButtonClick;
             _toolStrip1.Items.Add(lineButton);
@@ -62,11 +72,18 @@ namespace WindowsPractice
             const string RECTANGLE = "矩形";
             const string CHECKED = "Checked";
             const string VALUE = "Value";
-            const string FILE_PATH = "../../../images/2.png";
             ToolStripBindButton rectangleButton = new ToolStripBindButton();
             rectangleButton.Text = RECTANGLE;
             rectangleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            rectangleButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "2.png");
+                rectangleButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             rectangleButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[1], VALUE);
             rectangleButton.Click += ToolStripButtonClick;
             _toolStrip1.Items.Add(rectangleButton);
@@ -79,11 +96,18 @@ namespace WindowsPractice
             const string CHECKED = "Checked";
             const string VALUE = "Value";
             const int TWO = 2;
-            const string FILE_PATH = "../../../images/3.png";
             ToolStripBindButton circleButton = new ToolStripBindButton();
             circleButton.Text = CIRCLE;
             circleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            circleButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "3.png");
+                circleButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             circleButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[TWO], VALUE);
             circleButton.Click += ToolStripButtonClick;
             _toolStrip1.Items.Add(circleButton);
@@ -96,11 +120,18 @@ namespace WindowsPractice
             const string CHECKED = "Checked";
             const string VALUE = "Value";
             const int THREE = 3;
-            const string FILE_PATH = "../../../images/4.jpg";
             ToolStripBindButton mouseButton = new ToolStripBindButton();
             mouseButton.Text = MOUSE;
             mouseButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            mouseButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "4.jpg");
+                mouseButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             mouseButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[THREE], VALUE);
             mouseButton.Click += ToolStripButtonClick;
             _toolStrip1.Items.Add(mouseButton);
@@ -110,13 +141,20 @@ namespace WindowsPractice
         private void CreateToolStripButtonUndo()
         {
             const string UNDO = "Undo";
-            const string FILE_PATH = "../../../images/undo.png";
             _undoButton = new ToolStripButton();
             _undoButton.Click += UndoClick;
             _undoButton.Enabled = false;
             _undoButton.Text = UNDO;
             _undoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            _undoButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "undo.png");
+                _undoButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             _toolStrip1.Items.Add(_undoButton);
         }
 
@@ -124,13 +162,20 @@ namespace WindowsPractice
         private void CreateToolStripButtonRedo()
         {
             const string REDO = "Redo";
-            const string FILE_PATH = "../../../images/redo.png";
             _redoButton = new ToolStripButton();
             _redoButton.Click += RedoClick;
             _redoButton.Enabled = false;
             _redoButton.Text = REDO;
             _redoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            _redoButton.Image = Bitmap.FromFile(FILE_PATH);
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "redo.png");
+                _redoButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
             _toolStrip1.Items.Add(_redoButton);
         }
 
@@ -149,7 +194,7 @@ namespace WindowsPractice
         private void Button1Refresh()
         {
             _button1.Width = _splitContainer1.Panel1.Width;
-            _button1.Height = (_button1.Width / SCALE16) * SCALE9;
+            _button1.Height = (int)((_button1.Width / SCALE16) * SCALE9);
             
         }
 
@@ -157,7 +202,7 @@ namespace WindowsPractice
         private void PanelRefresh()
         {
             _panel1.Width = _splitContainer2.Panel1.Width;
-            _panel1.Height = (_panel1.Width / SCALE16) * SCALE9;
+            _panel1.Height = (int)((_panel1.Width / SCALE16) * SCALE9);
             Point test = _panel1.Location;
             test.Y = (_splitContainer1.Height - _panel1.Height) / TWO;
             _panel1.Location = test;
@@ -180,8 +225,13 @@ namespace WindowsPractice
         // 按下新增鍵
         private void AddDataButtonClick(object sender, EventArgs e)
         {
-            _model.AddCommand(_selectShapeBox.SelectedItem.ToString());
-            RefreshUi();
+            inputForm dialog = new inputForm();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                _model.AddCommand(_selectShapeBox.SelectedItem.ToString(), dialog.GetTopLeftPoint(), dialog.GetBottomRightPoint());
+                RefreshUi();
+            }  
         }
 
         //判斷是刪除哪行

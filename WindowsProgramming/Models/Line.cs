@@ -42,15 +42,11 @@ namespace WindowsPractice
             get;
             set;
         }
-        public Line(IRandom random)
+        public Line(Point x1Y1 = default, Point x2Y2 = default)
         {
             Name = LINE;
             Selected = false;
-            X1 = random.GetNext(0, SIZE_X1);
-            Y1 = random.GetNext(0, SIZE_Y1);
-            X2 = random.GetNext(0, SIZE_X2);
-            Y2 = random.GetNext(0, SIZE_Y2);
-            UpdateLocation(new Point(X1, Y1), new Point(X2, Y2));
+            UpdateLocation(new Point(x1Y1.X, x1Y1.Y), new Point(x2Y2.X, x2Y2.Y));
         }
 
         // 回傳圖形座標

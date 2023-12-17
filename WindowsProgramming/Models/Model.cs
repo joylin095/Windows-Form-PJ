@@ -21,8 +21,8 @@ namespace WindowsPractice
         Shapes _shapes;
         Pen _pen;
         CommandManager _commandManager;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> _beforeMove;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> _afterMove;
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
 
         public Model()
         {
@@ -87,9 +87,9 @@ namespace WindowsPractice
         }
 
         // 創建shape
-        public void CreateShapes()
+        public void CreateShapes(Point x1Y1 = default, Point x2Y2 = default)
         {
-            _shapes.CreateShape(SelectShapeName);
+            _shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
         }
 
         // 加入shape到list
@@ -236,10 +236,10 @@ namespace WindowsPractice
         }
 
         // add button command
-        public void AddCommand(string selectShapeName)
+        public void AddCommand(string selectShapeName, Point x1Y1, Point x2Y2)
         {
             SelectShapeName = selectShapeName;
-            CreateShapes();
+            CreateShapes(x1Y1, x2Y2);
             _commandManager.Execute(new AddCommand(this, _shapes.Shape));
         }
 
@@ -255,26 +255,32 @@ namespace WindowsPractice
         // move command
         public void MoveCommand()
         {
-            _afterMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
             foreach (Shape shape in _shapes.ShapeList.ToArray())
             {
                 if (shape.Selected)
                 {
-                    _afterMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                    if (_beforeMove[_shapes.ShapeList.IndexOf(shape)] != shape.GetX1Y1WidthHeightTuple())
+                    {
+                        _afterMove.Add(_shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
+                    }
                 }
             }
-            _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
+            if (_beforeMove.Count != 0 && _beforeMove.Count == _afterMove.Count)
+            {
+                _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
+            }
         }
 
         // move before
         public void MoveBefore()
         {
-            _beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
+            _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
             foreach (Shape shape in _shapes.ShapeList.ToArray())
             {
                 if (shape.Selected)
                 {
-                    _beforeMove.Add(shape.GetX1Y1WidthHeightTuple(), _shapes.ShapeList.IndexOf(shape));
+                    _beforeMove.Add(_shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
                 }
             }
         }

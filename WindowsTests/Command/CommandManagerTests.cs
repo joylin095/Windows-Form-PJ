@@ -24,7 +24,7 @@ namespace WindowsPractice.Command.Tests
         public void Initialize()
         {
             model = new Model();
-            shape = new Line(new MockRandomGenerator());
+            shape = new Line();
             command = new AddCommand(model, shape);
             undo = new Stack<ICommand>();
             redo = new Stack<ICommand>();

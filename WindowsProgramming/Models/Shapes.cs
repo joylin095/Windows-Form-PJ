@@ -67,9 +67,9 @@ namespace WindowsPractice
         }
 
         // 呼叫factory來創建shape
-        public void CreateShape(string shapeName)
+        public void CreateShape(string shapeName, Point x1Y1 = default, Point x2Y2 = default)
         {
-            _shape = _factory.CreateShape(shapeName);
+            _shape = _factory.CreateShape(shapeName, x1Y1, x2Y2);
         }
 
         // 家shape到list

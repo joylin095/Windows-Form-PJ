@@ -13,8 +13,8 @@ namespace WindowsPractice.Command.Tests
     public class MoveCommandTests
     {
         Model model;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> beforeMove;
-        Dictionary<(Point X1Y1, Point WidthHeight), int> afterMove;
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> beforeMove;
+        Dictionary<int, (Point X1Y1, Point WidthHeight)> afterMove;
         MoveCommand moveCommand;
 
         // 初始化
@@ -25,10 +25,10 @@ namespace WindowsPractice.Command.Tests
             model.SelectShapeName = "線";
             model.CreateShapes();
             model.AddShape();
-            beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
-            beforeMove.Add((new Point(100, 100), new Point(200, 200)), 0);
-            afterMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
-            afterMove.Add((new Point(200, 200), new Point(400, 400)), 0);
+            beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
+            beforeMove.Add(0, (new Point(100, 100), new Point(200, 200)));
+            afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
+            afterMove.Add(0, (new Point(200, 200), new Point(400, 400)));
             moveCommand = new MoveCommand(model, beforeMove, afterMove);
         }
 

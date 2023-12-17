@@ -53,7 +53,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void AddShapeTest()
         {
-            Shape testShape = new Line(new MockRandomGenerator());
+            Shape testShape = new Line();
             shapes = new Shapes();
             _shapesPrivate = new PrivateObject(shapes);
             shapes.CreateShape("線");
@@ -199,7 +199,7 @@ namespace WindowsPractice.Tests
         {
             shapes = new Shapes();
             _shapesPrivate = new PrivateObject(shapes);
-            Shape shape = new Rectangle(new MockRandomGenerator());
+            Shape shape = new Rectangle(new Point(200, 200), new Point(400, 400));
             shape.Selected = true;
             _shapesPrivate.SetField("_shape", shape);
             shapes.AddShape();
@@ -214,7 +214,7 @@ namespace WindowsPractice.Tests
             Point point = new Point(200, 200);
             shapes = new Shapes();
             _shapesPrivate = new PrivateObject(shapes);
-            Shape shape = new Rectangle(new MockRandomGenerator());
+            Shape shape = new Rectangle(new Point(200, 200), new Point(400, 400));
             shape.Selected = true;
             _shapesPrivate.SetField("_shape", shape);
             shapes.AddShape();

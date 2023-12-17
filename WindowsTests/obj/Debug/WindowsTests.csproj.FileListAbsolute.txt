@@ -18,3 +18,15 @@ C:\Users\USER\Desktop\Homework2\WindowsTests\obj\Debug\WindowsTests.pdb
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.exe
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.pdb
 C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WindowsProgramming.exe.config
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Appium.Net.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Castle.Core.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\SeleniumExtras.PageObjects.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\System.Drawing.Common.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WebDriver.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WebDriver.Support.dll
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Appium.Net.xml
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Castle.Core.xml
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WebDriver.xml
+C:\Users\USER\Desktop\Homework2\WindowsTests\bin\Debug\WebDriver.Support.xml

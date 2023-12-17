@@ -24,7 +24,7 @@ namespace WindowsPractice.Command.Tests
             model.SelectShapeName = "線";
             model.CreateShapes();
             model.AddShape();
-            deleteShapeList.Add(new Line(new MockRandomGenerator()), 0);
+            deleteShapeList.Add(new Line(), 0);
             deleteCommand = new DeleteCommand(model, deleteShapeList);
         }
 

@@ -38,6 +38,8 @@ namespace WindowsPractice.Tests
     {
         Model model;
         PrivateObject privateObject;
+        Point x1y1 = new Point(200, 200);
+        Point x2y2 = new Point(300, 300);
 
         // 建構式
         [TestMethod()]
@@ -258,7 +260,7 @@ namespace WindowsPractice.Tests
         public void AddCommandTest()
         {
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
         }
 
         // delete command test
@@ -266,9 +268,9 @@ namespace WindowsPractice.Tests
         public void DeleteCommandTest()
         {
             Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
-            deleteShapeList.Add(new Line(new MockRandomGenerator()), 0);
+            deleteShapeList.Add(new Line(), 0);
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
 
             model.DeleteCommand(deleteShapeList);
         }
@@ -277,14 +279,18 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void MoveCommandTest()
         {
-            Dictionary<(Point X1Y1, Point WidthHeight), int> beforeMove = new Dictionary<(Point X1Y1, Point WidthHeight), int>();
-            beforeMove.Add((new Point(50, 50), new Point(100, 100)), 0);
+            Dictionary<int, (Point X1Y1, Point WidthHeight)> beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
+            beforeMove.Add(0, (new Point(50, 50), new Point(100, 100)));
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
             model.BindingShapeList[0].Selected = true;
             privateObject = new PrivateObject(model);
             privateObject.SetFieldOrProperty("_beforeMove", beforeMove);
 
+            model.MoveCommand();
+
+            beforeMove[0] = (new Point(200, 200), new Point(400, 400));
+            model.BindingShapeList[0].SetX1Y1WidthHeightTuple(new Point(200, 200), new Point(400, 400));
             model.MoveCommand();
 
             model.BindingShapeList[0].Selected = false;
@@ -296,7 +302,7 @@ namespace WindowsPractice.Tests
         public void MoveBeforeTest()
         {
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
             model.BindingShapeList[0].Selected = true;
 
             model.MoveBefore();
@@ -310,7 +316,7 @@ namespace WindowsPractice.Tests
         public void UndoTest()
         {
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
             model.Undo();
         }
 
@@ -319,7 +325,7 @@ namespace WindowsPractice.Tests
         public void RedoTest()
         {
             model = new Model();
-            model.AddCommand("線");
+            model.AddCommand("線", x1y1, x2y2);
             model.Undo();
             model.Redo();
         }

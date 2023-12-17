@@ -14,23 +14,26 @@ namespace WindowsPractice.Tests
     {
         Circle circle;
         PrivateObject privateObject;
+        Point x1y1 = new Point(200, 200);
+        Point x2y2 = new Point(400, 400);
+
         // 測試建構式，座標(200,200),(400,400)
         [TestMethod()]
         public void CircleTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle();
             Assert.AreEqual("圓", circle.Name);
-            Assert.AreEqual(200, circle.X1);
-            Assert.AreEqual(200, circle.Width);
-            Assert.AreEqual(200, circle.Y1);
-            Assert.AreEqual(200, circle.Height);
+            Assert.AreEqual(0, circle.X1);
+            Assert.AreEqual(0, circle.Width);
+            Assert.AreEqual(0, circle.Y1);
+            Assert.AreEqual(0, circle.Height);
         }
 
         // 測試回傳座標格式
         [TestMethod()]
         public void GetLocationTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             string expectedLocation = "(200, 200),(400, 400)";
             string location = circle.GetLocation();
 
@@ -41,7 +44,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void UpdateLocationTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             // first point.x 小
             circle.UpdateLocation(new Point(50, 10), new Point(100, 10));
             Assert.AreEqual(50, circle.X1);
@@ -88,7 +91,7 @@ namespace WindowsPractice.Tests
             int width = 200;
             int height = 200;
             int r = 5;
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             MockGraphics mockGraphics = new MockGraphics();
             privateObject = new PrivateObject(mockGraphics);
             circle.Draw(mockGraphics);
@@ -133,7 +136,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInPointTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             Point inside = new Point(300, 300);
             Assert.IsTrue(circle.IsRangeInPoint(inside));
 
@@ -154,7 +157,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInAreaTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             Point insideFirstPoint = new Point(200, 200);
             Point insideSecondPoint = new Point(400, 400);
 
@@ -173,7 +176,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void MoveTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             circle.Move(new Point(50, 10));
 
             circle.Selected = true;
@@ -190,7 +193,7 @@ namespace WindowsPractice.Tests
             Point incrementWidthHeight = new Point(0, 1);
             Point expectedTempX1Y1 = new Point(201, 200);
             Point expectedTempWidthHeight = new Point(200, 201);
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
             circle.GetX1Y1Point();
             circle.GetWidthHeightPoint();
             privateObject = new PrivateObject(circle);
@@ -206,7 +209,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetXYPointTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
 
             Assert.AreEqual(new Point(200, 200), circle.GetX1Y1Point());
         }
@@ -215,7 +218,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetWidthHeightPointTest()
         {
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
 
             Assert.AreEqual(new Point(200, 200), circle.GetWidthHeightPoint());
         }
@@ -227,7 +230,7 @@ namespace WindowsPractice.Tests
             float expectedScaleWidth = 2;
             float expectedScaleHeight = 2;
             string expectedLocation = "(400, 400),(800, 800)";
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
 
             circle.SetScale(2, 2);
             privateObject = new PrivateObject(circle);
@@ -244,7 +247,7 @@ namespace WindowsPractice.Tests
             Point x1Y1 = new Point(500, 500);
             Point widthHeight = new Point(100, 100);
             string expectedLocation = "(500, 500),(600, 600)";
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
 
             circle.SetX1Y1WidthHeightTuple(x1Y1, widthHeight);
 
@@ -260,7 +263,7 @@ namespace WindowsPractice.Tests
         public void GetX1Y1WidthHeightTupleTest()
         {
             (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(200, 200));
-            circle = new Circle(new MockRandomGenerator());
+            circle = new Circle(x1y1, x2y2);
 
             Assert.AreEqual(expectedTurple, circle.GetX1Y1WidthHeightTuple());
         }

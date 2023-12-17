@@ -14,25 +14,26 @@ namespace WindowsPractice.Tests
     {
         Line line;
         PrivateObject privateObject;
+        Point x1y1 = new Point(200, 200);
+        Point x2y2 = new Point(400, 400);
+
         // 測試建構式
         [TestMethod()]
         public void LineTest()
         {
-            line = new Line(new MockRandomGenerator());
+            line = new Line();
             Assert.AreEqual("線", line.Name);
-            Assert.AreEqual(200, line.X1);
-            Assert.AreEqual(200, line.Y1);
-            Assert.AreEqual(200, line.X2);
-            Assert.AreEqual(200, line.Y2);
+            Assert.AreEqual(0, line.X1);
+            Assert.AreEqual(0, line.Y1);
+            Assert.AreEqual(0, line.X2);
+            Assert.AreEqual(0, line.Y2);
         }
 
         // 測試回傳座標格式
         [TestMethod()]
         public void GetLocationTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             string expectedLocation = "(200, 200),(400, 400)";
             string location = line.GetLocation();
 
@@ -43,7 +44,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void UpdateLocationTest()
         {
-            line = new Line(new MockRandomGenerator());
+            line = new Line();
 
             // 測試 firstPoint.X <= newPoint.X
             Point firstPoint = new Point(50, 100);
@@ -79,9 +80,7 @@ namespace WindowsPractice.Tests
             int width = 200;
             int height = 200;
             int r = 5;
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             MockGraphics mockGraphics = new MockGraphics();
             privateObject = new PrivateObject(mockGraphics);
             line.Draw(mockGraphics);
@@ -126,9 +125,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInPointTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             Point inside = new Point(300, 300);
             Point outside = new Point(199, 199);
             Assert.IsTrue(line.IsRangeInPoint(inside));
@@ -139,9 +136,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInAreaTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             Point insideFirstPoint = new Point(200, 200);
             Point insideSecondPoint = new Point(400, 400);
 
@@ -160,9 +155,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void MoveTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             line.Move(new Point(50, 10));
 
             line.Selected = true;
@@ -181,10 +174,8 @@ namespace WindowsPractice.Tests
             Point incrementWidthHeight = new Point(0, 1);
             Point expectedTempX1Y1 = new Point(201, 200);
             Point expectedTempWidthHeight = new Point(200, 201);
-            line = new Line(new MockRandomGenerator());
+            line = new Line(x1y1, x2y2);
             line.Selected = true;
-            line.X2 = 400;
-            line.Y2 = 400;
             line.GetX1Y1Point();
             line.GetWidthHeightPoint();
             privateObject = new PrivateObject(line);
@@ -204,9 +195,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetXYPointTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
             privateObject = new PrivateObject(line);
             Assert.AreEqual(new Point(200, 200), line.GetX1Y1Point());
 
@@ -222,9 +211,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetWidthHeightPointTest()
         {
-            line = new Line(new MockRandomGenerator());
-            line.X2 = 400;
-            line.Y2 = 400;
+            line = new Line(x1y1, x2y2);
 
             Assert.AreEqual(new Point(200, 200), line.GetWidthHeightPoint());
         }
@@ -235,8 +222,8 @@ namespace WindowsPractice.Tests
         {
             float expectedScaleWidth = 2;
             float expectedScaleHeight = 2;
-            string expectedLocation = "(400, 400),(400, 400)";
-            line = new Line(new MockRandomGenerator());
+            string expectedLocation = "(400, 400),(800, 800)";
+            line = new Line(x1y1, x2y2);
 
             line.SetScale(2, 2);
             privateObject = new PrivateObject(line);
@@ -253,7 +240,7 @@ namespace WindowsPractice.Tests
             Point x1Y1 = new Point(500, 500);
             Point x2Y2 = new Point(600, 600);
             string expectedLocation = "(500, 500),(600, 600)";
-            line = new Line(new MockRandomGenerator());
+            line = new Line();
 
             line.SetX1Y1WidthHeightTuple(x1Y1, x2Y2);
 
@@ -268,8 +255,8 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetX1Y1WidthHeightTupleTest()
         {
-            (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(200, 200));
-            line = new Line(new MockRandomGenerator());
+            (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(400, 400));
+            line = new Line(x1y1, x2y2);
 
             Assert.AreEqual(expectedTurple, line.GetX1Y1WidthHeightTuple());
         }

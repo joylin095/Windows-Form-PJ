@@ -14,25 +14,27 @@ namespace WindowsPractice.Tests
     {
         Rectangle rectangle;
         PrivateObject privateObject;
+        Point x1y1 = new Point(200, 200);
+        Point x2y2 = new Point(400, 400);
 
         // 測試建構式，座標(200,200),(400,400)
         [TestMethod()]
         public void RectangleTest()
         {
 
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle();
             Assert.AreEqual("矩形", rectangle.Name);
-            Assert.AreEqual(200, rectangle.X1);
-            Assert.AreEqual(200, rectangle.Width);
-            Assert.AreEqual(200, rectangle.Y1);
-            Assert.AreEqual(200, rectangle.Height);
+            Assert.AreEqual(0, rectangle.X1);
+            Assert.AreEqual(0, rectangle.Width);
+            Assert.AreEqual(0, rectangle.Y1);
+            Assert.AreEqual(0, rectangle.Height);
         }
 
         // 測試回傳座標格式
         [TestMethod()]
         public void GetLocationTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             string expectedLocation = "(200, 200),(400, 400)";
             string location = rectangle.GetLocation();
 
@@ -43,7 +45,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void UpdateLocationTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             // first point.x 小
             rectangle.UpdateLocation(new Point(50, 10), new Point(100, 10));
             Assert.AreEqual(50, rectangle.X1);
@@ -89,7 +91,7 @@ namespace WindowsPractice.Tests
             int width = 200;
             int height = 200;
             int r = 5;
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             MockGraphics mockGraphics = new MockGraphics();
             privateObject = new PrivateObject(mockGraphics);
             rectangle.Draw(mockGraphics);
@@ -134,7 +136,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInPointTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             Point inside = new Point(300, 300);
             Assert.IsTrue(rectangle.IsRangeInPoint(inside));
 
@@ -155,7 +157,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void IsRangeInAreaTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             Point insideFirstPoint = new Point(200, 200);
             Point insideSecondPoint = new Point(400, 400);
 
@@ -174,7 +176,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void MoveTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             rectangle.Move(new Point(50, 10));
 
             rectangle.Selected = true;
@@ -191,7 +193,7 @@ namespace WindowsPractice.Tests
             Point incrementWidthHeight = new Point(0, 1);
             Point expectedTempX1Y1 = new Point(201, 200);
             Point expectedTempWidthHeight = new Point(200, 201);
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
             rectangle.GetX1Y1Point();
             rectangle.GetWidthHeightPoint();
             privateObject = new PrivateObject(rectangle);
@@ -207,7 +209,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetXYPointTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
 
             Assert.AreEqual(new Point(200, 200), rectangle.GetX1Y1Point());
         }
@@ -216,7 +218,7 @@ namespace WindowsPractice.Tests
         [TestMethod()]
         public void GetWidthHeightPointTest()
         {
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
 
             Assert.AreEqual(new Point(200, 200), rectangle.GetWidthHeightPoint());
         }
@@ -228,7 +230,7 @@ namespace WindowsPractice.Tests
             float expectedScaleWidth = 2;
             float expectedScaleHeight = 2;
             string expectedLocation = "(400, 400),(800, 800)";
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
 
             rectangle.SetScale(2, 2);
             privateObject = new PrivateObject(rectangle);
@@ -245,7 +247,7 @@ namespace WindowsPractice.Tests
             Point x1Y1 = new Point(500, 500);
             Point widthHeight = new Point(100, 100);
             string expectedLocation = "(500, 500),(600, 600)";
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
 
             rectangle.SetX1Y1WidthHeightTuple(x1Y1, widthHeight);
 
@@ -261,7 +263,7 @@ namespace WindowsPractice.Tests
         public void GetX1Y1WidthHeightTupleTest()
         {
             (Point x1Y1, Point widthHeight) expectedTurple = (new Point(200, 200), new Point(200, 200));
-            rectangle = new Rectangle(new MockRandomGenerator());
+            rectangle = new Rectangle(x1y1, x2y2);
 
             Assert.AreEqual(expectedTurple, rectangle.GetX1Y1WidthHeightTuple());
         }
