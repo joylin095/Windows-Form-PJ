@@ -225,7 +225,7 @@ namespace WindowsPractice
         // 按下新增鍵
         private void AddDataButtonClick(object sender, EventArgs e)
         {
-            inputForm dialog = new inputForm();
+            InputForm dialog = new InputForm();
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {

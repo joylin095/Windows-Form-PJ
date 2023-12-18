@@ -159,6 +159,24 @@ namespace WindowsPractice.Ui.Tests
         }
 
         //test
+        public void SelectShape(string name, string shapeName)
+        {
+            WindowsElement element = _driver.FindElementByAccessibilityId(name);
+            element.Click();
+            var selectshape = element.FindElementByName(shapeName);
+            selectshape.Click();
+        }
+
+        //test
+        public void InputShapePoint(string name, string dataName, string data)
+        {
+            //WindowsElement element = _driver.FindElementByAccessibilityId(name);
+            var dataElement = _driver.FindElementByAccessibilityId(dataName);
+            dataElement.Click();
+            dataElement.SendKeys(data);
+        }
+
+        //test
         public void ClickDataGridViewDelete(string name, int row)
         {
             Actions action = new Actions(_driver);

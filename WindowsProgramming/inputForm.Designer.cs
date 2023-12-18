@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsPractice
 {
-    partial class inputForm
+    partial class InputForm
     {
         /// <summary>
         /// Required designer variable.

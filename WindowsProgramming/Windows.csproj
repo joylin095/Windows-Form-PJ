@@ -103,11 +103,11 @@
     <Compile Include="Directions\Up.cs" />
     <Compile Include="Directions\UpLeft.cs" />
     <Compile Include="Directions\UpRight.cs" />
-    <Compile Include="inputForm.cs">
+    <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="inputForm.Designer.cs">
-      <DependentUpon>inputForm.cs</DependentUpon>
+    <Compile Include="InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Circle.cs" />
     <Compile Include="DoubleBufferedPanel.cs">
@@ -146,8 +146,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="inputForm.resx">
-      <DependentUpon>inputForm.cs</DependentUpon>
+    <EmbeddedResource Include="InputForm.resx">
+      <DependentUpon>InputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -98,6 +98,7 @@
     <Compile Include="Directions\UpRightTests.cs" />
     <Compile Include="Directions\UpTests.cs" />
     <Compile Include="DoubleBufferedPanelTests.cs" />
+    <Compile Include="UI\AddShapeTest.cs" />
     <Compile Include="UI\DrawTest.cs" />
     <Compile Include="Model\CircleTests.cs" />
     <Compile Include="Model\DrawingStateTests.cs" />
