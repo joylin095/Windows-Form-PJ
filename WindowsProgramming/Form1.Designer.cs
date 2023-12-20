@@ -36,8 +36,8 @@ namespace WindowsPractice
             this._delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._groupBox1 = new System.Windows.Forms.GroupBox();
             this._splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -49,6 +49,7 @@ namespace WindowsPractice
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._panel1 = new WindowsPractice.DoubleBufferedPanel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).BeginInit();
             this._groupBox1.SuspendLayout();
@@ -65,6 +66,7 @@ namespace WindowsPractice
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
             this._splitContainer2.SuspendLayout();
+            this._panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _addDataButton
@@ -101,8 +103,8 @@ namespace WindowsPractice
             this._delete,
             this._shape,
             this._info,
-            this._nameDataGridViewTextBoxColumn,
-            this._locationDataGridViewTextBoxColumn});
+            this.nameDataGridViewTextBoxColumn,
+            this.locationDataGridViewTextBoxColumn});
             this._recordDataGridView.DataSource = this._shapeBindingSource;
             this._recordDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._recordDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -112,7 +114,7 @@ namespace WindowsPractice
             this._recordDataGridView.RowHeadersWidth = 51;
             this._recordDataGridView.RowTemplate.Height = 27;
             this._recordDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._recordDataGridView.Size = new System.Drawing.Size(297, 533);
+            this._recordDataGridView.Size = new System.Drawing.Size(297, 524);
             this._recordDataGridView.TabIndex = 5;
             this._recordDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordDataGridViewCellContentClick);
             // 
@@ -148,21 +150,21 @@ namespace WindowsPractice
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            this._nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this._nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this._nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this._nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this._nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this._nameDataGridViewTextBoxColumn.Visible = false;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Visible = false;
             // 
             // locationDataGridViewTextBoxColumn
             // 
-            this._locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this._locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this._locationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this._locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this._locationDataGridViewTextBoxColumn.ReadOnly = true;
-            this._locationDataGridViewTextBoxColumn.Visible = false;
+            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            this.locationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationDataGridViewTextBoxColumn.Visible = false;
             // 
             // _shapeBindingSource
             // 
@@ -174,7 +176,7 @@ namespace WindowsPractice
             this._groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._groupBox1.Location = new System.Drawing.Point(0, 0);
             this._groupBox1.Name = "_groupBox1";
-            this._groupBox1.Size = new System.Drawing.Size(303, 675);
+            this._groupBox1.Size = new System.Drawing.Size(303, 666);
             this._groupBox1.TabIndex = 3;
             this._groupBox1.TabStop = false;
             this._groupBox1.Text = "資料顯示";
@@ -195,7 +197,7 @@ namespace WindowsPractice
             // _splitContainer3.Panel2
             // 
             this._splitContainer3.Panel2.Controls.Add(this._recordDataGridView);
-            this._splitContainer3.Size = new System.Drawing.Size(297, 651);
+            this._splitContainer3.Size = new System.Drawing.Size(297, 642);
             this._splitContainer3.SplitterDistance = 114;
             this._splitContainer3.TabIndex = 6;
             // 
@@ -204,7 +206,7 @@ namespace WindowsPractice
             this._about.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._caption});
             this._about.Name = "_about";
-            this._about.Size = new System.Drawing.Size(53, 23);
+            this._about.Size = new System.Drawing.Size(53, 26);
             this._about.Text = "說明";
             // 
             // _caption
@@ -221,7 +223,7 @@ namespace WindowsPractice
             this._about});
             this._menuStrip1.Location = new System.Drawing.Point(0, 0);
             this._menuStrip1.Name = "_menuStrip1";
-            this._menuStrip1.Size = new System.Drawing.Size(1450, 27);
+            this._menuStrip1.Size = new System.Drawing.Size(1450, 30);
             this._menuStrip1.TabIndex = 0;
             this._menuStrip1.Text = "menuStrip1";
             // 
@@ -234,14 +236,15 @@ namespace WindowsPractice
             this._button1.Size = new System.Drawing.Size(159, 126);
             this._button1.TabIndex = 1;
             this._button1.UseVisualStyleBackColor = false;
-            this._button1.Paint += new System.Windows.Forms.PaintEventHandler(this.Button1Paint);
+            this._button1.Click += new System.EventHandler(this.ButtonClick);
+            this._button1.Paint += new System.Windows.Forms.PaintEventHandler(this.ButtonPaint);
             // 
             // _toolStrip1
             // 
             this._toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this._toolStrip1.Location = new System.Drawing.Point(0, 27);
+            this._toolStrip1.Location = new System.Drawing.Point(0, 30);
             this._toolStrip1.Name = "_toolStrip1";
-            this._toolStrip1.Size = new System.Drawing.Size(1450, 25);
+            this._toolStrip1.Size = new System.Drawing.Size(1450, 31);
             this._toolStrip1.TabIndex = 6;
             this._toolStrip1.Text = "toolStrip1";
             // 
@@ -250,7 +253,7 @@ namespace WindowsPractice
             this._splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this._splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this._splitContainer1.Location = new System.Drawing.Point(0, 52);
+            this._splitContainer1.Location = new System.Drawing.Point(0, 61);
             this._splitContainer1.Name = "_splitContainer1";
             // 
             // _splitContainer1.Panel1
@@ -261,7 +264,7 @@ namespace WindowsPractice
             // _splitContainer1.Panel2
             // 
             this._splitContainer1.Panel2.Controls.Add(this._splitContainer2);
-            this._splitContainer1.Size = new System.Drawing.Size(1450, 679);
+            this._splitContainer1.Size = new System.Drawing.Size(1450, 670);
             this._splitContainer1.SplitterDistance = 185;
             this._splitContainer1.TabIndex = 7;
             // 
@@ -282,13 +285,14 @@ namespace WindowsPractice
             // _splitContainer2.Panel2
             // 
             this._splitContainer2.Panel2.Controls.Add(this._groupBox1);
-            this._splitContainer2.Size = new System.Drawing.Size(1261, 679);
+            this._splitContainer2.Size = new System.Drawing.Size(1261, 670);
             this._splitContainer2.SplitterDistance = 950;
             this._splitContainer2.TabIndex = 0;
             // 
             // _panel1
             // 
             this._panel1.BackColor = System.Drawing.Color.White;
+            this._panel1.Controls.Add(this.label1);
             this._panel1.Location = new System.Drawing.Point(1, 1);
             this._panel1.Name = "_panel1";
             this._panel1.Padding = new System.Windows.Forms.Padding(10);
@@ -300,6 +304,15 @@ namespace WindowsPractice
             this._panel1.MouseLeave += new System.EventHandler(this.Panel1MouseLeave);
             this._panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseMove);
             this._panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(245, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // Form1
             // 
@@ -332,6 +345,8 @@ namespace WindowsPractice
             this._splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).EndInit();
             this._splitContainer2.ResumeLayout(false);
+            this._panel1.ResumeLayout(false);
+            this._panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,6 +372,9 @@ namespace WindowsPractice
         private System.Windows.Forms.DataGridViewTextBoxColumn _info;
         private System.Windows.Forms.DataGridViewTextBoxColumn _nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _locationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label1;
     }
 }
 

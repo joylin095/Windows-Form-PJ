@@ -19,24 +19,28 @@ namespace WindowsPractice
         public event CursorToDefaultEventHandler _cursorToDefault;
 
         Shapes _shapes;
+        Pages _pages;
         Pen _pen;
         CommandManager _commandManager;
         Dictionary<int, (Point X1Y1, Point WidthHeight)> _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
         Dictionary<int, (Point X1Y1, Point WidthHeight)> _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
+        int _currentPage;
 
         public Model()
-        {
+        {  
             _shapes = new Shapes();
+            _pages = new Pages();
             _pen = new Pen(Color.Green);
             _commandManager = new CommandManager();
             IsDrawing = false;
+            _currentPage = 0;
         }
 
         public BindingList<Shape> BindingShapeList
         {
             get 
             { 
-                return _shapes.ShapeList; 
+                return _pages.ShapeList; 
             }
         }
 
@@ -86,16 +90,33 @@ namespace WindowsPractice
             }
         }
 
+        // 新增頁面
+        public void CreateNewPage(int currentPage)
+        {
+            _currentPage = currentPage;
+            _pages.CreateNewPage();
+            _pages.SetCurrentPage(_currentPage);
+        }
+
+        // set current page
+        public void SetCurrentPage(int currentPage)
+        {
+            _currentPage = currentPage;
+            _pages.SetCurrentPage(_currentPage);
+        }
+
         // 創建shape
         public void CreateShapes(Point x1Y1 = default, Point x2Y2 = default)
         {
-            _shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
+            _pages.CreateShape(SelectShapeName, x1Y1, x2Y2);
+            //_shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
         }
 
         // 加入shape到list
         public void AddShape(Shape shape = null, int insertIndex = -1)
         {
-            _shapes.AddShape(shape, insertIndex);
+            _pages.AddShape(shape, insertIndex);
+            //_shapes.AddShape(shape, insertIndex);
         }
 
         // 刪除shape
@@ -105,10 +126,11 @@ namespace WindowsPractice
         }
 
         // 畫圖
-        public void Draw(IGraphics graphics)
+        public void Draw(IGraphics graphics, int drawPage = -1)
         {
-            _shapes.DrawAll(graphics);
-            _shapes.IsDrawing = IsDrawing;
+            _pages.DrawShape(graphics, IsDrawing, drawPage);
+            //_shapes.DrawAll(graphics);
+            //_shapes.IsDrawing = IsDrawing;
         }
 
         // 紀錄第一個按下去的點
@@ -120,7 +142,8 @@ namespace WindowsPractice
         // 更新座標
         public void UpdateLocation(Point newPoint)
         {
-            _shapes.UpdateLocation(FirstPoint, newPoint);
+            _pages.UpdateLocation(FirstPoint, newPoint);
+            //_shapes.UpdateLocation(FirstPoint, newPoint);
         }
 
         // 判斷shape有被選到 而且 鼠標也指到

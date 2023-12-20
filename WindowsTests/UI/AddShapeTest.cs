@@ -42,6 +42,7 @@ namespace WindowsPractice.Ui.Tests
             _robot.CleanUp();
         }
 
+        // add shape test
         [TestMethod]
         public void AddShape()
         {

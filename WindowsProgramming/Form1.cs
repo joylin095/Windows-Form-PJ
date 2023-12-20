@@ -17,12 +17,14 @@ namespace WindowsPractice
         PresentationModel _presentationModel;
         ToolStripButton _redoButton;
         ToolStripButton _undoButton;
+        ToolStripButton _newPageButton;
         const string DELETE = "刪除";
         const int DELETE_BUTTON_COLUMN_INDEX = 0;
         const float SCALE16 = 16.0f;
         const float SCALE9 = 9.0f;
         const int TWO = 2;
         string _solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
+        List<Button> _buttonList = new List<Button>();
         public Form1(Model model)
         {
             InitializeComponent();
@@ -37,9 +39,12 @@ namespace WindowsPractice
             CreateToolStripButtonRectangle();
             CreateToolStripButtonCircle();
             CreateToolStripButtonMouse();
+            CreateToolStripButtonNewPage();
             CreateToolStripButtonUndo();
             CreateToolStripButtonRedo();
             _presentationModel.InitialPanelSize = _panel1.Size;
+            _buttonList.Add(_button1);
+            ButtonRefresh();
         }
 
         // 創ToolStripButtonLine
@@ -137,6 +142,26 @@ namespace WindowsPractice
             _toolStrip1.Items.Add(mouseButton);
         }
 
+        // 創ToolStripButtonNewPage
+        private void CreateToolStripButtonNewPage()
+        {
+            const string NEW_PAGE = "新增頁面";
+            _newPageButton = new ToolStripButton();
+            _newPageButton.Click += NewPageClick;
+            _newPageButton.Text = NEW_PAGE;
+            _newPageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            try
+            {
+                string FILE_PATH = Path.Combine(_solutionPath, "images", "newPage.png");
+                _newPageButton.Image = Bitmap.FromFile(FILE_PATH);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"FileNotFoundException: {ex.Message}");
+            }
+            _toolStrip1.Items.Add(_newPageButton);
+        }
+
         // 創ToolStripButtonUndo
         private void CreateToolStripButtonUndo()
         {
@@ -191,11 +216,20 @@ namespace WindowsPractice
         }
 
         // button縮放更新
-        private void Button1Refresh()
+        private void ButtonRefresh()
         {
-            _button1.Width = _splitContainer1.Panel1.Width;
-            _button1.Height = (int)((_button1.Width / SCALE16) * SCALE9);
-            
+            Point point;
+            for (int i = 0; i < _buttonList.Count; i++)
+            {
+                _buttonList[i].Width = _splitContainer1.Panel1.Width;
+                _buttonList[i].Height = (int)((_buttonList[i].Width / SCALE16) * SCALE9);
+                if (i != 0)
+                {
+                    point = _buttonList[i - 1].Location;
+                    point.Y += (5 + _buttonList[i].Height);
+                    _buttonList[i].Location = point;
+                }
+            }
         }
 
         // panel縮放更新
@@ -212,7 +246,10 @@ namespace WindowsPractice
         private void HandlePanelChanged(object sender)
         {
             _panel1.Invalidate();
-            _button1.Invalidate();
+            foreach (Button button in _buttonList)
+            {
+                button.Invalidate();
+            }
         }
 
         // 畫完圖形改變游標
@@ -257,10 +294,16 @@ namespace WindowsPractice
         }
 
         // button畫面繪製
-        private void Button1Paint(object sender, PaintEventArgs e)
+        private void ButtonPaint(object sender, PaintEventArgs e)
         {
-            e.Graphics.ScaleTransform((float)_button1.Width / _presentationModel.InitialPanelSize.Width, (float)_button1.Height / _presentationModel.InitialPanelSize.Height);
-            _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)));
+            foreach (Button button in _buttonList)
+            {
+                if (button == sender)
+                {
+                    e.Graphics.ScaleTransform((float)button.Width / _presentationModel.InitialPanelSize.Width, (float)button.Height / _presentationModel.InitialPanelSize.Height);
+                    _model.Draw(new WindowsFormsGraphicsAdaptor(e.Graphics, new Pen(Color.Green)), _buttonList.IndexOf(button));
+                }
+            }
         }
 
         // 當ToolStripButton按下去時
@@ -276,9 +319,46 @@ namespace WindowsPractice
             _undoButton.Enabled = _model.IsUndoEnabled;
             _redoButton.Enabled = _model.IsRedoEnabled;
             _panel1.Invalidate();
-            _button1.Invalidate();
+            foreach (Button button in _buttonList)
+            {
+                button.Invalidate();
+            }
             _model.SetScale(_presentationModel.WidthScale, _presentationModel.HeightScale);
             _recordDataGridView.Invalidate();
+        }
+
+        // new page click
+        private void NewPageClick(object sender, EventArgs e)
+        {
+            Point point;
+            Button button = new Button();
+            button.Width = _splitContainer1.Panel1.Width;
+            button.Height = (int)((button.Width / SCALE16) * SCALE9);
+            button.BackColor = Color.White;
+            point = _buttonList[_buttonList.Count - 1].Location;
+            point.Y += (5 + button.Height);
+            button.Location = point;
+            button.Click += ButtonClick;
+            button.Paint += ButtonPaint;
+            _splitContainer1.Panel1.Controls.Add(button);
+            _buttonList.Add(button);
+            _model.CreateNewPage(_buttonList.Count - 1);
+            _recordDataGridView.DataSource = _model.BindingShapeList;
+            RefreshUi();
+        }
+
+        // button click
+        private void ButtonClick(object sender, EventArgs e)
+        {
+            foreach (Button button in _buttonList)
+            {
+                if (button == sender)
+                {
+                    _model.SetCurrentPage(_buttonList.IndexOf(button));
+                }
+            }
+            _recordDataGridView.DataSource = _model.BindingShapeList;
+            RefreshUi();
         }
 
         // undo click
@@ -337,7 +417,7 @@ namespace WindowsPractice
         private void SplitContainer2Panel1Resize(object sender, EventArgs e)
         {
             PanelRefresh();
-            Button1Refresh();
+            ButtonRefresh();
             if (_presentationModel != null && !_presentationModel.InitialPanelSize.IsEmpty)
             {
                 _presentationModel.NewPanelSize = _panel1.Size;
