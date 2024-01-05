@@ -11,21 +11,25 @@ namespace WindowsPractice.Command
     {
         Model _model;
         Shape _shape;
-        public AddCommand(Model model, Shape shape)
+        int _pageIndex;
+        public AddCommand(Model model, Shape shape, int pageIndex)
         {
             _model = model;
             _shape = shape;
+            _pageIndex = pageIndex;
         }
 
         // do
         public void Execute()
         {
+            _model.SetCurrentPage(_pageIndex);
             _model.AddShape(_shape);
         }
 
         // undo
         public void CancelExecute()
         {
+            _model.SetCurrentPage(_pageIndex);
             _model.DeleteData(_model.BindingShapeList.Count - 1);
         }
     }

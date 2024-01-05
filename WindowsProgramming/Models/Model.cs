@@ -18,7 +18,6 @@ namespace WindowsPractice
         public delegate void CursorToDefaultEventHandler(object sender);
         public event CursorToDefaultEventHandler _cursorToDefault;
 
-        Shapes _shapes;
         Pages _pages;
         Pen _pen;
         CommandManager _commandManager;
@@ -28,7 +27,6 @@ namespace WindowsPractice
 
         public Model()
         {  
-            _shapes = new Shapes();
             _pages = new Pages();
             _pen = new Pen(Color.Green);
             _commandManager = new CommandManager();
@@ -36,11 +34,19 @@ namespace WindowsPractice
             _currentPage = 0;
         }
 
+        public Shapes Shapes
+        {
+            get
+            {
+                return _pages.ShapeList;
+            }
+        }
+
         public BindingList<Shape> BindingShapeList
         {
             get 
             { 
-                return _pages.ShapeList; 
+                return Shapes.ShapeList; 
             }
         }
 
@@ -108,29 +114,30 @@ namespace WindowsPractice
         // 創建shape
         public void CreateShapes(Point x1Y1 = default, Point x2Y2 = default)
         {
-            _pages.CreateShape(SelectShapeName, x1Y1, x2Y2);
-            //_shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
+            //_pages.CreateShape(SelectShapeName, x1Y1, x2Y2);
+            Shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
         }
 
         // 加入shape到list
         public void AddShape(Shape shape = null, int insertIndex = -1)
         {
-            _pages.AddShape(shape, insertIndex);
-            //_shapes.AddShape(shape, insertIndex);
+            //_pages.AddShape(shape, insertIndex);
+            Shapes.AddShape(shape, insertIndex);
         }
 
         // 刪除shape
         public void DeleteData(int deleteRowIndex)
         {
-            _shapes.DeleteData(deleteRowIndex);
+            Shapes.DeleteData(deleteRowIndex);
         }
 
         // 畫圖
         public void Draw(IGraphics graphics, int drawPage = -1)
         {
-            _pages.DrawShape(graphics, IsDrawing, drawPage);
-            //_shapes.DrawAll(graphics);
-            //_shapes.IsDrawing = IsDrawing;
+            //_pages.DrawShape(graphics, IsDrawing, drawPage);
+            Shapes shapes = drawPage!=-1? _pages.GetPage(drawPage) : _pages.GetPage(_currentPage);
+            shapes.DrawAll(graphics);
+            shapes.IsDrawing = IsDrawing;
         }
 
         // 紀錄第一個按下去的點
@@ -142,33 +149,33 @@ namespace WindowsPractice
         // 更新座標
         public void UpdateLocation(Point newPoint)
         {
-            _pages.UpdateLocation(FirstPoint, newPoint);
-            //_shapes.UpdateLocation(FirstPoint, newPoint);
+            //_pages.UpdateLocation(FirstPoint, newPoint);
+            Shapes.UpdateLocation(FirstPoint, newPoint);
         }
 
         // 判斷shape有被選到 而且 鼠標也指到
         public bool IsSelectedAndInPoint(Point point)
         {
-            return _shapes.IsSelectedAndInPoint(point);
+            return Shapes.IsSelectedAndInPoint(point);
         }
 
         // 判斷shape沒被選到 但是 鼠標有指到
         public bool IsNotSelectedButInPoint(Point point)
         {
-            return _shapes.IsNotSelectedButInPoint(point);
+            return Shapes.IsNotSelectedButInPoint(point);
         }
 
         // 移動選取的shape
         public void ShapeMove(Point point)
         {
-            _shapes.ShapeMove(new Point(point.X - FirstPoint.X, point.Y - FirstPoint.Y));
+            Shapes.ShapeMove(new Point(point.X - FirstPoint.X, point.Y - FirstPoint.Y));
             FirstPoint = point;
         }
 
         // 是否按到外框的圓
         public bool IsClickBorderCircle(Point point)
         {
-            return _shapes.IsClickBorderCircle(point);
+            return Shapes.IsClickBorderCircle(point);
         }
 
         // 在畫布滑鼠按下
@@ -192,7 +199,7 @@ namespace WindowsPractice
         public void PanelMouseUp(Point point)
         {
             State.PanelMouseUp(this, point);
-            _shapes.Direction = -1;
+            Shapes.Direction = -1;
             if (_cursorToDefault != null)
             {
                 _cursorToDefault(this);
@@ -202,7 +209,7 @@ namespace WindowsPractice
         // 直接設定圖形
         public void SetDirectly(Point X1Y1, Point WidthHeight, int index)
         {
-            _shapes.SetDirect(X1Y1, WidthHeight, index);
+            Shapes.SetDirect(X1Y1, WidthHeight, index);
         }
 
         // 鍵盤按下按鍵
@@ -211,11 +218,11 @@ namespace WindowsPractice
             Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
             if (keys == System.Windows.Forms.Keys.Delete)
             {
-                foreach (Shape shape in _shapes.ShapeList.ToArray())
+                foreach (Shape shape in Shapes.ShapeList.ToArray())
                 {
                     if (shape.Selected == true)
                     {
-                        deleteShapeList.Add(shape, _shapes.ShapeList.IndexOf(shape));
+                        deleteShapeList.Add(shape, Shapes.ShapeList.IndexOf(shape));
                         if (_panelChanged != null)
                         {
                             _panelChanged(this);
@@ -235,9 +242,9 @@ namespace WindowsPractice
             }
             else
             {
-                if (_shapes.Direction == -1)
+                if (Shapes.Direction == -1)
                 {
-                    Cursor = _shapes.GetCursorAtBorderCircle(point);
+                    Cursor = Shapes.GetCursorAtBorderCircle(point);
                 }
                 else
                 {
@@ -249,13 +256,13 @@ namespace WindowsPractice
         // scale point
         public void SetScale(float width, float height)
         {
-            _shapes.SetScale(width, height);
+            Shapes.SetScale(width, height);
         }
 
         // 畫圖command
         public void DrawCommand()
         {
-            _commandManager.Execute(new DrawCommand(this, _shapes.Shape));
+            _commandManager.Execute(new DrawCommand(this, Shapes.Shape, _currentPage));
         }
 
         // add button command
@@ -263,7 +270,7 @@ namespace WindowsPractice
         {
             SelectShapeName = selectShapeName;
             CreateShapes(x1Y1, x2Y2);
-            _commandManager.Execute(new AddCommand(this, _shapes.Shape));
+            _commandManager.Execute(new AddCommand(this, Shapes.Shape, _currentPage));
         }
 
         // delete command
@@ -271,7 +278,7 @@ namespace WindowsPractice
         {
             if (deleteShapeList.Count != 0)
             {
-                _commandManager.Execute(new DeleteCommand(this, deleteShapeList));
+                _commandManager.Execute(new DeleteCommand(this, deleteShapeList, _currentPage));
             }
         }
 
@@ -279,19 +286,19 @@ namespace WindowsPractice
         public void MoveCommand()
         {
             _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
-            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            foreach (Shape shape in Shapes.ShapeList.ToArray())
             {
                 if (shape.Selected)
                 {
-                    if (_beforeMove[_shapes.ShapeList.IndexOf(shape)] != shape.GetX1Y1WidthHeightTuple())
+                    if (_beforeMove[Shapes.ShapeList.IndexOf(shape)] != shape.GetX1Y1WidthHeightTuple())
                     {
-                        _afterMove.Add(_shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
+                        _afterMove.Add(Shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
                     }
                 }
             }
             if (_beforeMove.Count != 0 && _beforeMove.Count == _afterMove.Count)
             {
-                _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove));
+                _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove, _currentPage));
             }
         }
 
@@ -299,11 +306,11 @@ namespace WindowsPractice
         public void MoveBefore()
         {
             _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
-            foreach (Shape shape in _shapes.ShapeList.ToArray())
+            foreach (Shape shape in Shapes.ShapeList.ToArray())
             {
                 if (shape.Selected)
                 {
-                    _beforeMove.Add(_shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
+                    _beforeMove.Add(Shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
                 }
             }
         }
