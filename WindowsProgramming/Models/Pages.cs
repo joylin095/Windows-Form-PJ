@@ -14,14 +14,6 @@ namespace WindowsPractice
         List<Shapes> _shapesList;
         int _currentPage;
 
-        public Shapes ShapeList
-        {
-            get
-            {
-                return _shapesList[_currentPage];
-            }
-        }
-
         public Pages()
         {
 
@@ -30,6 +22,22 @@ namespace WindowsPractice
                 shapes
             };
             _currentPage = 0;
+        }
+
+        public Shapes ShapeList
+        {
+            get
+            {
+                return _shapesList[_currentPage];
+            }
+        }
+
+        public int PageSum
+        {
+            get
+            {
+                return _shapesList.Count;
+            }
         }
 
         // set current page
@@ -49,6 +57,18 @@ namespace WindowsPractice
         {
             shapes = new Shapes();
             _shapesList.Add(shapes);
+        }
+
+        // delete page
+        public void DeletePage(int pageIndex)
+        {
+            _shapesList.RemoveAt(pageIndex);
+        }
+
+        // insert page
+        public void InsertPage(int pageIndex, Shapes shapes)
+        {
+            _shapesList.Insert(pageIndex, shapes);
         }
 
         // draw shape

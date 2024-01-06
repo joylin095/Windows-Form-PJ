@@ -17,6 +17,10 @@ namespace WindowsPractice
         public event PanelChangedEventHandler _panelChanged;
         public delegate void CursorToDefaultEventHandler(object sender);
         public event CursorToDefaultEventHandler _cursorToDefault;
+        public delegate void AddPageEventHandler(object sender, int pageIndex);
+        public event AddPageEventHandler _addPageEvent;
+        public delegate void DeletePageEventHandler(object sender, int pageIndex);
+        public event DeletePageEventHandler _deletePageEvent;
 
         Pages _pages;
         Pen _pen;
@@ -24,6 +28,7 @@ namespace WindowsPractice
         Dictionary<int, (Point X1Y1, Point WidthHeight)> _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
         Dictionary<int, (Point X1Y1, Point WidthHeight)> _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
         int _currentPage;
+        int _clickPage;
 
         public Model()
         {  
@@ -32,6 +37,7 @@ namespace WindowsPractice
             _commandManager = new CommandManager();
             IsDrawing = false;
             _currentPage = 0;
+            _clickPage = -1;
         }
 
         public Shapes Shapes
@@ -96,12 +102,33 @@ namespace WindowsPractice
             }
         }
 
+        // 點擊button時
+        public void ClickCreatePage(int currentPage)
+        {
+            _currentPage = currentPage;
+            _clickPage = currentPage;
+            _pages.SetCurrentPage(_currentPage);
+        }
+
         // 新增頁面
         public void CreateNewPage(int currentPage)
         {
             _currentPage = currentPage;
             _pages.CreateNewPage();
             _pages.SetCurrentPage(_currentPage);
+        }
+
+        // delete page
+        public void DeletePage(int pageIndex)
+        {
+            _pages.DeletePage(pageIndex);
+            SetCurrentPage(_pages.PageSum - 1);
+        }
+
+        // insert page
+        public void InsertPage(int pageIndex, Shapes shapes)
+        {
+            _pages.InsertPage(pageIndex, shapes);
         }
 
         // set current page
@@ -135,7 +162,7 @@ namespace WindowsPractice
         public void Draw(IGraphics graphics, int drawPage = -1)
         {
             //_pages.DrawShape(graphics, IsDrawing, drawPage);
-            Shapes shapes = drawPage!=-1? _pages.GetPage(drawPage) : _pages.GetPage(_currentPage);
+            Shapes shapes = drawPage != -1 ? _pages.GetPage(drawPage) : _pages.GetPage(_currentPage);
             shapes.DrawAll(graphics);
             shapes.IsDrawing = IsDrawing;
         }
@@ -259,15 +286,41 @@ namespace WindowsPractice
             Shapes.SetScale(width, height);
         }
 
+        // add page handler
+        public void HandleAddPage(int pageIndex)
+        {
+            if (_addPageEvent != null)
+            {
+                _addPageEvent(this, pageIndex);
+            }
+        }
+
+        // delete page handler
+        public void HandleDeletePage(int pageIndex)
+        {
+            if (_deletePageEvent != null)
+            {
+                _deletePageEvent(this, pageIndex);
+            }
+        }
+
+        // add page command
+        public void AddPageCommand(int currentPage)
+        {
+            _commandManager.Execute(new AddPageCommand(this, currentPage));
+        }
+
         // 畫圖command
         public void DrawCommand()
         {
+            _clickPage = -1;
             _commandManager.Execute(new DrawCommand(this, Shapes.Shape, _currentPage));
         }
 
         // add button command
         public void AddCommand(string selectShapeName, Point x1Y1, Point x2Y2)
         {
+            _clickPage = -1;
             SelectShapeName = selectShapeName;
             CreateShapes(x1Y1, x2Y2);
             _commandManager.Execute(new AddCommand(this, Shapes.Shape, _currentPage));
@@ -278,6 +331,7 @@ namespace WindowsPractice
         {
             if (deleteShapeList.Count != 0)
             {
+                _clickPage = -1;
                 _commandManager.Execute(new DeleteCommand(this, deleteShapeList, _currentPage));
             }
         }
@@ -298,6 +352,7 @@ namespace WindowsPractice
             }
             if (_beforeMove.Count != 0 && _beforeMove.Count == _afterMove.Count)
             {
+                _clickPage = -1;
                 _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove, _currentPage));
             }
         }

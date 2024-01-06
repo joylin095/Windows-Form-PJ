@@ -32,9 +32,20 @@ namespace WindowsPractice
             _model = model;
             _model._panelChanged += HandlePanelChanged;
             _model._cursorToDefault += HandleCursorToDefault;
+            _model._addPageEvent += HandleAddPage;
+            _model._deletePageEvent += HandleDeletePage;
             _presentationModel = new PresentationModel(model);
             _recordDataGridView.DataSource = _model.BindingShapeList;
             CallViewModelToRecordAllShapeName();
+            CreateToolStripButton();
+            _presentationModel.InitialPanelSize = _panel1.Size;
+            _buttonList.Add(_button1);
+            ButtonRefresh();
+        }
+
+        // create全部 CreateToolStripButton
+        private void CreateToolStripButton()
+        {
             CreateToolStripButtonLine();
             CreateToolStripButtonRectangle();
             CreateToolStripButtonCircle();
@@ -42,9 +53,6 @@ namespace WindowsPractice
             CreateToolStripButtonNewPage();
             CreateToolStripButtonUndo();
             CreateToolStripButtonRedo();
-            _presentationModel.InitialPanelSize = _panel1.Size;
-            _buttonList.Add(_button1);
-            ButtonRefresh();
         }
 
         // 創ToolStripButtonLine
@@ -259,6 +267,20 @@ namespace WindowsPractice
             RefreshUi();
         }
 
+        // create new page
+        private void HandleAddPage(object sender, int pageIndex)
+        {
+            CreateButton(pageIndex);
+        }
+
+        // delete new page
+        private void HandleDeletePage(object sender, int pageIndex)
+        {
+            _splitContainer1.Panel1.Controls.Remove(_buttonList[pageIndex]);
+            _buttonList.RemoveAt(pageIndex);
+            
+        }
+
         // 按下新增鍵
         private void AddDataButtonClick(object sender, EventArgs e)
         {
@@ -327,22 +349,27 @@ namespace WindowsPractice
             _recordDataGridView.Invalidate();
         }
 
-        // new page click
-        private void NewPageClick(object sender, EventArgs e)
+        // create button
+        private void CreateButton(int pageIndex)
         {
             Point point;
             Button button = new Button();
             button.Width = _splitContainer1.Panel1.Width;
             button.Height = (int)((button.Width / SCALE16) * SCALE9);
             button.BackColor = Color.White;
-            point = _buttonList[_buttonList.Count - 1].Location;
+            point = _buttonList[pageIndex - 1].Location;
             point.Y += (5 + button.Height);
             button.Location = point;
             button.Click += ButtonClick;
             button.Paint += ButtonPaint;
             _splitContainer1.Panel1.Controls.Add(button);
             _buttonList.Add(button);
-            _model.CreateNewPage(_buttonList.Count - 1);
+        }
+
+        // new page click
+        private void NewPageClick(object sender, EventArgs e)
+        {
+            _model.AddPageCommand(_buttonList.Count);
             _recordDataGridView.DataSource = _model.BindingShapeList;
             RefreshUi();
         }
@@ -354,7 +381,7 @@ namespace WindowsPractice
             {
                 if (button == sender)
                 {
-                    _model.SetCurrentPage(_buttonList.IndexOf(button));
+                    _model.ClickCreatePage(_buttonList.IndexOf(button));
                 }
             }
             _recordDataGridView.DataSource = _model.BindingShapeList;

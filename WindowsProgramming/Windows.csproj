@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AddCommand.cs" />
+    <Compile Include="Command\AddPageCommand.cs" />
     <Compile Include="Command\CommandManager.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
     <Compile Include="Command\DrawCommand.cs" />
