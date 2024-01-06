@@ -34,11 +34,6 @@ namespace WindowsPractice
             this._selectShapeBox = new System.Windows.Forms.ComboBox();
             this._recordDataGridView = new System.Windows.Forms.DataGridView();
             this._delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._groupBox1 = new System.Windows.Forms.GroupBox();
             this._splitContainer3 = new System.Windows.Forms.SplitContainer();
             this._about = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +44,12 @@ namespace WindowsPractice
             this._splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._panel1 = new WindowsPractice.DoubleBufferedPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).BeginInit();
             this._groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer3)).BeginInit();
             this._splitContainer3.Panel1.SuspendLayout();
@@ -66,7 +64,7 @@ namespace WindowsPractice
             this._splitContainer2.Panel1.SuspendLayout();
             this._splitContainer2.Panel2.SuspendLayout();
             this._splitContainer2.SuspendLayout();
-            this._panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _addDataButton
@@ -129,46 +127,6 @@ namespace WindowsPractice
             this._delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this._delete.Text = "刪除";
             this._delete.UseColumnTextForButtonValue = true;
-            // 
-            // _shape
-            // 
-            this._shape.DataPropertyName = "Name";
-            this._shape.FillWeight = 25F;
-            this._shape.HeaderText = "形狀";
-            this._shape.MinimumWidth = 6;
-            this._shape.Name = "_shape";
-            this._shape.ReadOnly = true;
-            // 
-            // _info
-            // 
-            this._info.DataPropertyName = "Location";
-            this._info.FillWeight = 55F;
-            this._info.HeaderText = "資訊";
-            this._info.MinimumWidth = 6;
-            this._info.Name = "_info";
-            this._info.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // locationDataGridViewTextBoxColumn
-            // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.locationDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // _shapeBindingSource
-            // 
-            this._shapeBindingSource.DataSource = typeof(WindowsPractice.Shape);
             // 
             // _groupBox1
             // 
@@ -292,7 +250,6 @@ namespace WindowsPractice
             // _panel1
             // 
             this._panel1.BackColor = System.Drawing.Color.White;
-            this._panel1.Controls.Add(this.label1);
             this._panel1.Location = new System.Drawing.Point(1, 1);
             this._panel1.Name = "_panel1";
             this._panel1.Padding = new System.Windows.Forms.Padding(10);
@@ -305,14 +262,45 @@ namespace WindowsPractice
             this._panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseMove);
             this._panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1MouseUp);
             // 
-            // label1
+            // _shape
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(245, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this._shape.DataPropertyName = "Name";
+            this._shape.FillWeight = 25F;
+            this._shape.HeaderText = "形狀";
+            this._shape.MinimumWidth = 6;
+            this._shape.Name = "_shape";
+            this._shape.ReadOnly = true;
+            // 
+            // _info
+            // 
+            this._info.DataPropertyName = "Location";
+            this._info.FillWeight = 55F;
+            this._info.HeaderText = "資訊";
+            this._info.MinimumWidth = 6;
+            this._info.Name = "_info";
+            this._info.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // locationDataGridViewTextBoxColumn
+            // 
+            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            this.locationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.locationDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // _shapeBindingSource
+            // 
+            this._shapeBindingSource.DataSource = typeof(WindowsPractice.Shape);
             // 
             // Form1
             // 
@@ -328,7 +316,6 @@ namespace WindowsPractice
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).EndInit();
             this._groupBox1.ResumeLayout(false);
             this._splitContainer3.Panel1.ResumeLayout(false);
             this._splitContainer3.Panel2.ResumeLayout(false);
@@ -345,8 +332,7 @@ namespace WindowsPractice
             this._splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._splitContainer2)).EndInit();
             this._splitContainer2.ResumeLayout(false);
-            this._panel1.ResumeLayout(false);
-            this._panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._shapeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,7 +360,6 @@ namespace WindowsPractice
         private System.Windows.Forms.DataGridViewTextBoxColumn _locationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label1;
     }
 }
 

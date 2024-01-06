@@ -10,7 +10,7 @@ namespace WindowsPractice
 {
     public class Pages
     {
-        Shapes shapes = new Shapes();
+        Shapes _shapes = new Shapes();
         List<Shapes> _shapesList;
         int _currentPage;
 
@@ -19,7 +19,7 @@ namespace WindowsPractice
 
             _shapesList = new List<Shapes>()
             {
-                shapes
+                _shapes
             };
             _currentPage = 0;
         }
@@ -29,6 +29,14 @@ namespace WindowsPractice
             get
             {
                 return _shapesList[_currentPage];
+            }
+        }
+
+        public Shapes TempShapes
+        {
+            get
+            {
+                return _shapes;
             }
         }
 
@@ -55,9 +63,15 @@ namespace WindowsPractice
         // 增加頁面
         public void CreateNewPage()
         {
-            shapes = new Shapes();
-            _shapesList.Add(shapes);
+            _shapes = new Shapes();
+            //_shapesList.Add(_shapes);
         }
+
+        // add shapes
+        //public void AddPage(Shapes shapes)
+        //{
+        //    _shapesList.Add(shapes);
+        //}
 
         // delete page
         public void DeletePage(int pageIndex)

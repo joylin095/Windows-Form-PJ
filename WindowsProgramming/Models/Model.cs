@@ -17,7 +17,7 @@ namespace WindowsPractice
         public event PanelChangedEventHandler _panelChanged;
         public delegate void CursorToDefaultEventHandler(object sender);
         public event CursorToDefaultEventHandler _cursorToDefault;
-        public delegate void AddPageEventHandler(object sender, int pageIndex);
+        public delegate void AddPageEventHandler(object sender);
         public event AddPageEventHandler _addPageEvent;
         public delegate void DeletePageEventHandler(object sender, int pageIndex);
         public event DeletePageEventHandler _deletePageEvent;
@@ -129,6 +129,7 @@ namespace WindowsPractice
         public void InsertPage(int pageIndex, Shapes shapes)
         {
             _pages.InsertPage(pageIndex, shapes);
+            SetCurrentPage(pageIndex);
         }
 
         // set current page
@@ -245,6 +246,12 @@ namespace WindowsPractice
             Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
             if (keys == System.Windows.Forms.Keys.Delete)
             {
+                if (_clickPage != -1 && _pages.PageSum > 1)
+                {
+                    DeletePageCommand(_clickPage);
+                    _clickPage = -1;
+                    return;
+                }
                 foreach (Shape shape in Shapes.ShapeList.ToArray())
                 {
                     if (shape.Selected == true)
@@ -287,11 +294,11 @@ namespace WindowsPractice
         }
 
         // add page handler
-        public void HandleAddPage(int pageIndex)
+        public void HandleAddPage()
         {
             if (_addPageEvent != null)
             {
-                _addPageEvent(this, pageIndex);
+                _addPageEvent(this);
             }
         }
 
@@ -307,7 +314,15 @@ namespace WindowsPractice
         // add page command
         public void AddPageCommand(int currentPage)
         {
-            _commandManager.Execute(new AddPageCommand(this, currentPage));
+            CreateNewPage(currentPage);
+            Shapes shapes = _pages.TempShapes;
+            _commandManager.Execute(new AddPageCommand(this, shapes, currentPage));
+        }
+
+        // delete page command
+        public void DeletePageCommand(int currentPage)
+        {
+            _commandManager.Execute(new DeletePageCommand(this, Shapes, currentPage));
         }
 
         // 畫圖command

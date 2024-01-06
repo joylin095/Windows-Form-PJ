@@ -93,6 +93,7 @@
     <Compile Include="Command\AddPageCommand.cs" />
     <Compile Include="Command\CommandManager.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
+    <Compile Include="Command\DeletePageCommand.cs" />
     <Compile Include="Command\DrawCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />

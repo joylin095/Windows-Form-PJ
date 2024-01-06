@@ -237,6 +237,11 @@ namespace WindowsPractice
                     point.Y += (5 + _buttonList[i].Height);
                     _buttonList[i].Location = point;
                 }
+                else
+                {
+                    _buttonList[i].Location = new Point(-2, 0);
+                }
+                _buttonList[i].Invalidate();
             }
         }
 
@@ -268,9 +273,10 @@ namespace WindowsPractice
         }
 
         // create new page
-        private void HandleAddPage(object sender, int pageIndex)
+        private void HandleAddPage(object sender)
         {
-            CreateButton(pageIndex);
+            CreateButton();
+            RefreshUi();
         }
 
         // delete new page
@@ -278,7 +284,7 @@ namespace WindowsPractice
         {
             _splitContainer1.Panel1.Controls.Remove(_buttonList[pageIndex]);
             _buttonList.RemoveAt(pageIndex);
-            
+            RefreshUi();
         }
 
         // 按下新增鍵
@@ -341,23 +347,21 @@ namespace WindowsPractice
             _undoButton.Enabled = _model.IsUndoEnabled;
             _redoButton.Enabled = _model.IsRedoEnabled;
             _panel1.Invalidate();
-            foreach (Button button in _buttonList)
-            {
-                button.Invalidate();
-            }
+            ButtonRefresh();
             _model.SetScale(_presentationModel.WidthScale, _presentationModel.HeightScale);
+            _recordDataGridView.DataSource = _model.BindingShapeList;
             _recordDataGridView.Invalidate();
         }
 
         // create button
-        private void CreateButton(int pageIndex)
+        private void CreateButton()
         {
             Point point;
             Button button = new Button();
             button.Width = _splitContainer1.Panel1.Width;
             button.Height = (int)((button.Width / SCALE16) * SCALE9);
             button.BackColor = Color.White;
-            point = _buttonList[pageIndex - 1].Location;
+            point = _buttonList[_buttonList.Count - 1].Location;
             point.Y += (5 + button.Height);
             button.Location = point;
             button.Click += ButtonClick;
@@ -370,7 +374,6 @@ namespace WindowsPractice
         private void NewPageClick(object sender, EventArgs e)
         {
             _model.AddPageCommand(_buttonList.Count);
-            _recordDataGridView.DataSource = _model.BindingShapeList;
             RefreshUi();
         }
 
@@ -384,7 +387,6 @@ namespace WindowsPractice
                     _model.ClickCreatePage(_buttonList.IndexOf(button));
                 }
             }
-            _recordDataGridView.DataSource = _model.BindingShapeList;
             RefreshUi();
         }
 

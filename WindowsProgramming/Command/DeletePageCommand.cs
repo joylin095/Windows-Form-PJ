@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WindowsPractice.Command
 {
-    public class AddPageCommand : ICommand
+    public class DeletePageCommand : ICommand
     {
         Model _model;
         Shapes _shapes;
         int _pageIndex;
-        public AddPageCommand(Model model, Shapes shapes, int pageIndex)
+        public DeletePageCommand(Model model, Shapes shapes, int pageIndex)
         {
             _model = model;
             _shapes = shapes;
@@ -21,15 +21,16 @@ namespace WindowsPractice.Command
         // do
         public void Execute()
         {
-            _model.InsertPage(_pageIndex, _shapes);
-            _model.HandleAddPage();   
+            _model.DeletePage(_pageIndex);
+            _model.HandleDeletePage(_pageIndex);
         }
 
         // undo
         public void CancelExecute()
         {
-            _model.HandleDeletePage(_pageIndex);
-            _model.DeletePage(_pageIndex);
+            _model.InsertPage(_pageIndex, _shapes);
+            _model.HandleAddPage();
+            
         }
     }
 }
