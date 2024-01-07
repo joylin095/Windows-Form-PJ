@@ -93,9 +93,13 @@ namespace WindowsPractice.Tests
         public void SetCurrentPage()
         {
             model = new Model();
+            model._currentPageEvent += HandleCurrentPage;
             model.SetCurrentPage(clickPage);
             privateObject = new PrivateObject(model);
             Assert.AreEqual(0, privateObject.GetFieldOrProperty("_currentPage"));
+
+            model._currentPageEvent -= HandleCurrentPage;
+            model.SetCurrentPage(clickPage);
         }
 
         // 創建shape測試
@@ -431,6 +435,12 @@ namespace WindowsPractice.Tests
 
         //HandleDeletePage
         private void HandleDeletePage(object sender, int index)
+        {
+
+        }
+
+        //HandleCurrentPage
+        private void HandleCurrentPage(object sender, int index)
         {
 
         }
