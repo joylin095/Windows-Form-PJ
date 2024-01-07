@@ -19,11 +19,14 @@ namespace WindowsPractice
         ToolStripButton _undoButton;
         ToolStripButton _newPageButton;
         const string DELETE = "刪除";
+        const string BUTTON_NAME = "_button";
         const int DELETE_BUTTON_COLUMN_INDEX = 0;
         const float SCALE16 = 16.0f;
         const float SCALE9 = 9.0f;
         const int TWO = 2;
-        string _solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
+        const int SMALL_INTEGER = 5;
+        const string PATH = "..\\..\\..\\";
+        string _solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PATH));
         List<Button> _buttonList = new List<Button>();
         public Form1(Model model)
         {
@@ -34,6 +37,7 @@ namespace WindowsPractice
             _model._cursorToDefault += HandleCursorToDefault;
             _model._addPageEvent += HandleAddPage;
             _model._deletePageEvent += HandleDeletePage;
+            _model._currentPageEvent += HandleSetButtonBorder;
             _presentationModel = new PresentationModel(model);
             _recordDataGridView.DataSource = _model.BindingShapeList;
             CallViewModelToRecordAllShapeName();
@@ -55,163 +59,6 @@ namespace WindowsPractice
             CreateToolStripButtonRedo();
         }
 
-        // 創ToolStripButtonLine
-        private void CreateToolStripButtonLine()
-        {
-            const string LINE = "線";
-            const string CHECKED = "Checked";
-            const string VALUE = "Value";
-            ToolStripBindButton lineButton = new ToolStripBindButton();
-            lineButton.Text = LINE;
-            lineButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-
-                string FILE_PATH = Path.Combine(_solutionPath,"images", "1.png");
-                lineButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            lineButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[0], VALUE);
-            lineButton.Click += ToolStripButtonClick;
-            _toolStrip1.Items.Add(lineButton);
-        }
-
-        // 創ToolStripButtonRectangle
-        private void CreateToolStripButtonRectangle()
-        {
-            const string RECTANGLE = "矩形";
-            const string CHECKED = "Checked";
-            const string VALUE = "Value";
-            ToolStripBindButton rectangleButton = new ToolStripBindButton();
-            rectangleButton.Text = RECTANGLE;
-            rectangleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "2.png");
-                rectangleButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            rectangleButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[1], VALUE);
-            rectangleButton.Click += ToolStripButtonClick;
-            _toolStrip1.Items.Add(rectangleButton);
-        }
-
-        // 創ToolStripButtonCircle
-        private void CreateToolStripButtonCircle()
-        {
-            const string CIRCLE = "圓";
-            const string CHECKED = "Checked";
-            const string VALUE = "Value";
-            const int TWO = 2;
-            ToolStripBindButton circleButton = new ToolStripBindButton();
-            circleButton.Text = CIRCLE;
-            circleButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "3.png");
-                circleButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            circleButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[TWO], VALUE);
-            circleButton.Click += ToolStripButtonClick;
-            _toolStrip1.Items.Add(circleButton);
-        }
-
-        // 創ToolStripButtonMouse
-        private void CreateToolStripButtonMouse()
-        {
-            const string MOUSE = "選取";
-            const string CHECKED = "Checked";
-            const string VALUE = "Value";
-            const int THREE = 3;
-            ToolStripBindButton mouseButton = new ToolStripBindButton();
-            mouseButton.Text = MOUSE;
-            mouseButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "4.jpg");
-                mouseButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            mouseButton.DataBindings.Add(CHECKED, _presentationModel.ToolBarCheckedList[THREE], VALUE);
-            mouseButton.Click += ToolStripButtonClick;
-            _toolStrip1.Items.Add(mouseButton);
-        }
-
-        // 創ToolStripButtonNewPage
-        private void CreateToolStripButtonNewPage()
-        {
-            const string NEW_PAGE = "新增頁面";
-            _newPageButton = new ToolStripButton();
-            _newPageButton.Click += NewPageClick;
-            _newPageButton.Text = NEW_PAGE;
-            _newPageButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "newPage.png");
-                _newPageButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            _toolStrip1.Items.Add(_newPageButton);
-        }
-
-        // 創ToolStripButtonUndo
-        private void CreateToolStripButtonUndo()
-        {
-            const string UNDO = "Undo";
-            _undoButton = new ToolStripButton();
-            _undoButton.Click += UndoClick;
-            _undoButton.Enabled = false;
-            _undoButton.Text = UNDO;
-            _undoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "undo.png");
-                _undoButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            _toolStrip1.Items.Add(_undoButton);
-        }
-
-        // 創ToolStripButtonRedo
-        private void CreateToolStripButtonRedo()
-        {
-            const string REDO = "Redo";
-            _redoButton = new ToolStripButton();
-            _redoButton.Click += RedoClick;
-            _redoButton.Enabled = false;
-            _redoButton.Text = REDO;
-            _redoButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            try
-            {
-                string FILE_PATH = Path.Combine(_solutionPath, "images", "redo.png");
-                _redoButton.Image = Bitmap.FromFile(FILE_PATH);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"FileNotFoundException: {ex.Message}");
-            }
-            _toolStrip1.Items.Add(_redoButton);
-        }
-
         // 把全部的shape name傳給ViewModel
         private void CallViewModelToRecordAllShapeName()
         {
@@ -226,23 +73,30 @@ namespace WindowsPractice
         // button縮放更新
         private void ButtonRefresh()
         {
-            Point point;
             for (int i = 0; i < _buttonList.Count; i++)
             {
-                _buttonList[i].Width = _splitContainer1.Panel1.Width;
-                _buttonList[i].Height = (int)((_buttonList[i].Width / SCALE16) * SCALE9);
-                if (i != 0)
-                {
-                    point = _buttonList[i - 1].Location;
-                    point.Y += (5 + _buttonList[i].Height);
-                    _buttonList[i].Location = point;
-                }
-                else
-                {
-                    _buttonList[i].Location = new Point(-2, 0);
-                }
-                _buttonList[i].Invalidate();
+                ResetButton(i);
             }
+        }
+
+        // reset button
+        private void ResetButton(int index)
+        {
+            Point point;
+            _buttonList[index].Name = BUTTON_NAME + index.ToString();
+            _buttonList[index].Width = _splitContainer1.Panel1.Width - SMALL_INTEGER;
+            _buttonList[index].Height = (int)((_buttonList[index].Width / SCALE16) * SCALE9);
+            if (index != 0)
+            {
+                point = _buttonList[index - 1].Location;
+                point.Y += (SMALL_INTEGER + _buttonList[index].Height);
+                _buttonList[index].Location = point;
+            }
+            else
+            {
+                _buttonList[index].Location = new Point(0, 0);
+            }
+            _buttonList[index].Invalidate();
         }
 
         // panel縮放更新
@@ -252,39 +106,7 @@ namespace WindowsPractice
             _panel1.Height = (int)((_panel1.Width / SCALE16) * SCALE9);
             Point test = _panel1.Location;
             test.Y = (_splitContainer1.Height - _panel1.Height) / TWO;
-            _panel1.Location = test;
-        }
-
-        // 更新畫佈
-        private void HandlePanelChanged(object sender)
-        {
-            _panel1.Invalidate();
-            foreach (Button button in _buttonList)
-            {
-                button.Invalidate();
-            }
-        }
-
-        // 畫完圖形改變游標
-        private void HandleCursorToDefault(object sender)
-        {
-            this.Cursor = Cursors.Default;
-            RefreshUi();
-        }
-
-        // create new page
-        private void HandleAddPage(object sender)
-        {
-            CreateButton();
-            RefreshUi();
-        }
-
-        // delete new page
-        private void HandleDeletePage(object sender, int pageIndex)
-        {
-            _splitContainer1.Panel1.Controls.Remove(_buttonList[pageIndex]);
-            _buttonList.RemoveAt(pageIndex);
-            RefreshUi();
+            _panel1.Location = test; 
         }
 
         // 按下新增鍵
@@ -353,25 +175,8 @@ namespace WindowsPractice
             _recordDataGridView.Invalidate();
         }
 
-        // create button
-        private void CreateButton()
-        {
-            Point point;
-            Button button = new Button();
-            button.Width = _splitContainer1.Panel1.Width;
-            button.Height = (int)((button.Width / SCALE16) * SCALE9);
-            button.BackColor = Color.White;
-            point = _buttonList[_buttonList.Count - 1].Location;
-            point.Y += (5 + button.Height);
-            button.Location = point;
-            button.Click += ButtonClick;
-            button.Paint += ButtonPaint;
-            _splitContainer1.Panel1.Controls.Add(button);
-            _buttonList.Add(button);
-        }
-
         // new page click
-        private void NewPageClick(object sender, EventArgs e)
+        private void AddNewPageClick(object sender, EventArgs e)
         {
             _model.AddPageCommand(_buttonList.Count);
             RefreshUi();
@@ -385,6 +190,7 @@ namespace WindowsPractice
                 if (button == sender)
                 {
                     _model.ClickCreatePage(_buttonList.IndexOf(button));
+                    SetButtonBorder(_buttonList.IndexOf(button));
                 }
             }
             RefreshUi();
@@ -452,6 +258,35 @@ namespace WindowsPractice
                 _presentationModel.NewPanelSize = _panel1.Size;
                 _presentationModel.SetScale();
                 RefreshUi();
+            }
+        }
+
+        // set button border
+        private void SetButtonBorder(int index)
+        {
+            if (index >= _buttonList.Count)
+            {
+                _buttonList[_buttonList.Count - 1].FlatAppearance.BorderColor = Color.Red;
+                _buttonList[_buttonList.Count - 1].FlatAppearance.BorderSize = 1;
+                return;
+            }
+            for (int i = 0; i < _buttonList.Count; i++)
+            {
+                SetEveryButtonBorder(index, i);
+            }
+        }
+
+        // set every button border
+        private void SetEveryButtonBorder(int clickIndex, int buttonIndex)
+        {
+            if (buttonIndex == clickIndex)
+            {
+                _buttonList[buttonIndex].FlatAppearance.BorderColor = Color.Red;
+                _buttonList[buttonIndex].FlatAppearance.BorderSize = 1;
+            }
+            else
+            {
+                _buttonList[buttonIndex].FlatAppearance.BorderSize = 0;
             }
         }
     }

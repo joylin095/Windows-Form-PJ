@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 namespace WindowsPractice.Command.Tests
 {
     [TestClass()]
-    public class AddCommandTests
+    public class DeletePageCommandTests
     {
         Model model;
-        Shape shape;
-        AddCommand addCommand;
+        Shapes shapes;
+        DeletePageCommand addCommand;
 
         // 初始化
         [TestInitialize()]
         public void Initialize()
         {
             model = new Model();
-            shape = new Line();
-            addCommand = new AddCommand(model, shape, 0);
+            shapes = new Shapes();
+            addCommand = new DeletePageCommand(model, shapes, 0);
         }
 
         // do test

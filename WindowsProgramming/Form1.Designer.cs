@@ -46,8 +46,8 @@ namespace WindowsPractice
             this._panel1 = new WindowsPractice.DoubleBufferedPanel();
             this._shape = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._shapeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._recordDataGridView)).BeginInit();
             this._groupBox1.SuspendLayout();
@@ -101,8 +101,8 @@ namespace WindowsPractice
             this._delete,
             this._shape,
             this._info,
-            this.nameDataGridViewTextBoxColumn,
-            this.locationDataGridViewTextBoxColumn});
+            this._nameDataGridViewTextBoxColumn,
+            this._locationDataGridViewTextBoxColumn});
             this._recordDataGridView.DataSource = this._shapeBindingSource;
             this._recordDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._recordDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -189,6 +189,8 @@ namespace WindowsPractice
             // 
             this._button1.AutoSize = true;
             this._button1.BackColor = System.Drawing.Color.White;
+            this._button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this._button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._button1.Location = new System.Drawing.Point(-2, 0);
             this._button1.Name = "_button1";
             this._button1.Size = new System.Drawing.Size(159, 126);
@@ -282,21 +284,21 @@ namespace WindowsPractice
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Visible = false;
+            this._nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this._nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this._nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this._nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this._nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this._nameDataGridViewTextBoxColumn.Visible = false;
             // 
             // locationDataGridViewTextBoxColumn
             // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.locationDataGridViewTextBoxColumn.Visible = false;
+            this._locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            this._locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            this._locationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this._locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this._locationDataGridViewTextBoxColumn.ReadOnly = true;
+            this._locationDataGridViewTextBoxColumn.Visible = false;
             // 
             // _shapeBindingSource
             // 
@@ -358,8 +360,6 @@ namespace WindowsPractice
         private System.Windows.Forms.DataGridViewTextBoxColumn _info;
         private System.Windows.Forms.DataGridViewTextBoxColumn _nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _locationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
     }
 }
 

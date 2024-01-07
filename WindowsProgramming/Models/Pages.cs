@@ -64,14 +64,7 @@ namespace WindowsPractice
         public void CreateNewPage()
         {
             _shapes = new Shapes();
-            //_shapesList.Add(_shapes);
         }
-
-        // add shapes
-        //public void AddPage(Shapes shapes)
-        //{
-        //    _shapesList.Add(shapes);
-        //}
 
         // delete page
         public void DeletePage(int pageIndex)
@@ -84,38 +77,5 @@ namespace WindowsPractice
         {
             _shapesList.Insert(pageIndex, shapes);
         }
-
-        // draw shape
-        //public void DrawShape(IGraphics graphics, bool isDrawing, int drawPage = -1)
-        //{
-        //    if (drawPage == -1)
-        //    {
-        //        _shapesList[_currentPage].DrawAll(graphics);
-        //        _shapesList[_currentPage].IsDrawing = isDrawing;
-        //    }
-        //    else
-        //    {
-        //        _shapesList[drawPage].DrawAll(graphics);
-        //        _shapesList[drawPage].IsDrawing = isDrawing;
-        //    }
-        //}
-
-        // create shape
-        //public void CreateShape(string selectShapeName, Point x1Y1 = default, Point x2Y2 = default)
-        //{
-        //    _shapesList[_currentPage].CreateShape(selectShapeName, x1Y1, x2Y2);
-        //}
-
-        //加入shape到list
-        //public void AddShape(Shape shape = null, int insertIndex = -1)
-        //{
-        //    _shapesList[_currentPage].AddShape(shape, insertIndex);
-        //}
-
-        // 更新shape座標
-        //public void UpdateLocation(Point firstPoint, Point newPoint)
-        //{
-        //    _shapesList[_currentPage].UpdateLocation(firstPoint, newPoint);
-        //}
     }
 }

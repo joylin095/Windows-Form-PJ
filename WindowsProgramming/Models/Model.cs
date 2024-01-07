@@ -11,7 +11,7 @@ using WindowsPractice.Command;
 
 namespace WindowsPractice
 {
-    public class Model
+    public partial class Model
     {
         public delegate void PanelChangedEventHandler(object sender);
         public event PanelChangedEventHandler _panelChanged;
@@ -21,6 +21,8 @@ namespace WindowsPractice
         public event AddPageEventHandler _addPageEvent;
         public delegate void DeletePageEventHandler(object sender, int pageIndex);
         public event DeletePageEventHandler _deletePageEvent;
+        public delegate void CurrentPageEventHandler(object sender, int pageIndex);
+        public event CurrentPageEventHandler _currentPageEvent;
 
         Pages _pages;
         Pen _pen;
@@ -38,68 +40,6 @@ namespace WindowsPractice
             IsDrawing = false;
             _currentPage = 0;
             _clickPage = -1;
-        }
-
-        public Shapes Shapes
-        {
-            get
-            {
-                return _pages.ShapeList;
-            }
-        }
-
-        public BindingList<Shape> BindingShapeList
-        {
-            get 
-            { 
-                return Shapes.ShapeList; 
-            }
-        }
-
-        public IState State
-        {
-            get;
-            set;
-        }
-
-        public string SelectShapeName
-        {
-            get;
-            set;
-        }
-
-        public Point FirstPoint
-        {
-            get;
-            set;
-        }
-
-        public bool IsDrawing
-        {
-            get;
-            set;
-        }
-
-        public Cursor Cursor
-        {
-            get;
-            set;
-        }
-
-        public bool IsRedoEnabled
-        {
-            get
-            {
-                return _commandManager.IsRedoEnabled;
-            }
-        }
-
-        public bool IsUndoEnabled
-        {
-            get
-            {
-                return _commandManager.IsUndoEnabled;
-            }
         }
 
         // 點擊button時
@@ -122,7 +62,14 @@ namespace WindowsPractice
         public void DeletePage(int pageIndex)
         {
             _pages.DeletePage(pageIndex);
-            SetCurrentPage(_pages.PageSum - 1);
+            if (_pages.PageSum <= pageIndex)
+            {
+                SetCurrentPage(_pages.PageSum - 1);
+            }
+            else
+            {
+                SetCurrentPage(pageIndex);
+            }
         }
 
         // insert page
@@ -137,19 +84,21 @@ namespace WindowsPractice
         {
             _currentPage = currentPage;
             _pages.SetCurrentPage(_currentPage);
+            if (_currentPageEvent != null)
+            {
+                _currentPageEvent(this, currentPage);
+            }
         }
 
         // 創建shape
         public void CreateShapes(Point x1Y1 = default, Point x2Y2 = default)
         {
-            //_pages.CreateShape(SelectShapeName, x1Y1, x2Y2);
             Shapes.CreateShape(SelectShapeName, x1Y1, x2Y2);
         }
 
         // 加入shape到list
         public void AddShape(Shape shape = null, int insertIndex = -1)
         {
-            //_pages.AddShape(shape, insertIndex);
             Shapes.AddShape(shape, insertIndex);
         }
 
@@ -162,7 +111,6 @@ namespace WindowsPractice
         // 畫圖
         public void Draw(IGraphics graphics, int drawPage = -1)
         {
-            //_pages.DrawShape(graphics, IsDrawing, drawPage);
             Shapes shapes = drawPage != -1 ? _pages.GetPage(drawPage) : _pages.GetPage(_currentPage);
             shapes.DrawAll(graphics);
             shapes.IsDrawing = IsDrawing;
@@ -177,7 +125,6 @@ namespace WindowsPractice
         // 更新座標
         public void UpdateLocation(Point newPoint)
         {
-            //_pages.UpdateLocation(FirstPoint, newPoint);
             Shapes.UpdateLocation(FirstPoint, newPoint);
         }
 
@@ -243,7 +190,6 @@ namespace WindowsPractice
         // 鍵盤按下按鍵
         public void FormKeyDown(System.Windows.Forms.Keys keys)
         {
-            Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
             if (keys == System.Windows.Forms.Keys.Delete)
             {
                 if (_clickPage != -1 && _pages.PageSum > 1)
@@ -252,19 +198,26 @@ namespace WindowsPractice
                     _clickPage = -1;
                     return;
                 }
-                foreach (Shape shape in Shapes.ShapeList.ToArray())
+                DeleteShapeList();
+            }
+        }
+
+        // delete shape list
+        public void DeleteShapeList()
+        {
+            Dictionary<Shape, int> deleteShapeList = new Dictionary<Shape, int>();
+            foreach (Shape shape in Shapes.ShapeList.ToArray())
+            {
+                if (shape.Selected == true)
                 {
-                    if (shape.Selected == true)
+                    deleteShapeList.Add(shape, Shapes.ShapeList.IndexOf(shape));
+                    if (_panelChanged != null)
                     {
-                        deleteShapeList.Add(shape, Shapes.ShapeList.IndexOf(shape));
-                        if (_panelChanged != null)
-                        {
-                            _panelChanged(this);
-                        }
+                        _panelChanged(this);
                     }
                 }
-                DeleteCommand(deleteShapeList);
             }
+            DeleteCommand(deleteShapeList);
         }
 
         // 在畫布移動滑鼠時的cursor
@@ -309,92 +262,6 @@ namespace WindowsPractice
             {
                 _deletePageEvent(this, pageIndex);
             }
-        }
-
-        // add page command
-        public void AddPageCommand(int currentPage)
-        {
-            CreateNewPage(currentPage);
-            Shapes shapes = _pages.TempShapes;
-            _commandManager.Execute(new AddPageCommand(this, shapes, currentPage));
-        }
-
-        // delete page command
-        public void DeletePageCommand(int currentPage)
-        {
-            _commandManager.Execute(new DeletePageCommand(this, Shapes, currentPage));
-        }
-
-        // 畫圖command
-        public void DrawCommand()
-        {
-            _clickPage = -1;
-            _commandManager.Execute(new DrawCommand(this, Shapes.Shape, _currentPage));
-        }
-
-        // add button command
-        public void AddCommand(string selectShapeName, Point x1Y1, Point x2Y2)
-        {
-            _clickPage = -1;
-            SelectShapeName = selectShapeName;
-            CreateShapes(x1Y1, x2Y2);
-            _commandManager.Execute(new AddCommand(this, Shapes.Shape, _currentPage));
-        }
-
-        // delete command
-        public void DeleteCommand(Dictionary<Shape, int> deleteShapeList)
-        {
-            if (deleteShapeList.Count != 0)
-            {
-                _clickPage = -1;
-                _commandManager.Execute(new DeleteCommand(this, deleteShapeList, _currentPage));
-            }
-        }
-
-        // move command
-        public void MoveCommand()
-        {
-            _afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
-            foreach (Shape shape in Shapes.ShapeList.ToArray())
-            {
-                if (shape.Selected)
-                {
-                    if (_beforeMove[Shapes.ShapeList.IndexOf(shape)] != shape.GetX1Y1WidthHeightTuple())
-                    {
-                        _afterMove.Add(Shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
-                    }
-                }
-            }
-            if (_beforeMove.Count != 0 && _beforeMove.Count == _afterMove.Count)
-            {
-                _clickPage = -1;
-                _commandManager.Execute(new MoveCommand(this, _beforeMove, _afterMove, _currentPage));
-            }
-        }
-
-        // move before
-        public void MoveBefore()
-        {
-            _beforeMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
-            foreach (Shape shape in Shapes.ShapeList.ToArray())
-            {
-                if (shape.Selected)
-                {
-                    _beforeMove.Add(Shapes.ShapeList.IndexOf(shape), shape.GetX1Y1WidthHeightTuple());
-                }
-            }
-        }
-
-        // undo click
-        public void Undo()
-        {
-            _commandManager.Undo();
-        }
-
-        // redo click
-        public void Redo()
-        {
-            _commandManager.Redo();
         }
     }
 }

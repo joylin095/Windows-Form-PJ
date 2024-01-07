@@ -29,7 +29,7 @@ namespace WindowsPractice.Command.Tests
             beforeMove.Add(0, (new Point(100, 100), new Point(200, 200)));
             afterMove = new Dictionary<int, (Point X1Y1, Point WidthHeight)>();
             afterMove.Add(0, (new Point(200, 200), new Point(400, 400)));
-            moveCommand = new MoveCommand(model, beforeMove, afterMove);
+            moveCommand = new MoveCommand(model, beforeMove, afterMove, 0);
         }
 
         // do test
