@@ -11,16 +11,19 @@ namespace WindowsPractice.Command
     {
         Model _model;
         Dictionary<Shape, int> _deleteShapeList = new Dictionary<Shape, int>();
-        public DeleteCommand(Model model, Dictionary<Shape, int> deleteShapeList)
+        int _pageIndex;
+        public DeleteCommand(Model model, Dictionary<Shape, int> deleteShapeList, int pageIndex)
         {
             _model = model;
             _deleteShapeList = deleteShapeList;
+            _pageIndex = pageIndex;
         }
 
         // do
         public void Execute()
         {
             int counts = 0;
+            _model.SetCurrentPage(_pageIndex);
             foreach (KeyValuePair<Shape, int> deleteShape in _deleteShapeList)
             {
                 _model.DeleteData(deleteShape.Value - counts);
@@ -31,6 +34,7 @@ namespace WindowsPractice.Command
         // undo
         public void CancelExecute()
         {
+            _model.SetCurrentPage(_pageIndex);
             foreach (KeyValuePair<Shape, int> deleteShape in _deleteShapeList)
             {
                 _model.AddShape(deleteShape.Key, deleteShape.Value);

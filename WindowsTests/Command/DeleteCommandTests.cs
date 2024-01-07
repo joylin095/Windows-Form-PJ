@@ -25,7 +25,7 @@ namespace WindowsPractice.Command.Tests
             model.CreateShapes();
             model.AddShape();
             deleteShapeList.Add(new Line(), 0);
-            deleteCommand = new DeleteCommand(model, deleteShapeList);
+            deleteCommand = new DeleteCommand(model, deleteShapeList, 0);
         }
 
         // do test

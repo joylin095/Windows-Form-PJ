@@ -21,7 +21,7 @@ namespace WindowsPractice.Command.Tests
         {
             model = new Model();
             shape = new Line();
-            drawCommand = new DrawCommand(model, shape);
+            drawCommand = new DrawCommand(model, shape, 0);
         }
 
         // do test

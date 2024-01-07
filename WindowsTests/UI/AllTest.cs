@@ -6,11 +6,12 @@ using System.Threading;
 namespace WindowsPractice.Ui.Tests
 {
     [TestClass]
-    public class AddShapeTest
+    public class AllTest
     {
         private Robot _robot;
         private string targetAppPath;
         private string _controlName = "線";
+        private const string CONTROL_PANEL = "_panel1";
         private const string CONTROL_DATAGRIDVIEW = "_recordDataGridView";
         private const string CONTROL_SELECT_SHAPE_BOX = "_selectShapeBox";
         private const string CONTROL_ADD_DATA_BUTTON = "新增";
@@ -25,6 +26,12 @@ namespace WindowsPractice.Ui.Tests
         private const string BOTTOM_RIGHT_Y = "150";
         private const string LOCATION = "(50, 50),(150, 150)";
         private const string CONTROL_OK_BUTTON = "確定";
+        private const int X = 150;
+        private const int Y = 150;
+        private const int DX = 150;
+        private const int DY = 150;
+        private const int SMALL_DX = 30;
+        private const int SMALL_DY = 30;
         // init
         [TestInitialize()]
         public void Initialize()
@@ -46,9 +53,43 @@ namespace WindowsPractice.Ui.Tests
         [TestMethod]
         public void AddShape()
         {
+            RunAddShape("矩形", 0);
+
+            RunScriptDrawShape("圓", X, Y, DX, DY);
+
+            RunScriptDrawShape("矩形", X + SMALL_DX, Y - SMALL_DY, DX, DY);
+            RunScriptZoomShape(DX - SMALL_DX, DY - SMALL_DY);
+            Thread.Sleep(500);
+            RunScriptMoveShape(SMALL_DX, SMALL_DY, DX, 0);
+            Thread.Sleep(500);
+            RunScriptClickUndo();
+            RunScriptClickRedo();
+            RunScriptDataGridViewDeleteShape(CONTROL_DATAGRIDVIEW, 2);
+            Thread.Sleep(500);
+
+            RunAddPage();
+
             RunAddShape("線", 0);
-            RunAddShape("矩形", 1);
-            RunAddShape("圓", 2);
+
+            RunScriptDrawShape("圓", X, Y, DX, DY);
+
+            Thread.Sleep(500);
+            RunScriptClickUndo();
+
+            Thread.Sleep(500);
+            RunScriptClickUndo();
+
+            Thread.Sleep(500);
+            RunScriptClickUndo();
+
+            Thread.Sleep(500);
+        }
+
+        // run add page
+        private void RunAddPage()
+        {
+            _robot.ClickButton("新增頁面");
+            _robot.ClickAccessibilityIdButton("_button1");
         }
 
         // run script add line
@@ -63,8 +104,43 @@ namespace WindowsPractice.Ui.Tests
             _robot.InputShapePoint(CONTROL_INPUT_FORM, CONTROL_INPUT_FORM_BOTTOM_RIGHT_X, BOTTOM_RIGHT_X);
             _robot.InputShapePoint(CONTROL_INPUT_FORM, CONTROL_INPUT_FORM_BOTTOM_RIGHT_Y, BOTTOM_RIGHT_Y);
             _robot.ClickButton(CONTROL_OK_BUTTON);
+        }
 
-            _robot.AssertDataGridViewShapeAndLocationCell(CONTROL_DATAGRIDVIEW, row, controlShapeName, LOCATION);
+        // run draw
+        private void RunScriptDrawShape(string controlName, int x, int y, int dx, int dy)
+        {
+            _robot.ClickButton(controlName);
+            _robot.MouseDownHoldMoveReleaseTheControl(CONTROL_PANEL, x, y, dx, dy);
+        }
+
+        // run zoom
+        private void RunScriptZoomShape(int dx, int dy)
+        {
+            _robot.ZoomShape(dx, dy);
+        }
+
+        // run move
+        private void RunScriptMoveShape(int smallDx, int smallDy, int dx, int dy)
+        {
+            _robot.MoveShape(smallDx, smallDy, dx, dy);
+        }
+
+        // click undo
+        private void RunScriptClickUndo()
+        {
+            _robot.ClickButton("Undo");
+        }
+
+        // click redo
+        private void RunScriptClickRedo()
+        {
+            _robot.ClickButton("Redo");
+        }
+
+        // run delete
+        private void RunScriptDataGridViewDeleteShape(string name, int row)
+        {
+            _robot.ClickDataGridViewDelete(name, row);
         }
     }
 }

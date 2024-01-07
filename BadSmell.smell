@@ -233,12 +233,12 @@
             </Smell>
             <Smell>
               <Id>4</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\ModelTests.cs on line 282.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\Model\ModelTests.cs on line 363.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>WindowsTests</Project>
               <File>ModelTests.cs</File>
-              <Line>282</Line>
+              <Line>363</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -263,12 +263,12 @@
             </Smell>
             <Smell>
               <Id>6</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs on line 119.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs on line 125.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>WindowsTests</Project>
               <File>Robot.cs</File>
-              <Line>119</Line>
+              <Line>125</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -293,21 +293,6 @@
             </Smell>
             <Smell>
               <Id>8</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Form1.cs on line 62.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>Windows</Project>
-              <File>Form1.cs</File>
-              <Line>62</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>9</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Circle.cs on line 43.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -322,7 +307,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>10</Id>
+              <Id>9</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Factory.cs on line 17.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -337,7 +322,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>11</Id>
+              <Id>10</Id>
               <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Line.cs on line 45.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
@@ -352,13 +337,28 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
+              <Id>11</Id>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.Command.cs on line 122.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Windows</Project>
+              <File>Model.Command.cs</File>
+              <Line>122</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
               <Id>12</Id>
-              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.cs on line 24.</SmellType>
+              <SmellType>A syntax error has been discovered in file C:\Users\USER\Desktop\Homework2\WindowsProgramming\Models\Model.cs on line 30.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Windows</Project>
               <File>Model.cs</File>
-              <Line>24</Line>
+              <Line>30</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -411,134 +411,6 @@
               <Comment />
               <Auto>false</Auto>
             </Smell>
-            <Smell>
-              <Id>16</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>135 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：8次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.MoveToElement(OpenQA.Selenium.IWebElement) 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Click() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>135</Line>
-              <StartLine>126</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>135</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：8次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.MoveToElement(OpenQA.Selenium.IWebElement) 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Click() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>17</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>146 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>146</Line>
-              <StartLine>141</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>146</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：4次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>18</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>158 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>158</Line>
-              <StartLine>152</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>158</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：5次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.ClickAndHold() 以及 OpenQA.Selenium.Interactions.Actions.MoveByOffset(int, int) 以及 OpenQA.Selenium.Interactions.Actions.Release() 以及 OpenQA.Selenium.Interactions.Actions.Perform()</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>19</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>169 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.Click(OpenQA.Selenium.IWebElement) 以及 OpenQA.Selenium.Interactions.Actions.Perform()</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>169</Line>
-              <StartLine>166</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>169</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Interactions.Actions，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Interactions.Actions.Click(OpenQA.Selenium.IWebElement) 以及 OpenQA.Selenium.Interactions.Actions.Perform()</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>20</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>176 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.Size 以及 OpenQA.Selenium.Appium.AppiumWebElement.Size</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>176</Line>
-              <StartLine>176</StartLine>
-              <StartCol>18</StartCol>
-              <EndLine>176</EndLine>
-              <EndCol>81</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.Size 以及 OpenQA.Selenium.Appium.AppiumWebElement.Size</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>21</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>178 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.Size 以及 OpenQA.Selenium.Appium.AppiumWebElement.Size</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>178</Line>
-              <StartLine>177</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>178</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.Size 以及 OpenQA.Selenium.Appium.AppiumWebElement.Size</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>22</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>225 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>225</Line>
-              <StartLine>225</StartLine>
-              <StartCol>16</StartCol>
-              <EndLine>225</EndLine>
-              <EndCol>103</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>23</Id>
-              <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>228 目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>WindowsTests</Project>
-              <File>C:\Users\USER\Desktop\Homework2\WindowsTests\UI\Robot.cs</File>
-              <Line>228</Line>
-              <StartLine>228</StartLine>
-              <StartCol>28</StartCol>
-              <EndLine>228</EndLine>
-              <EndCol>46</EndCol>
-              <Comment>目前物件 WindowsPractice.Ui.Tests.Robot，使用物件的方法或屬性次數：0次，Envy到對象物件 OpenQA.Selenium.Appium.AppiumWebElement，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：OpenQA.Selenium.Appium.AppiumWebElement.FindElementByName(string) 以及 OpenQA.Selenium.Appium.AppiumWebElement.FindElementsByXPath(string)</Comment>
-              <Auto>false</Auto>
-            </Smell>
           </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList>
@@ -552,12 +424,22 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\AddPageCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Command\CommandManagerTests.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\DeleteCommandTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DeletePageCommandTests.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
@@ -647,6 +529,11 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Model\PagesTests.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Model\PresentationModelTests.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -682,6 +569,21 @@
                 <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>UI\AddPageTest.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>UI\AddShapeTest.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>UI\AllTest.cs</RelativePath>
+                <ProjectName>WindowsTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>UI\DrawTest.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -694,7 +596,7 @@
               <AnalysisFile>
                 <RelativePath>UI\Robot.cs</RelativePath>
                 <ProjectName>WindowsTests</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>Test</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>UI\UndoRedoTest.cs</RelativePath>
@@ -712,12 +614,22 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Command\AddPageCommand.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Command\CommandManager.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Command\DeleteCommand.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Command\DeletePageCommand.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -787,9 +699,14 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Form1.cs</RelativePath>
+                <RelativePath>Form1.CreateComponent.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Form1.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Form1.Designer.cs</RelativePath>
@@ -842,7 +759,17 @@
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Models\Model.Command.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>Models\Model.cs</RelativePath>
+                <ProjectName>Windows</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Models\Pages.cs</RelativePath>
                 <ProjectName>Windows</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -928,8 +855,8 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2090</ProductionLoc>
-          <TestLoc>2130</TestLoc>
+          <ProductionLoc>2794</ProductionLoc>
+          <TestLoc>2540</TestLoc>
         </CodeReview>
       </Data>
     </div>

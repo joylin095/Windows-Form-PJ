@@ -211,7 +211,7 @@ namespace WindowsPractice.Ui.Tests
             _robot.MoveShape(smallDx, smallDy, dx, dy);
         }
 
-        // run move
+        // run delete
         private void RunScriptDataGridViewDeleteShape(string name, int row)
         {
             _robot.ClickDataGridViewDelete(name, row);

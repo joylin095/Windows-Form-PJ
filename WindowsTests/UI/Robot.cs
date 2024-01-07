@@ -90,6 +90,12 @@ namespace WindowsPractice.Ui.Tests
         }
 
         // test
+        public void ClickAccessibilityIdButton(string name)
+        {
+            _driver.FindElementByAccessibilityId(name).Click();
+        }
+
+        // test
         public void ClickTabControl(string name)
         {
             var elements = _driver.FindElementsByName(name);

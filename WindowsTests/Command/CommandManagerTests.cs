@@ -25,7 +25,7 @@ namespace WindowsPractice.Command.Tests
         {
             model = new Model();
             shape = new Line();
-            command = new AddCommand(model, shape);
+            command = new AddCommand(model, shape, 0);
             undo = new Stack<ICommand>();
             redo = new Stack<ICommand>();
             commandManager = new CommandManager();

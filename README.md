@@ -1,5 +1,10 @@
 # Windows-Form-PJ
 
+### HW7
+GUI test  
+可以新增刪除頁面    
+新增圖形的座標不再隨機，而是使用者輸入  
+
 ### HW6
 新增undo redo  
 畫布間可以縮放  

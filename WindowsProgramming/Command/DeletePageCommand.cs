@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsPractice;
 
 namespace WindowsPractice.Command
 {
-    public class AddCommand : ICommand
+    public class DeletePageCommand : ICommand
     {
         Model _model;
-        Shape _shape;
+        Shapes _shapes;
         int _pageIndex;
-        public AddCommand(Model model, Shape shape, int pageIndex)
+        public DeletePageCommand(Model model, Shapes shapes, int pageIndex)
         {
             _model = model;
-            _shape = shape;
+            _shapes = shapes;
             _pageIndex = pageIndex;
         }
 
         // do
         public void Execute()
         {
-            _model.SetCurrentPage(_pageIndex);
-            _model.AddShape(_shape);
+            _model.DeletePage(_pageIndex);
+            _model.HandleDeletePage(_pageIndex);
         }
 
         // undo
         public void CancelExecute()
         {
-            _model.SetCurrentPage(_pageIndex);
-            _model.DeleteData(_model.BindingShapeList.Count - 1);
+            _model.InsertPage(_pageIndex, _shapes);
+            _model.HandleAddPage();
+            
         }
     }
 }

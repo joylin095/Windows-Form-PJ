@@ -90,8 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AddCommand.cs" />
+    <Compile Include="Command\AddPageCommand.cs" />
     <Compile Include="Command\CommandManager.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
+    <Compile Include="Command\DeletePageCommand.cs" />
     <Compile Include="Command\DrawCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />
@@ -103,6 +105,9 @@
     <Compile Include="Directions\Up.cs" />
     <Compile Include="Directions\UpLeft.cs" />
     <Compile Include="Directions\UpRight.cs" />
+    <Compile Include="Form1.CreateComponent.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +118,8 @@
     <Compile Include="DoubleBufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Model.Command.cs" />
+    <Compile Include="Models\Pages.cs" />
     <Compile Include="States\DrawingState.cs" />
     <Compile Include="Directions\IDirection.cs" />
     <Compile Include="Models\IGraphics.cs" />

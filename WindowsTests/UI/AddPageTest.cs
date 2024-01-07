@@ -6,17 +6,11 @@ using System.Threading;
 namespace WindowsPractice.Ui.Tests
 {
     [TestClass]
-    public class WindowsSizeTest
+    public class AddPageTest
     {
         private Robot _robot;
         private string targetAppPath;
-        private const string FORM_CONTROL = "Form1";
-        private const string BUTTON1_CONTROL = "_button1";
-        private const string PANEL_CONTROL = "_panel1";
-        private const int X = 2;
-        private const int Y = 2;
-        private const int DX = 100;
-        private const int DY = 100;
+        private string _controlName = "新增頁面";
 
         // init
         [TestInitialize()]
@@ -35,15 +29,17 @@ namespace WindowsPractice.Ui.Tests
             _robot.CleanUp();
         }
 
-        // windows resize test
+        // create test
         [TestMethod]
-        public void WindowsResizeTest()
+        public void AddShape()
         {
-            _robot.MouseDownHoldMoveReleaseTheControl(FORM_CONTROL, X, Y, DX, DY);
-            Thread.Sleep(500);
+            RunAddPage();
+        }
 
-            //_robot.AssertRatio(PANEL_CONTROL, ratio);
-            //_robot.AssertRatio(BUTTON1_CONTROL, ratio);
+        // create
+        private void RunAddPage()
+        {
+            _robot.ClickButton(_controlName);
         }
     }
 }

@@ -37,6 +37,7 @@ namespace WindowsPractice.Tests
     public class ModelTests
     {
         Model model;
+        int clickPage = 0;
         PrivateObject privateObject;
         Point x1y1 = new Point(200, 200);
         Point x2y2 = new Point(300, 300);
@@ -47,6 +48,58 @@ namespace WindowsPractice.Tests
         {
             model = new Model();
             Assert.IsFalse(model.IsDrawing);
+        }
+
+        // create page
+        [TestMethod()]
+        public void ClickCreatePageTest()
+        {
+            model = new Model();
+            privateObject = new PrivateObject(model);
+            model.ClickCreatePage(clickPage);
+            Assert.AreEqual(0, privateObject.GetFieldOrProperty("_currentPage"));
+            Assert.AreEqual(0, privateObject.GetFieldOrProperty("_clickPage"));
+        }
+
+        // 新增頁面
+        [TestMethod()]
+        public void CreateNewPageTest()
+        {
+            model = new Model();
+            privateObject = new PrivateObject(model);
+            model.CreateNewPage(clickPage);
+            Assert.AreEqual(0, privateObject.GetFieldOrProperty("_currentPage"));
+        }
+
+        // delete page
+        [TestMethod()]
+        public void DeletePageTest()
+        {
+            model = new Model();
+            model.DeletePage(clickPage);
+        }
+
+        // delete page
+        [TestMethod()]
+        public void InsertPageTest()
+        {
+            model = new Model();
+            Shapes shapes = new Shapes();
+            model.InsertPage(clickPage + 1, shapes);
+        }
+
+        // set page
+        [TestMethod()]
+        public void SetCurrentPage()
+        {
+            model = new Model();
+            model._currentPageEvent += HandleCurrentPage;
+            model.SetCurrentPage(clickPage);
+            privateObject = new PrivateObject(model);
+            Assert.AreEqual(0, privateObject.GetFieldOrProperty("_currentPage"));
+
+            model._currentPageEvent -= HandleCurrentPage;
+            model.SetCurrentPage(clickPage);
         }
 
         // 創建shape測試
@@ -92,11 +145,10 @@ namespace WindowsPractice.Tests
         public void DrawTest()
         {
             model = new Model();
-            privateObject = new PrivateObject(model);
-            Shapes shapes = (Shapes)privateObject.GetFieldOrProperty("_shapes");
+            Shapes shapes = model.Shapes;
 
             model.IsDrawing = true;
-            model.Draw(new MockGraphics());
+            model.Draw(new MockGraphics(), 0);
             Assert.IsTrue(shapes.IsDrawing);
 
             model.IsDrawing = false;
@@ -150,18 +202,6 @@ namespace WindowsPractice.Tests
             model.PanelMouseMove(point);
         }
 
-        // HandlePanelChanged
-        private void HandlePanelChanged(object sender)
-        {
-            
-        }
-
-        //HandleCursorToDefault
-        private void HandleCursorToDefault(object sender)
-        {
-            
-        }
-
         // 在畫布滑鼠放開
         [TestMethod()]
         public void PanelMouseUpTest()
@@ -209,6 +249,12 @@ namespace WindowsPractice.Tests
             model.BindingShapeList[0].Selected = true;
             model._panelChanged -= HandlePanelChanged;
             model.FormKeyDown(keys);
+
+            int clickPage = 1;
+            Shapes shapes = new Shapes();
+            model.InsertPage(clickPage, shapes);
+            model.ClickCreatePage(clickPage);
+            model.FormKeyDown(keys);
         }
 
         // 在畫布移動滑鼠時的cursor
@@ -226,7 +272,7 @@ namespace WindowsPractice.Tests
 
             model.IsDrawing = false;
             privateObject = new PrivateObject(model);
-            Shapes shapes = (Shapes)privateObject.GetFieldOrProperty("_shapes");
+            Shapes shapes = model.Shapes;
             shapes.Direction = -1;
 
             model.ChangeCursor(point);
@@ -243,6 +289,45 @@ namespace WindowsPractice.Tests
         {
             model = new Model();
             model.SetScale(2, 2);
+        }
+
+        // add page event
+        [TestMethod()]
+        public void HandleAddPageTest()
+        {
+            model = new Model();
+            model._addPageEvent += HandleAddPage;
+            model.HandleAddPage();
+            model._addPageEvent -= HandleAddPage;
+            model.HandleAddPage();
+        }
+
+        // delete page event
+        [TestMethod()]
+        public void HandleDeletePageTest()
+        {
+            model = new Model();
+            model._deletePageEvent += HandleDeletePage;
+            model.HandleDeletePage(0);
+            model._deletePageEvent -= HandleDeletePage;
+            model.HandleDeletePage(0);
+        }
+
+        // AddPageCommand
+        [TestMethod()]
+        public void AddPageCommandTest()
+        {
+            model = new Model();
+            model.AddPageCommand(1);
+        }
+
+        // deletePageCommand
+        [TestMethod()]
+        public void DeletePageCommandTest()
+        {
+            model = new Model();
+            model.AddPageCommand(1);
+            model.DeletePageCommand(1);
         }
 
         // draw command test
@@ -328,6 +413,36 @@ namespace WindowsPractice.Tests
             model.AddCommand("線", x1y1, x2y2);
             model.Undo();
             model.Redo();
+        }
+
+        // HandlePanelChanged
+        private void HandlePanelChanged(object sender)
+        {
+
+        }
+
+        //HandleCursorToDefault
+        private void HandleCursorToDefault(object sender)
+        {
+
+        }
+
+        // HandleAddPage
+        private void HandleAddPage(object sender)
+        {
+
+        }
+
+        //HandleDeletePage
+        private void HandleDeletePage(object sender, int index)
+        {
+
+        }
+
+        //HandleCurrentPage
+        private void HandleCurrentPage(object sender, int index)
+        {
+
         }
     }
 }
